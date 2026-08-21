@@ -46,7 +46,13 @@ export function validateContent() {
 
   for (const file of files) {
     const rel = relative(CONTENT, file).split(sep).join("/");
-    const parsed = parse(readFileSync(file, "utf8"));
+    let parsed;
+    try {
+      parsed = parse(readFileSync(file, "utf8"));
+    } catch (err) {
+      errors.push(`${rel}: invalid YAML frontmatter — ${err.reason ?? err.message}`);
+      continue;
+    }
     if (!parsed) {
       errors.push(`${rel}: missing YAML frontmatter block`);
       continue;

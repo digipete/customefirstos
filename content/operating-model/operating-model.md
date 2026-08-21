@@ -1,7 +1,7 @@
 ---
 id: cf-operating-model
 title: Operating Model
-description: How CustomerFirst is organised: missions, squads, professions and leadership.
+description: "How CustomerFirst is organised: missions, squads, professions and leadership."
 type: operating-model
 section: operating-model
 status: live
