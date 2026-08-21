@@ -19,7 +19,7 @@ tags:
   - lifecycle
 related:
   - cf-discovery
-  - cf-test-and-learn
+  - cf-test-learn
 ---
 
 # Delivery Lifecycle
