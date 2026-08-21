@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HowWeWorkRouteImport } from './routes/how-we-work'
 import { Route as HowWeWorkSplatRouteImport } from './routes/how-we-work.$'
+import { Route as MissionsIndexRouteImport } from './routes/missions.index'
+import { Route as MissionsSlugRouteImport } from './routes/missions.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,34 +30,59 @@ const HowWeWorkSplatRoute = HowWeWorkSplatRouteImport.update({
   path: '/$',
   getParentRoute: () => HowWeWorkRoute,
 } as any)
+const MissionsIndexRoute = MissionsIndexRouteImport.update({
+  id: '/missions/',
+  path: '/missions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionsSlugRoute = MissionsSlugRouteImport.update({
+  id: '/missions/$slug',
+  path: '/missions/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/how-we-work': typeof HowWeWorkRouteWithChildren
   '/how-we-work/$': typeof HowWeWorkSplatRoute
+  '/missions/$slug': typeof MissionsSlugRoute
+  '/missions/': typeof MissionsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/how-we-work': typeof HowWeWorkRouteWithChildren
   '/how-we-work/$': typeof HowWeWorkSplatRoute
+  '/missions/$slug': typeof MissionsSlugRoute
+  '/missions': typeof MissionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/how-we-work': typeof HowWeWorkRouteWithChildren
   '/how-we-work/$': typeof HowWeWorkSplatRoute
+  '/missions/$slug': typeof MissionsSlugRoute
+  '/missions/': typeof MissionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/how-we-work' | '/how-we-work/$'
+  fullPaths:
+    '/' | '/how-we-work' | '/how-we-work/$' | '/missions/$slug' | '/missions/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/how-we-work' | '/how-we-work/$'
-  id: '__root__' | '/' | '/how-we-work' | '/how-we-work/$'
+  to: '/' | '/how-we-work' | '/how-we-work/$' | '/missions/$slug' | '/missions'
+  id:
+    | '__root__'
+    | '/'
+    | '/how-we-work'
+    | '/how-we-work/$'
+    | '/missions/$slug'
+    | '/missions/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HowWeWorkRoute: typeof HowWeWorkRouteWithChildren
+  MissionsSlugRoute: typeof MissionsSlugRoute
+  MissionsIndexRoute: typeof MissionsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -81,6 +108,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HowWeWorkSplatRouteImport
       parentRoute: typeof HowWeWorkRoute
     }
+    '/missions/': {
+      id: '/missions/'
+      path: '/missions'
+      fullPath: '/missions/'
+      preLoaderRoute: typeof MissionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/missions/$slug': {
+      id: '/missions/$slug'
+      path: '/missions/$slug'
+      fullPath: '/missions/$slug'
+      preLoaderRoute: typeof MissionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -99,6 +140,8 @@ const HowWeWorkRouteWithChildren = HowWeWorkRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HowWeWorkRoute: HowWeWorkRouteWithChildren,
+  MissionsSlugRoute: MissionsSlugRoute,
+  MissionsIndexRoute: MissionsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
