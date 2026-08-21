@@ -1,0 +1,5342 @@
+// AUTO-GENERATED demonstration dataset for CustomerFirst OS.
+// Entirely fictional public-service transformation data spanning ~12 months.
+// This mirrors the intended Supabase schema and can be replaced by a database read.
+import type { Dataset } from "./types";
+
+export const dataset: Dataset = {
+  "people": [
+    {
+      "id": "p1",
+      "name": "Amara Osei",
+      "profession": "Product",
+      "role": "Mission owner"
+    },
+    {
+      "id": "p2",
+      "name": "Ruth Kelleher",
+      "profession": "Service Design",
+      "role": "Lead service designer"
+    },
+    {
+      "id": "p3",
+      "name": "Tomasz Wierzbicki",
+      "profession": "Engineering",
+      "role": "Principal engineer"
+    },
+    {
+      "id": "p4",
+      "name": "Priya Raman",
+      "profession": "Research",
+      "role": "Lead user researcher"
+    },
+    {
+      "id": "p5",
+      "name": "Callum Frazer",
+      "profession": "Delivery Management",
+      "role": "Delivery manager"
+    },
+    {
+      "id": "p6",
+      "name": "Nia Bevan",
+      "profession": "Data",
+      "role": "Data lead"
+    },
+    {
+      "id": "p7",
+      "name": "Idris Mahmood",
+      "profession": "Architecture",
+      "role": "Principal architect"
+    },
+    {
+      "id": "p8",
+      "name": "Sofia Marchetti",
+      "profession": "Content Design",
+      "role": "Content designer"
+    },
+    {
+      "id": "p9",
+      "name": "Grace Adeyemi",
+      "profession": "People and Change",
+      "role": "Change lead"
+    },
+    {
+      "id": "p10",
+      "name": "Hamish Ellory",
+      "profession": "AI",
+      "role": "AI practice lead"
+    },
+    {
+      "id": "p11",
+      "name": "Leah Okonkwo",
+      "profession": "Leadership",
+      "role": "Portfolio director"
+    },
+    {
+      "id": "p12",
+      "name": "Dan Petrov",
+      "profession": "Product",
+      "role": "Product manager"
+    }
+  ],
+  "missions": [
+    {
+      "id": "m1",
+      "slug": "blue-badge-renewals",
+      "name": "Blue Badge renewals",
+      "description": "Reduce the effort and delay disabled residents face when renewing a Blue Badge.",
+      "partner": "Northgate Metropolitan Council",
+      "ownerId": "p1",
+      "team": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p8"
+      ],
+      "problemStatement": "Renewals are treated as new applications. Residents re-prove eligibility they have already evidenced, and 41% of renewals arrive after expiry, creating avoidable parking penalties and appeals.",
+      "outcomes": [
+        {
+          "id": "m1-o1",
+          "statement": "Renewals completed before expiry",
+          "measure": "% of renewals completed before badge expiry",
+          "baseline": "59% (Aug 2025)"
+        },
+        {
+          "id": "m1-o2",
+          "statement": "Effort to renew",
+          "measure": "Median resident minutes to complete renewal",
+          "baseline": "34 minutes"
+        }
+      ],
+      "users": "Disabled residents renewing a badge, and the assessment team handling appeals.",
+      "startDate": "2025-09-08",
+      "status": "Active",
+      "stage": "Measure",
+      "currentUnderstanding": "Reuse of held eligibility evidence removes most of the renewal burden for the 62% of holders with permanent conditions. The residual group still needs assisted assessment.",
+      "confidence": 78,
+      "risks": [
+        {
+          "id": "m1-r1",
+          "description": "Assisted route has no funded owner after mission close",
+          "severity": "Medium",
+          "owner": "p5"
+        },
+        {
+          "id": "m1-r2",
+          "description": "Reminder volumes could increase contact-centre demand",
+          "severity": "Low",
+          "owner": "p12"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "m1-d1",
+          "description": "Case management API change",
+          "on": "Technology partner",
+          "status": "In progress"
+        }
+      ],
+      "lessons": [
+        "Residents accept automation of favourable outcomes but not of refusals.",
+        "Showing the evidence used in a decision reduces appeal demand more cheaply than process change."
+      ],
+      "nextQuestions": [
+        "Does the 8-week reminder effect persist beyond two cycles?",
+        "What is the realised value of avoided appeals?"
+      ],
+      "health": {
+        "Outcome clarity": {
+          "score": 5,
+          "note": "Outcome and measures are written and agreed with the partner."
+        },
+        "Evidence strength": {
+          "score": 4,
+          "note": "Based on the strength mix of evidence recorded against primary hypotheses."
+        },
+        "Team confidence": {
+          "score": 4,
+          "note": "Self-reported by the squad at the last mission review."
+        },
+        "Stakeholder alignment": {
+          "score": 4,
+          "note": "Assessed from decision records and escalation history."
+        },
+        "Decision velocity": {
+          "score": 4,
+          "note": "Derived from median days between question raised and decision taken."
+        },
+        "Delivery flow": {
+          "score": 4,
+          "note": "Derived from lifecycle stage duration and experiment cycle time."
+        },
+        "Risk visibility": {
+          "score": 3,
+          "note": "Whether risks are named, owned and current."
+        },
+        "Value confidence": {
+          "score": 3,
+          "note": "Highest evidence state achieved across value records."
+        },
+        "Operational readiness": {
+          "score": 4,
+          "note": "Whether live running, support and data are designed in."
+        }
+      },
+      "flow": {
+        "daysToFirstExperiment": 18,
+        "daysToMeaningfulEvidence": 34,
+        "daysToSignificantDecision": 41,
+        "daysToDeliveredOutcome": 126,
+        "daysToRealisedValue": 201
+      },
+      "osReferences": [
+        "cf-test-learn",
+        "cf-decision-framework",
+        "cf-evidence-standard"
+      ]
+    },
+    {
+      "id": "m2",
+      "slug": "housing-repairs-first-time-fix",
+      "name": "Housing repairs first-time fix",
+      "description": "Increase the proportion of housing repairs resolved at the first visit.",
+      "partner": "Riverbank Housing Partnership",
+      "ownerId": "p12",
+      "team": [
+        "p12",
+        "p3",
+        "p5",
+        "p6",
+        "p9"
+      ],
+      "problemStatement": "Only 54% of repairs are fixed at the first visit. Repeat visits drive cost, tenant dissatisfaction and complaint demand, and diagnosis at the point of report is largely guesswork.",
+      "outcomes": [
+        {
+          "id": "m2-o1",
+          "statement": "Repairs fixed at first visit",
+          "measure": "% of repairs closed at first visit",
+          "baseline": "54% (May 2025)"
+        },
+        {
+          "id": "m2-o2",
+          "statement": "Repeat contact",
+          "measure": "Contacts per completed repair",
+          "baseline": "2.3"
+        }
+      ],
+      "users": "Tenants reporting repairs, repairs operatives, scheduling team.",
+      "startDate": "2025-06-02",
+      "status": "Active",
+      "stage": "Scale",
+      "currentUnderstanding": "Photo-assisted diagnosis at reporting materially improves parts and skills matching. Gains hold in two independent areas; the constraint is now scheduling logic, not diagnosis.",
+      "confidence": 81,
+      "risks": [
+        {
+          "id": "m2-r1",
+          "description": "Scheduling system change is a long-lead dependency",
+          "severity": "High",
+          "owner": "p7"
+        },
+        {
+          "id": "m2-r2",
+          "description": "Digitally excluded tenants cannot supply photographs",
+          "severity": "Medium",
+          "owner": "p2"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "m2-d1",
+          "description": "Scheduling system routing changes",
+          "on": "Supplier",
+          "status": "Not started"
+        },
+        {
+          "id": "m2-d2",
+          "description": "Van stock data feed",
+          "on": "Operations",
+          "status": "Complete"
+        }
+      ],
+      "lessons": [
+        "Replication in a second context revealed the mechanism was diagnosis quality, not the tool.",
+        "Scheduling constraints capped a proven diagnosis improvement."
+      ],
+      "nextQuestions": [
+        "What first-time-fix ceiling do the scheduling rules impose?",
+        "Does the pattern hold in a third, rural area?"
+      ],
+      "health": {
+        "Outcome clarity": {
+          "score": 5,
+          "note": "Outcome and measures are written and agreed with the partner."
+        },
+        "Evidence strength": {
+          "score": 5,
+          "note": "Based on the strength mix of evidence recorded against primary hypotheses."
+        },
+        "Team confidence": {
+          "score": 4,
+          "note": "Self-reported by the squad at the last mission review."
+        },
+        "Stakeholder alignment": {
+          "score": 3,
+          "note": "Assessed from decision records and escalation history."
+        },
+        "Decision velocity": {
+          "score": 4,
+          "note": "Derived from median days between question raised and decision taken."
+        },
+        "Delivery flow": {
+          "score": 4,
+          "note": "Derived from lifecycle stage duration and experiment cycle time."
+        },
+        "Risk visibility": {
+          "score": 4,
+          "note": "Whether risks are named, owned and current."
+        },
+        "Value confidence": {
+          "score": 4,
+          "note": "Highest evidence state achieved across value records."
+        },
+        "Operational readiness": {
+          "score": 3,
+          "note": "Whether live running, support and data are designed in."
+        }
+      },
+      "flow": {
+        "daysToFirstExperiment": 12,
+        "daysToMeaningfulEvidence": 26,
+        "daysToSignificantDecision": 33,
+        "daysToDeliveredOutcome": 98,
+        "daysToRealisedValue": 164
+      },
+      "osReferences": [
+        "cf-scale",
+        "cf-pattern-library",
+        "cf-test-learn"
+      ]
+    },
+    {
+      "id": "m3",
+      "slug": "social-care-assessment-triage",
+      "name": "Adult social care assessment triage",
+      "description": "Reduce the wait between a request for support and the right conversation.",
+      "partner": "Northgate Metropolitan Council",
+      "ownerId": "p1",
+      "team": [
+        "p1",
+        "p2",
+        "p4",
+        "p5",
+        "p9"
+      ],
+      "problemStatement": "People wait a median 27 days for an assessment, and a third of assessments conclude that a lighter-touch response would have been appropriate. Waiting itself increases need.",
+      "outcomes": [
+        {
+          "id": "m3-o1",
+          "statement": "Time to the right conversation",
+          "measure": "Median days from request to first substantive conversation",
+          "baseline": "27 days"
+        },
+        {
+          "id": "m3-o2",
+          "statement": "Proportion resolved without formal assessment",
+          "measure": "% of requests resolved at first conversation",
+          "baseline": "0%"
+        }
+      ],
+      "users": "Adults requesting support, unpaid carers, social work teams.",
+      "startDate": "2026-01-12",
+      "status": "Active",
+      "stage": "Experiment",
+      "currentUnderstanding": "A short structured conversation within 48 hours resolves a meaningful minority of requests, but policy interpretation about what counts as an assessment is slowing every experiment.",
+      "confidence": 52,
+      "risks": [
+        {
+          "id": "m3-r1",
+          "description": "Policy interpretation unresolved, blocking the primary experiment",
+          "severity": "High",
+          "owner": "p11"
+        },
+        {
+          "id": "m3-r2",
+          "description": "Practitioner trust in prompts is fragile",
+          "severity": "Medium",
+          "owner": "p9"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "m3-d1",
+          "description": "Counsel opinion on assessment duty",
+          "on": "Legal",
+          "status": "In progress"
+        }
+      ],
+      "lessons": [
+        "Policy interpretation, not technology, is the rate-limiting step.",
+        "Overridable prompts earn more trust than accurate ones."
+      ],
+      "nextQuestions": [
+        "What interpretation of the duty would counsel support?",
+        "Which cohort carries least risk for the first conversation trial?"
+      ],
+      "health": {
+        "Outcome clarity": {
+          "score": 4,
+          "note": "Outcome and measures are written and agreed with the partner."
+        },
+        "Evidence strength": {
+          "score": 2,
+          "note": "Based on the strength mix of evidence recorded against primary hypotheses."
+        },
+        "Team confidence": {
+          "score": 3,
+          "note": "Self-reported by the squad at the last mission review."
+        },
+        "Stakeholder alignment": {
+          "score": 2,
+          "note": "Assessed from decision records and escalation history."
+        },
+        "Decision velocity": {
+          "score": 2,
+          "note": "Derived from median days between question raised and decision taken."
+        },
+        "Delivery flow": {
+          "score": 3,
+          "note": "Derived from lifecycle stage duration and experiment cycle time."
+        },
+        "Risk visibility": {
+          "score": 3,
+          "note": "Whether risks are named, owned and current."
+        },
+        "Value confidence": {
+          "score": 2,
+          "note": "Highest evidence state achieved across value records."
+        },
+        "Operational readiness": {
+          "score": 2,
+          "note": "Whether live running, support and data are designed in."
+        }
+      },
+      "flow": {
+        "daysToFirstExperiment": 46,
+        "daysToMeaningfulEvidence": null,
+        "daysToSignificantDecision": null,
+        "daysToDeliveredOutcome": null,
+        "daysToRealisedValue": null
+      },
+      "osReferences": [
+        "cf-discovery",
+        "cf-minimum-viable-governance",
+        "cf-practice-ai"
+      ]
+    },
+    {
+      "id": "m4",
+      "slug": "free-school-meals-auto-enrolment",
+      "name": "Free school meals auto-enrolment",
+      "description": "Enrol eligible families automatically instead of relying on applications.",
+      "partner": "Northgate Education Services",
+      "ownerId": "p12",
+      "team": [
+        "p12",
+        "p6",
+        "p3",
+        "p8",
+        "p5"
+      ],
+      "problemStatement": "An estimated 2,100 eligible children were not receiving free school meals because enrolment depended on families applying with data the council already held.",
+      "outcomes": [
+        {
+          "id": "m4-o1",
+          "statement": "Eligible children enrolled",
+          "measure": "% of estimated eligible children enrolled",
+          "baseline": "78% (Mar 2025)"
+        },
+        {
+          "id": "m4-o2",
+          "statement": "Enrolment effort for families",
+          "measure": "Actions required by a family to enrol",
+          "baseline": "4 actions"
+        }
+      ],
+      "users": "Eligible families, school office staff, benefits team.",
+      "startDate": "2025-03-17",
+      "status": "Complete",
+      "stage": "Scale",
+      "currentUnderstanding": "Auto-enrolment using held benefits data works, is lawful with the right data-sharing basis, and produced realised value within one term. The remaining gap is families whose circumstances change mid-year.",
+      "confidence": 93,
+      "risks": [
+        {
+          "id": "m4-r1",
+          "description": "Mid-year changes need a permanent operational owner",
+          "severity": "Low",
+          "owner": "p5"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "m4-d1",
+          "description": "Monthly benefits extract",
+          "on": "Revenues and Benefits",
+          "status": "Complete"
+        }
+      ],
+      "lessons": [
+        "Stigma attaches to applying, not to receiving.",
+        "A DPIA started in week one saved roughly six weeks later."
+      ],
+      "nextQuestions": [
+        "Which other entitlements could use the same matching approach?"
+      ],
+      "health": {
+        "Outcome clarity": {
+          "score": 5,
+          "note": "Outcome and measures are written and agreed with the partner."
+        },
+        "Evidence strength": {
+          "score": 5,
+          "note": "Based on the strength mix of evidence recorded against primary hypotheses."
+        },
+        "Team confidence": {
+          "score": 5,
+          "note": "Self-reported by the squad at the last mission review."
+        },
+        "Stakeholder alignment": {
+          "score": 5,
+          "note": "Assessed from decision records and escalation history."
+        },
+        "Decision velocity": {
+          "score": 4,
+          "note": "Derived from median days between question raised and decision taken."
+        },
+        "Delivery flow": {
+          "score": 5,
+          "note": "Derived from lifecycle stage duration and experiment cycle time."
+        },
+        "Risk visibility": {
+          "score": 4,
+          "note": "Whether risks are named, owned and current."
+        },
+        "Value confidence": {
+          "score": 5,
+          "note": "Highest evidence state achieved across value records."
+        },
+        "Operational readiness": {
+          "score": 5,
+          "note": "Whether live running, support and data are designed in."
+        }
+      },
+      "flow": {
+        "daysToFirstExperiment": 9,
+        "daysToMeaningfulEvidence": 21,
+        "daysToSignificantDecision": 28,
+        "daysToDeliveredOutcome": 84,
+        "daysToRealisedValue": 133
+      },
+      "osReferences": [
+        "cf-value-confidence",
+        "cf-practice-data",
+        "cf-measure"
+      ]
+    },
+    {
+      "id": "m5",
+      "slug": "council-tax-support-claim",
+      "name": "Council tax support single claim",
+      "description": "Test whether a single combined claim for council tax support and housing costs reduces failed claims.",
+      "partner": "Northgate Revenues and Benefits",
+      "ownerId": "p1",
+      "team": [
+        "p1",
+        "p2",
+        "p6",
+        "p5"
+      ],
+      "problemStatement": "Residents make two overlapping claims with different rules. 29% of claims fail on evidence, and staff believed a single combined claim would fix it.",
+      "outcomes": [
+        {
+          "id": "m5-o1",
+          "statement": "Failed claims",
+          "measure": "% of claims failing on evidence",
+          "baseline": "29%"
+        }
+      ],
+      "users": "Residents claiming support, revenues and benefits assessors.",
+      "startDate": "2025-10-06",
+      "status": "Stopped",
+      "stage": "Experiment",
+      "currentUnderstanding": "Evidence disproved the underlying proposition. Claim failure is driven by evidence availability and statutory rule differences, not by the number of forms. Stopping saved an estimated \u00a3480k of planned build.",
+      "confidence": 22,
+      "risks": [
+        {
+          "id": "m5-r1",
+          "description": "Learning is lost if the evidence-availability finding is not picked up",
+          "severity": "Medium",
+          "owner": "p11"
+        }
+      ],
+      "dependencies": [],
+      "lessons": [
+        "The obvious cause was wrong; a \u00a35.9k analysis prevented a \u00a3480k build.",
+        "Stopping was the highest-value decision this mission made."
+      ],
+      "nextQuestions": [
+        "Who owns the third-party evidence problem now?"
+      ],
+      "health": {
+        "Outcome clarity": {
+          "score": 4,
+          "note": "Outcome and measures are written and agreed with the partner."
+        },
+        "Evidence strength": {
+          "score": 5,
+          "note": "Based on the strength mix of evidence recorded against primary hypotheses."
+        },
+        "Team confidence": {
+          "score": 3,
+          "note": "Self-reported by the squad at the last mission review."
+        },
+        "Stakeholder alignment": {
+          "score": 3,
+          "note": "Assessed from decision records and escalation history."
+        },
+        "Decision velocity": {
+          "score": 5,
+          "note": "Derived from median days between question raised and decision taken."
+        },
+        "Delivery flow": {
+          "score": 2,
+          "note": "Derived from lifecycle stage duration and experiment cycle time."
+        },
+        "Risk visibility": {
+          "score": 4,
+          "note": "Whether risks are named, owned and current."
+        },
+        "Value confidence": {
+          "score": 2,
+          "note": "Highest evidence state achieved across value records."
+        },
+        "Operational readiness": {
+          "score": 1,
+          "note": "Whether live running, support and data are designed in."
+        }
+      },
+      "flow": {
+        "daysToFirstExperiment": 22,
+        "daysToMeaningfulEvidence": 38,
+        "daysToSignificantDecision": 52,
+        "daysToDeliveredOutcome": null,
+        "daysToRealisedValue": null
+      },
+      "osReferences": [
+        "cf-adapt",
+        "cf-decision-framework",
+        "cf-principles"
+      ]
+    },
+    {
+      "id": "m6",
+      "slug": "missed-waste-collections",
+      "name": "Missed waste collections",
+      "description": "Reduce missed bin collections and the contact demand they create.",
+      "partner": "Northgate Environmental Services",
+      "ownerId": "p12",
+      "team": [
+        "p12",
+        "p3",
+        "p5",
+        "p6",
+        "p9"
+      ],
+      "problemStatement": "Missed collections generate 3,400 contacts a month. The mission began as a reporting-experience improvement and pivoted to collection-round data quality.",
+      "outcomes": [
+        {
+          "id": "m6-o1",
+          "statement": "Missed collections",
+          "measure": "Misses per 100,000 collections",
+          "baseline": "198"
+        },
+        {
+          "id": "m6-o2",
+          "statement": "Contacts about misses",
+          "measure": "Monthly contacts",
+          "baseline": "3,400"
+        }
+      ],
+      "users": "Residents reporting missed collections, crews, contact centre.",
+      "startDate": "2025-07-21",
+      "status": "Active",
+      "stage": "Adapt",
+      "currentUnderstanding": "Improving the reporting journey reduced effort but not misses. Round data accuracy explains most misses; the mission pivoted after eight weeks and is now testing in-cab round corrections.",
+      "confidence": 66,
+      "risks": [
+        {
+          "id": "m6-r1",
+          "description": "In-cab devices depend on a contract variation",
+          "severity": "Medium",
+          "owner": "p5"
+        },
+        {
+          "id": "m6-r2",
+          "description": "Round data ownership is currently unassigned",
+          "severity": "High",
+          "owner": "p12"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "m6-d1",
+          "description": "In-cab device contract variation",
+          "on": "Commercial",
+          "status": "In progress"
+        }
+      ],
+      "lessons": [
+        "Improving a reporting journey does not reduce the failure being reported.",
+        "Recoding contact reasons overturned a widely held assumption."
+      ],
+      "nextQuestions": [
+        "Who should own round data accuracy permanently?",
+        "Does proactive notification hold at scale?"
+      ],
+      "health": {
+        "Outcome clarity": {
+          "score": 4,
+          "note": "Outcome and measures are written and agreed with the partner."
+        },
+        "Evidence strength": {
+          "score": 4,
+          "note": "Based on the strength mix of evidence recorded against primary hypotheses."
+        },
+        "Team confidence": {
+          "score": 4,
+          "note": "Self-reported by the squad at the last mission review."
+        },
+        "Stakeholder alignment": {
+          "score": 3,
+          "note": "Assessed from decision records and escalation history."
+        },
+        "Decision velocity": {
+          "score": 4,
+          "note": "Derived from median days between question raised and decision taken."
+        },
+        "Delivery flow": {
+          "score": 3,
+          "note": "Derived from lifecycle stage duration and experiment cycle time."
+        },
+        "Risk visibility": {
+          "score": 3,
+          "note": "Whether risks are named, owned and current."
+        },
+        "Value confidence": {
+          "score": 3,
+          "note": "Highest evidence state achieved across value records."
+        },
+        "Operational readiness": {
+          "score": 3,
+          "note": "Whether live running, support and data are designed in."
+        }
+      },
+      "flow": {
+        "daysToFirstExperiment": 16,
+        "daysToMeaningfulEvidence": 29,
+        "daysToSignificantDecision": 57,
+        "daysToDeliveredOutcome": 142,
+        "daysToRealisedValue": null
+      },
+      "osReferences": [
+        "cf-adapt",
+        "cf-discovery",
+        "cf-flow-economics"
+      ]
+    },
+    {
+      "id": "m7",
+      "slug": "homelessness-prevention-signals",
+      "name": "Homelessness prevention early signals",
+      "description": "Identify households at risk of homelessness early enough to prevent it.",
+      "partner": "Riverbank Housing Partnership",
+      "ownerId": "p1",
+      "team": [
+        "p1",
+        "p4",
+        "p6",
+        "p9",
+        "p11"
+      ],
+      "problemStatement": "Most prevention activity starts when a household is already in crisis. Earlier signals exist across services but are not brought together, and any use of them raises significant ethical questions.",
+      "outcomes": [
+        {
+          "id": "m7-o1",
+          "statement": "Preventions before crisis",
+          "measure": "% of preventions started before a statutory duty is triggered",
+          "baseline": "23%"
+        }
+      ],
+      "users": "Households at risk, prevention officers, partner agencies.",
+      "startDate": "2026-04-06",
+      "status": "Active",
+      "stage": "Define",
+      "currentUnderstanding": "Signals exist but ethical acceptability and false-positive harm are the binding constraints. The mission is deliberately slow through Define, with an ethics review before any experiment.",
+      "confidence": 35,
+      "risks": [
+        {
+          "id": "m7-r1",
+          "description": "Ethical acceptability could rule out the primary approach",
+          "severity": "High",
+          "owner": "p11"
+        },
+        {
+          "id": "m7-r2",
+          "description": "Partner data-sharing bases are inconsistent",
+          "severity": "High",
+          "owner": "p6"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "m7-d1",
+          "description": "Independent ethics panel",
+          "on": "Governance",
+          "status": "In progress"
+        },
+        {
+          "id": "m7-d2",
+          "description": "Partner data-sharing agreements",
+          "on": "Partners",
+          "status": "Not started"
+        }
+      ],
+      "lessons": [
+        "Deliberative research changed the framing from prediction to offer."
+      ],
+      "nextQuestions": [
+        "What would make a proactive offer acceptable to residents?",
+        "What harm threshold makes a false positive unacceptable?"
+      ],
+      "health": {
+        "Outcome clarity": {
+          "score": 3,
+          "note": "Outcome and measures are written and agreed with the partner."
+        },
+        "Evidence strength": {
+          "score": 2,
+          "note": "Based on the strength mix of evidence recorded against primary hypotheses."
+        },
+        "Team confidence": {
+          "score": 3,
+          "note": "Self-reported by the squad at the last mission review."
+        },
+        "Stakeholder alignment": {
+          "score": 2,
+          "note": "Assessed from decision records and escalation history."
+        },
+        "Decision velocity": {
+          "score": 2,
+          "note": "Derived from median days between question raised and decision taken."
+        },
+        "Delivery flow": {
+          "score": 2,
+          "note": "Derived from lifecycle stage duration and experiment cycle time."
+        },
+        "Risk visibility": {
+          "score": 4,
+          "note": "Whether risks are named, owned and current."
+        },
+        "Value confidence": {
+          "score": 1,
+          "note": "Highest evidence state achieved across value records."
+        },
+        "Operational readiness": {
+          "score": 1,
+          "note": "Whether live running, support and data are designed in."
+        }
+      },
+      "flow": {
+        "daysToFirstExperiment": null,
+        "daysToMeaningfulEvidence": null,
+        "daysToSignificantDecision": null,
+        "daysToDeliveredOutcome": null,
+        "daysToRealisedValue": null
+      },
+      "osReferences": [
+        "cf-define",
+        "cf-practice-ai",
+        "cf-minimum-viable-governance"
+      ]
+    },
+    {
+      "id": "m8",
+      "slug": "resident-account-identity",
+      "name": "Resident account identity",
+      "description": "Give residents one trusted way to prove who they are across council services.",
+      "partner": "Northgate Digital Services",
+      "ownerId": "p1",
+      "team": [
+        "p1",
+        "p7",
+        "p3",
+        "p5",
+        "p11"
+      ],
+      "problemStatement": "Eleven services verify identity in nine different ways. Residents re-prove themselves repeatedly and three other missions are blocked by the same constraint.",
+      "outcomes": [
+        {
+          "id": "m8-o1",
+          "statement": "Repeat identity checks",
+          "measure": "Average identity checks per resident per year",
+          "baseline": "4.1"
+        }
+      ],
+      "users": "Residents using multiple services, service teams, assurance.",
+      "startDate": "2025-11-10",
+      "status": "Paused",
+      "stage": "Define",
+      "currentUnderstanding": "The technical approach is well understood. The mission is paused pending a commercial decision on the identity provider framework, which is the actual constraint.",
+      "confidence": 48,
+      "risks": [
+        {
+          "id": "m8-r1",
+          "description": "Three missions remain blocked while paused",
+          "severity": "High",
+          "owner": "p11"
+        },
+        {
+          "id": "m8-r2",
+          "description": "Commercial route undecided",
+          "severity": "High",
+          "owner": "p11"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "m8-d1",
+          "description": "Identity framework commercial decision",
+          "on": "Commercial",
+          "status": "Blocked"
+        }
+      ],
+      "lessons": [
+        "A commercial constraint can stop a technically ready mission."
+      ],
+      "nextQuestions": [
+        "Can the three blocked missions proceed with a narrower interim check?"
+      ],
+      "health": {
+        "Outcome clarity": {
+          "score": 4,
+          "note": "Outcome and measures are written and agreed with the partner."
+        },
+        "Evidence strength": {
+          "score": 3,
+          "note": "Based on the strength mix of evidence recorded against primary hypotheses."
+        },
+        "Team confidence": {
+          "score": 2,
+          "note": "Self-reported by the squad at the last mission review."
+        },
+        "Stakeholder alignment": {
+          "score": 2,
+          "note": "Assessed from decision records and escalation history."
+        },
+        "Decision velocity": {
+          "score": 1,
+          "note": "Derived from median days between question raised and decision taken."
+        },
+        "Delivery flow": {
+          "score": 1,
+          "note": "Derived from lifecycle stage duration and experiment cycle time."
+        },
+        "Risk visibility": {
+          "score": 4,
+          "note": "Whether risks are named, owned and current."
+        },
+        "Value confidence": {
+          "score": 2,
+          "note": "Highest evidence state achieved across value records."
+        },
+        "Operational readiness": {
+          "score": 2,
+          "note": "Whether live running, support and data are designed in."
+        }
+      },
+      "flow": {
+        "daysToFirstExperiment": 31,
+        "daysToMeaningfulEvidence": 44,
+        "daysToSignificantDecision": 73,
+        "daysToDeliveredOutcome": null,
+        "daysToRealisedValue": null
+      },
+      "osReferences": [
+        "cf-define",
+        "cf-practice-architecture",
+        "cf-minimum-viable-governance"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "m1-h1",
+      "missionId": "m1",
+      "statement": "Holders with permanent conditions do not need to resubmit medical evidence at renewal",
+      "assumption": "Held eligibility evidence is sufficient and legally acceptable for permanent conditions",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Legal opinion plus reassessment audit of 200 historic renewals",
+      "confidence": 84,
+      "status": "Supported"
+    },
+    {
+      "id": "m1-h2",
+      "missionId": "m1",
+      "statement": "A proactive reminder 8 weeks before expiry raises on-time renewal above 80%",
+      "assumption": "Late renewal is driven by awareness, not by difficulty",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "A/B reminder trial across 1,200 holders",
+      "confidence": 71,
+      "status": "Partially supported"
+    },
+    {
+      "id": "m1-h3",
+      "missionId": "m1",
+      "statement": "Residents will accept an automated eligibility check without a human decision",
+      "assumption": "Trust in automated eligibility exists where the outcome is favourable",
+      "ownerId": "p1",
+      "importance": "Medium",
+      "uncertainty": "High",
+      "evidenceRequired": "Qualitative testing with 18 residents",
+      "confidence": 38,
+      "status": "Disproved"
+    },
+    {
+      "id": "m1-h4",
+      "missionId": "m1",
+      "statement": "Appeals volume falls when renewal decisions include the evidence used",
+      "assumption": "Appeal demand is largely explanation demand",
+      "ownerId": "p1",
+      "importance": "Medium",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Appeal case analysis over 3 months",
+      "confidence": 64,
+      "status": "Testing"
+    },
+    {
+      "id": "m2-h1",
+      "missionId": "m2",
+      "statement": "Photographs supplied at reporting improve parts matching",
+      "assumption": "Tenants can and will supply usable photographs",
+      "ownerId": "p12",
+      "importance": "High",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Trial across 400 reports",
+      "confidence": 88,
+      "status": "Supported"
+    },
+    {
+      "id": "m2-h2",
+      "missionId": "m2",
+      "statement": "Operative-led triage beats scripted call-handler triage",
+      "assumption": "Diagnostic skill sits with operatives, not scripts",
+      "ownerId": "p12",
+      "importance": "High",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Parallel triage comparison",
+      "confidence": 76,
+      "status": "Supported"
+    },
+    {
+      "id": "m2-h3",
+      "missionId": "m2",
+      "statement": "First-time-fix gains hold in an area with older stock",
+      "assumption": "The mechanism is diagnosis, not stock condition",
+      "ownerId": "p12",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Second-area replication",
+      "confidence": 69,
+      "status": "Partially supported"
+    },
+    {
+      "id": "m2-h4",
+      "missionId": "m2",
+      "statement": "Tenants prefer a narrower appointment slot even if it is later",
+      "assumption": "Certainty is valued above speed",
+      "ownerId": "p12",
+      "importance": "Medium",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Choice experiment with 180 tenants",
+      "confidence": 55,
+      "status": "Inconclusive"
+    },
+    {
+      "id": "m3-h1",
+      "missionId": "m3",
+      "statement": "A 48-hour structured conversation resolves at least 20% of requests",
+      "assumption": "Much demand is information and connection demand",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Trial of 120 requests",
+      "confidence": 58,
+      "status": "Testing"
+    },
+    {
+      "id": "m3-h2",
+      "missionId": "m3",
+      "statement": "Community connection reduces re-contact at 90 days",
+      "assumption": "Support that is not statutory still meets the need",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "90-day follow-up cohort",
+      "confidence": 44,
+      "status": "Testing"
+    },
+    {
+      "id": "m3-h3",
+      "missionId": "m3",
+      "statement": "Practitioners will trust a triage prompt they can override",
+      "assumption": "Trust depends on reversibility",
+      "ownerId": "p1",
+      "importance": "Medium",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Practitioner trial with 22 staff",
+      "confidence": 61,
+      "status": "Partially supported"
+    },
+    {
+      "id": "m3-h4",
+      "missionId": "m3",
+      "statement": "Legal risk of early conversation is lower than currently assumed",
+      "assumption": "Policy interpretation is conservative rather than required",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Legal review with two authorities",
+      "confidence": 40,
+      "status": "Untested"
+    },
+    {
+      "id": "m4-h1",
+      "missionId": "m4",
+      "statement": "Held benefits data can identify eligible children accurately",
+      "assumption": "Data quality is sufficient for a lawful decision",
+      "ownerId": "p12",
+      "importance": "High",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Matching audit across 3,000 records",
+      "confidence": 95,
+      "status": "Supported"
+    },
+    {
+      "id": "m4-h2",
+      "missionId": "m4",
+      "statement": "Families will not object to automatic enrolment with an opt-out",
+      "assumption": "Stigma is attached to applying, not to receiving",
+      "ownerId": "p12",
+      "importance": "High",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Opt-out rates plus interviews",
+      "confidence": 90,
+      "status": "Supported"
+    },
+    {
+      "id": "m4-h3",
+      "missionId": "m4",
+      "statement": "School offices will not need extra capacity",
+      "assumption": "The change removes work rather than adding it",
+      "ownerId": "p12",
+      "importance": "Medium",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Time study in 6 schools",
+      "confidence": 72,
+      "status": "Partially supported"
+    },
+    {
+      "id": "m4-h4",
+      "missionId": "m4",
+      "statement": "Mid-year changes can be handled monthly rather than in real time",
+      "assumption": "Eligibility changes are slow-moving",
+      "ownerId": "p12",
+      "importance": "Medium",
+      "uncertainty": "Low",
+      "evidenceRequired": "Change frequency analysis",
+      "confidence": 80,
+      "status": "Supported"
+    },
+    {
+      "id": "m5-h1",
+      "missionId": "m5",
+      "statement": "A single combined claim reduces failed claims by at least a third",
+      "assumption": "Duplication causes failure",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Prototype trial with 140 residents",
+      "confidence": 18,
+      "status": "Disproved"
+    },
+    {
+      "id": "m5-h2",
+      "missionId": "m5",
+      "statement": "Residents experience the two claims as one journey",
+      "assumption": "The service boundary is invisible to residents",
+      "ownerId": "p1",
+      "importance": "Medium",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Journey research with 15 residents",
+      "confidence": 30,
+      "status": "Disproved"
+    },
+    {
+      "id": "m5-h3",
+      "missionId": "m5",
+      "statement": "Assessors can apply both rule sets from one submission",
+      "assumption": "Rule differences are presentational",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Assessor workshop and rule mapping",
+      "confidence": 25,
+      "status": "Disproved"
+    },
+    {
+      "id": "m6-h1",
+      "missionId": "m6",
+      "statement": "A faster reporting journey reduces repeat contacts",
+      "assumption": "Contact volume is driven by uncertainty about resolution",
+      "ownerId": "p12",
+      "importance": "Medium",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Reporting journey trial",
+      "confidence": 47,
+      "status": "Partially supported"
+    },
+    {
+      "id": "m6-h2",
+      "missionId": "m6",
+      "statement": "Most misses are caused by inaccurate round data",
+      "assumption": "Round data has drifted from reality",
+      "ownerId": "p12",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Round audit across 3 rounds",
+      "confidence": 79,
+      "status": "Supported"
+    },
+    {
+      "id": "m6-h3",
+      "missionId": "m6",
+      "statement": "Crews will correct round data in-cab if it takes under 20 seconds",
+      "assumption": "Crews will report if reporting is cheap",
+      "ownerId": "p12",
+      "importance": "High",
+      "uncertainty": "Medium",
+      "evidenceRequired": "In-cab prototype with 9 crews",
+      "confidence": 68,
+      "status": "Testing"
+    },
+    {
+      "id": "m6-h4",
+      "missionId": "m6",
+      "statement": "Proactive notification of a known miss removes the contact",
+      "assumption": "People contact to be told, not to complain",
+      "ownerId": "p12",
+      "importance": "Medium",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Notification trial",
+      "confidence": 58,
+      "status": "Testing"
+    },
+    {
+      "id": "m7-h1",
+      "missionId": "m7",
+      "statement": "Combined service signals identify at-risk households at least 60 days earlier",
+      "assumption": "Signals precede crisis by a usable margin",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Retrospective signal analysis",
+      "confidence": 42,
+      "status": "Testing"
+    },
+    {
+      "id": "m7-h2",
+      "missionId": "m7",
+      "statement": "Residents find proactive contact acceptable if it is offered, not imposed",
+      "assumption": "Acceptability depends on agency",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Deliberative research with 24 residents",
+      "confidence": 50,
+      "status": "Untested"
+    },
+    {
+      "id": "m7-h3",
+      "missionId": "m7",
+      "statement": "A false positive causes limited harm if the contact is a genuine offer",
+      "assumption": "Harm comes from consequence, not contact",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Ethics review and resident panel",
+      "confidence": 30,
+      "status": "Untested"
+    },
+    {
+      "id": "m8-h1",
+      "missionId": "m8",
+      "statement": "A single verified identity can be reused across at least six services",
+      "assumption": "Assurance levels are compatible across services",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Assurance mapping across 11 services",
+      "confidence": 65,
+      "status": "Partially supported"
+    },
+    {
+      "id": "m8-h2",
+      "missionId": "m8",
+      "statement": "Residents will complete one stronger check to avoid repeated weaker ones",
+      "assumption": "One-off effort is acceptable for ongoing convenience",
+      "ownerId": "p1",
+      "importance": "Medium",
+      "uncertainty": "Medium",
+      "evidenceRequired": "Preference research with 30 residents",
+      "confidence": 70,
+      "status": "Supported"
+    },
+    {
+      "id": "m8-h3",
+      "missionId": "m8",
+      "statement": "Existing framework suppliers can meet our assurance needs within budget",
+      "assumption": "The market fits our requirement",
+      "ownerId": "p1",
+      "importance": "High",
+      "uncertainty": "High",
+      "evidenceRequired": "Market engagement",
+      "confidence": 45,
+      "status": "Inconclusive"
+    }
+  ],
+  "experiments": [
+    {
+      "id": "m1-x1",
+      "missionId": "m1",
+      "hypothesisId": "m1-h1",
+      "name": "Reminder A/B trial",
+      "description": "Two reminder timings tested against no reminder across 1,200 badge holders",
+      "ownerId": "p1",
+      "startDate": "2025-10-02",
+      "endDate": "2025-10-28",
+      "cost": 14200,
+      "participants": 1200,
+      "method": "Field experiment",
+      "successCriteria": "Pre-registered: two reminder timings tested against no reminder across 1,200 badge holders produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 84,
+      "recommendation": "Continue",
+      "learningScore": 4
+    },
+    {
+      "id": "m1-x2",
+      "missionId": "m1",
+      "hypothesisId": "m1-h2",
+      "name": "Historic renewal audit",
+      "description": "Reassessed 200 historic renewals against held evidence to test whether outcomes would change",
+      "ownerId": "p2",
+      "startDate": "2025-11-04",
+      "endDate": "2025-11-30",
+      "cost": 6100,
+      "participants": 200,
+      "method": "Retrospective audit",
+      "successCriteria": "Pre-registered: reassessed 200 historic renewals against held evidence to test whether outcomes would change produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 95,
+      "recommendation": "Invest",
+      "learningScore": 5
+    },
+    {
+      "id": "m1-x3",
+      "missionId": "m1",
+      "hypothesisId": "m1-h3",
+      "name": "Automated decision acceptability testing",
+      "description": "Moderated sessions on automated eligibility outcomes",
+      "ownerId": "p3",
+      "startDate": "2025-12-07",
+      "endDate": "2026-01-02",
+      "cost": 4300,
+      "participants": 18,
+      "method": "Usability research",
+      "successCriteria": "Pre-registered: moderated sessions on automated eligibility outcomes produces a measurable change in the linked hypothesis confidence.",
+      "result": "Disproved",
+      "confidence": 95,
+      "recommendation": "Change",
+      "learningScore": 5
+    },
+    {
+      "id": "m1-x4",
+      "missionId": "m1",
+      "hypothesisId": "m1-h4",
+      "name": "Assisted-route prototype",
+      "description": "Prototype of an assisted renewal path for residents without digital access",
+      "ownerId": "p4",
+      "startDate": "2026-01-09",
+      "endDate": "2026-02-04",
+      "cost": 18600,
+      "participants": 22,
+      "method": "Prototype test",
+      "successCriteria": "Pre-registered: prototype of an assisted renewal path for residents without digital access produces a measurable change in the linked hypothesis confidence.",
+      "result": "Partially supported",
+      "confidence": 73,
+      "recommendation": "Run another experiment",
+      "learningScore": 3
+    },
+    {
+      "id": "m1-x5",
+      "missionId": "m1",
+      "hypothesisId": "m1-h4",
+      "name": "Evidence-in-decision letters",
+      "description": "Reworked decision letters showing the evidence used",
+      "ownerId": "p5",
+      "startDate": "2026-02-11",
+      "endDate": "2026-03-09",
+      "cost": 5200,
+      "participants": 340,
+      "method": "Content experiment",
+      "successCriteria": "Pre-registered: reworked decision letters showing the evidence used produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 84,
+      "recommendation": "Scale",
+      "learningScore": 4
+    },
+    {
+      "id": "m2-x1",
+      "missionId": "m2",
+      "hypothesisId": "m2-h1",
+      "name": "Photo-at-report trial",
+      "description": "Photo upload offered on 400 repair reports",
+      "ownerId": "p12",
+      "startDate": "2025-06-26",
+      "endDate": "2025-07-22",
+      "cost": 21400,
+      "participants": 400,
+      "method": "Field experiment",
+      "successCriteria": "Pre-registered: photo upload offered on 400 repair reports produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 95,
+      "recommendation": "Scale",
+      "learningScore": 5
+    },
+    {
+      "id": "m2-x2",
+      "missionId": "m2",
+      "hypothesisId": "m2-h2",
+      "name": "Parallel triage comparison",
+      "description": "Operative triage vs call-handler script on 250 matched jobs",
+      "ownerId": "p3",
+      "startDate": "2025-07-29",
+      "endDate": "2025-08-24",
+      "cost": 16800,
+      "participants": 250,
+      "method": "Comparative trial",
+      "successCriteria": "Pre-registered: operative triage vs call-handler script on 250 matched jobs produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 84,
+      "recommendation": "Invest",
+      "learningScore": 4
+    },
+    {
+      "id": "m2-x3",
+      "missionId": "m2",
+      "hypothesisId": "m2-h3",
+      "name": "Older stock replication",
+      "description": "Repeat of photo-assisted diagnosis in a second area",
+      "ownerId": "p5",
+      "startDate": "2025-08-31",
+      "endDate": "2025-09-26",
+      "cost": 19200,
+      "participants": 300,
+      "method": "Replication",
+      "successCriteria": "Pre-registered: repeat of photo-assisted diagnosis in a second area produces a measurable change in the linked hypothesis confidence.",
+      "result": "Partially supported",
+      "confidence": 84,
+      "recommendation": "Change",
+      "learningScore": 4
+    },
+    {
+      "id": "m2-x4",
+      "missionId": "m2",
+      "hypothesisId": "m2-h4",
+      "name": "Appointment slot choice experiment",
+      "description": "Tenants offered narrow-late vs wide-early slots",
+      "ownerId": "p6",
+      "startDate": "2025-10-03",
+      "endDate": "2025-10-29",
+      "cost": 7400,
+      "participants": 180,
+      "method": "Choice experiment",
+      "successCriteria": "Pre-registered: tenants offered narrow-late vs wide-early slots produces a measurable change in the linked hypothesis confidence.",
+      "result": "Inconclusive",
+      "confidence": 62,
+      "recommendation": "Run another experiment",
+      "learningScore": 2
+    },
+    {
+      "id": "m2-x5",
+      "missionId": "m2",
+      "hypothesisId": "m2-h4",
+      "name": "Van stock rebalancing pilot",
+      "description": "Adjusted van stock based on diagnosis data",
+      "ownerId": "p9",
+      "startDate": "2025-11-05",
+      "endDate": "2025-12-01",
+      "cost": 26500,
+      "participants": 12,
+      "method": "Operational pilot",
+      "successCriteria": "Pre-registered: adjusted van stock based on diagnosis data produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 73,
+      "recommendation": "Scale",
+      "learningScore": 3
+    },
+    {
+      "id": "m2-x6",
+      "missionId": "m2",
+      "hypothesisId": "m2-h4",
+      "name": "Scheduling rules simulation",
+      "description": "Simulated new scheduling rules against 6 months of jobs",
+      "ownerId": "p12",
+      "startDate": "2025-12-08",
+      "endDate": "2026-01-03",
+      "cost": 4800,
+      "participants": 0,
+      "method": "Simulation",
+      "successCriteria": "Pre-registered: simulated new scheduling rules against 6 months of jobs produces a measurable change in the linked hypothesis confidence.",
+      "result": "Partially supported",
+      "confidence": 73,
+      "recommendation": "Run another experiment",
+      "learningScore": 3
+    },
+    {
+      "id": "m3-x1",
+      "missionId": "m3",
+      "hypothesisId": "m3-h1",
+      "name": "48-hour conversation trial",
+      "description": "Structured early conversation offered to 120 requests",
+      "ownerId": "p1",
+      "startDate": "2026-02-05",
+      "endDate": null,
+      "cost": 32800,
+      "participants": 120,
+      "method": "Field experiment",
+      "successCriteria": "Pre-registered: structured early conversation offered to 120 requests produces a measurable change in the linked hypothesis confidence.",
+      "result": null,
+      "confidence": 0,
+      "recommendation": null,
+      "learningScore": 0
+    },
+    {
+      "id": "m3-x2",
+      "missionId": "m3",
+      "hypothesisId": "m3-h2",
+      "name": "Practitioner prompt trial",
+      "description": "Overridable triage prompt tested with 22 practitioners",
+      "ownerId": "p2",
+      "startDate": "2026-03-10",
+      "endDate": "2026-04-05",
+      "cost": 14700,
+      "participants": 22,
+      "method": "Prototype test",
+      "successCriteria": "Pre-registered: overridable triage prompt tested with 22 practitioners produces a measurable change in the linked hypothesis confidence.",
+      "result": "Partially supported",
+      "confidence": 73,
+      "recommendation": "Change",
+      "learningScore": 3
+    },
+    {
+      "id": "m3-x3",
+      "missionId": "m3",
+      "hypothesisId": "m3-h3",
+      "name": "Policy interpretation review",
+      "description": "Structured legal review of assessment duty interpretation",
+      "ownerId": "p4",
+      "startDate": "2026-04-12",
+      "endDate": "2026-05-08",
+      "cost": 9600,
+      "participants": 0,
+      "method": "Desk research",
+      "successCriteria": "Pre-registered: structured legal review of assessment duty interpretation produces a measurable change in the linked hypothesis confidence.",
+      "result": "Inconclusive",
+      "confidence": 62,
+      "recommendation": "Run another experiment",
+      "learningScore": 2
+    },
+    {
+      "id": "m3-x4",
+      "missionId": "m3",
+      "hypothesisId": "m3-h4",
+      "name": "Carer conversation shadowing",
+      "description": "Shadowed 16 carer conversations to identify unmet need",
+      "ownerId": "p5",
+      "startDate": "2026-05-15",
+      "endDate": "2026-06-10",
+      "cost": 8300,
+      "participants": 16,
+      "method": "Ethnographic research",
+      "successCriteria": "Pre-registered: shadowed 16 carer conversations to identify unmet need produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 84,
+      "recommendation": "Continue",
+      "learningScore": 4
+    },
+    {
+      "id": "m3-x5",
+      "missionId": "m3",
+      "hypothesisId": "m3-h4",
+      "name": "Re-contact baseline analysis",
+      "description": "Analysed 18 months of re-contact data",
+      "ownerId": "p9",
+      "startDate": "2026-06-17",
+      "endDate": "2026-07-13",
+      "cost": 3900,
+      "participants": 0,
+      "method": "Data analysis",
+      "successCriteria": "Pre-registered: analysed 18 months of re-contact data produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 84,
+      "recommendation": "Continue",
+      "learningScore": 4
+    },
+    {
+      "id": "m4-x1",
+      "missionId": "m4",
+      "hypothesisId": "m4-h1",
+      "name": "Matching audit",
+      "description": "Matched 3,000 benefit records against school rolls",
+      "ownerId": "p12",
+      "startDate": "2025-04-10",
+      "endDate": "2025-05-06",
+      "cost": 7600,
+      "participants": 3000,
+      "method": "Data audit",
+      "successCriteria": "Pre-registered: matched 3,000 benefit records against school rolls produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 95,
+      "recommendation": "Invest",
+      "learningScore": 5
+    },
+    {
+      "id": "m4-x2",
+      "missionId": "m4",
+      "hypothesisId": "m4-h2",
+      "name": "Opt-out communication test",
+      "description": "Two versions of the opt-out letter tested with 900 families",
+      "ownerId": "p6",
+      "startDate": "2025-05-13",
+      "endDate": "2025-06-08",
+      "cost": 5100,
+      "participants": 900,
+      "method": "Content experiment",
+      "successCriteria": "Pre-registered: two versions of the opt-out letter tested with 900 families produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 84,
+      "recommendation": "Continue",
+      "learningScore": 4
+    },
+    {
+      "id": "m4-x3",
+      "missionId": "m4",
+      "hypothesisId": "m4-h3",
+      "name": "School office time study",
+      "description": "Measured admin time in 6 schools before and after",
+      "ownerId": "p3",
+      "startDate": "2025-06-15",
+      "endDate": "2025-07-11",
+      "cost": 6900,
+      "participants": 6,
+      "method": "Time study",
+      "successCriteria": "Pre-registered: measured admin time in 6 schools before and after produces a measurable change in the linked hypothesis confidence.",
+      "result": "Partially supported",
+      "confidence": 73,
+      "recommendation": "Change",
+      "learningScore": 3
+    },
+    {
+      "id": "m4-x4",
+      "missionId": "m4",
+      "hypothesisId": "m4-h4",
+      "name": "Monthly refresh pilot",
+      "description": "Ran a monthly eligibility refresh for one term",
+      "ownerId": "p8",
+      "startDate": "2025-07-18",
+      "endDate": "2025-08-13",
+      "cost": 11200,
+      "participants": 0,
+      "method": "Operational pilot",
+      "successCriteria": "Pre-registered: ran a monthly eligibility refresh for one term produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 84,
+      "recommendation": "Scale",
+      "learningScore": 4
+    },
+    {
+      "id": "m4-x5",
+      "missionId": "m4",
+      "hypothesisId": "m4-h4",
+      "name": "Family interviews on stigma",
+      "description": "Interviews with 20 families about automatic enrolment",
+      "ownerId": "p5",
+      "startDate": "2025-08-20",
+      "endDate": "2025-09-15",
+      "cost": 6400,
+      "participants": 20,
+      "method": "Interview study",
+      "successCriteria": "Pre-registered: interviews with 20 families about automatic enrolment produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 84,
+      "recommendation": "Continue",
+      "learningScore": 4
+    },
+    {
+      "id": "m5-x1",
+      "missionId": "m5",
+      "hypothesisId": "m5-h1",
+      "name": "Combined claim prototype",
+      "description": "Prototype single claim tested with 140 residents",
+      "ownerId": "p1",
+      "startDate": "2025-10-30",
+      "endDate": "2025-11-25",
+      "cost": 38400,
+      "participants": 140,
+      "method": "Prototype test",
+      "successCriteria": "Pre-registered: prototype single claim tested with 140 residents produces a measurable change in the linked hypothesis confidence.",
+      "result": "Disproved",
+      "confidence": 95,
+      "recommendation": "Stop",
+      "learningScore": 5
+    },
+    {
+      "id": "m5-x2",
+      "missionId": "m5",
+      "hypothesisId": "m5-h2",
+      "name": "Rule mapping workshop",
+      "description": "Mapped both statutory rule sets against a single form",
+      "ownerId": "p2",
+      "startDate": "2025-12-02",
+      "endDate": "2025-12-28",
+      "cost": 7300,
+      "participants": 9,
+      "method": "Workshop",
+      "successCriteria": "Pre-registered: mapped both statutory rule sets against a single form produces a measurable change in the linked hypothesis confidence.",
+      "result": "Disproved",
+      "confidence": 95,
+      "recommendation": "Stop",
+      "learningScore": 5
+    },
+    {
+      "id": "m5-x3",
+      "missionId": "m5",
+      "hypothesisId": "m5-h3",
+      "name": "Failure cause analysis",
+      "description": "Analysed 600 failed claims for root cause",
+      "ownerId": "p6",
+      "startDate": "2026-01-04",
+      "endDate": "2026-01-30",
+      "cost": 5900,
+      "participants": 600,
+      "method": "Data analysis",
+      "successCriteria": "Pre-registered: analysed 600 failed claims for root cause produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 95,
+      "recommendation": "Change",
+      "learningScore": 5
+    },
+    {
+      "id": "m5-x4",
+      "missionId": "m5",
+      "hypothesisId": "m5-h3",
+      "name": "Evidence upload usability test",
+      "description": "Tested evidence upload with 12 residents",
+      "ownerId": "p5",
+      "startDate": "2026-02-06",
+      "endDate": "2026-03-04",
+      "cost": 4200,
+      "participants": 12,
+      "method": "Usability research",
+      "successCriteria": "Pre-registered: tested evidence upload with 12 residents produces a measurable change in the linked hypothesis confidence.",
+      "result": "Partially supported",
+      "confidence": 73,
+      "recommendation": "Run another experiment",
+      "learningScore": 3
+    },
+    {
+      "id": "m6-x1",
+      "missionId": "m6",
+      "hypothesisId": "m6-h1",
+      "name": "Reporting journey trial",
+      "description": "Simplified missed-collection report tested on 2,000 reports",
+      "ownerId": "p12",
+      "startDate": "2025-08-14",
+      "endDate": "2025-09-09",
+      "cost": 17300,
+      "participants": 2000,
+      "method": "Field experiment",
+      "successCriteria": "Pre-registered: simplified missed-collection report tested on 2,000 reports produces a measurable change in the linked hypothesis confidence.",
+      "result": "Partially supported",
+      "confidence": 73,
+      "recommendation": "Change",
+      "learningScore": 3
+    },
+    {
+      "id": "m6-x2",
+      "missionId": "m6",
+      "hypothesisId": "m6-h2",
+      "name": "Round data audit",
+      "description": "Audited three rounds against actual properties served",
+      "ownerId": "p3",
+      "startDate": "2025-09-16",
+      "endDate": "2025-10-12",
+      "cost": 9800,
+      "participants": 3,
+      "method": "Operational audit",
+      "successCriteria": "Pre-registered: audited three rounds against actual properties served produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 95,
+      "recommendation": "Change",
+      "learningScore": 5
+    },
+    {
+      "id": "m6-x3",
+      "missionId": "m6",
+      "hypothesisId": "m6-h3",
+      "name": "In-cab correction prototype",
+      "description": "Prototype in-cab round correction with 9 crews",
+      "ownerId": "p5",
+      "startDate": "2025-10-19",
+      "endDate": null,
+      "cost": 22600,
+      "participants": 9,
+      "method": "Prototype test",
+      "successCriteria": "Pre-registered: prototype in-cab round correction with 9 crews produces a measurable change in the linked hypothesis confidence.",
+      "result": null,
+      "confidence": 0,
+      "recommendation": null,
+      "learningScore": 0
+    },
+    {
+      "id": "m6-x4",
+      "missionId": "m6",
+      "hypothesisId": "m6-h4",
+      "name": "Proactive notification trial",
+      "description": "Notified residents of known misses before they contacted",
+      "ownerId": "p6",
+      "startDate": "2025-11-21",
+      "endDate": null,
+      "cost": 6700,
+      "participants": 1100,
+      "method": "Field experiment",
+      "successCriteria": "Pre-registered: notified residents of known misses before they contacted produces a measurable change in the linked hypothesis confidence.",
+      "result": null,
+      "confidence": 0,
+      "recommendation": null,
+      "learningScore": 0
+    },
+    {
+      "id": "m6-x5",
+      "missionId": "m6",
+      "hypothesisId": "m6-h4",
+      "name": "Contact reason coding review",
+      "description": "Recoded 500 contacts to test assumed reasons",
+      "ownerId": "p9",
+      "startDate": "2025-12-24",
+      "endDate": "2026-01-19",
+      "cost": 3100,
+      "participants": 500,
+      "method": "Data analysis",
+      "successCriteria": "Pre-registered: recoded 500 contacts to test assumed reasons produces a measurable change in the linked hypothesis confidence.",
+      "result": "Disproved",
+      "confidence": 84,
+      "recommendation": "Change",
+      "learningScore": 4
+    },
+    {
+      "id": "m7-x1",
+      "missionId": "m7",
+      "hypothesisId": "m7-h1",
+      "name": "Retrospective signal analysis",
+      "description": "Analysed anonymised signals preceding 300 prior cases",
+      "ownerId": "p1",
+      "startDate": "2026-04-30",
+      "endDate": null,
+      "cost": 15400,
+      "participants": 300,
+      "method": "Data analysis",
+      "successCriteria": "Pre-registered: analysed anonymised signals preceding 300 prior cases produces a measurable change in the linked hypothesis confidence.",
+      "result": null,
+      "confidence": 0,
+      "recommendation": null,
+      "learningScore": 0
+    },
+    {
+      "id": "m7-x2",
+      "missionId": "m7",
+      "hypothesisId": "m7-h2",
+      "name": "Deliberative resident research",
+      "description": "Deliberative sessions with 24 residents on acceptability",
+      "ownerId": "p4",
+      "startDate": "2026-06-02",
+      "endDate": null,
+      "cost": 18900,
+      "participants": 24,
+      "method": "Deliberative research",
+      "successCriteria": "Pre-registered: deliberative sessions with 24 residents on acceptability produces a measurable change in the linked hypothesis confidence.",
+      "result": null,
+      "confidence": 0,
+      "recommendation": null,
+      "learningScore": 0
+    },
+    {
+      "id": "m7-x3",
+      "missionId": "m7",
+      "hypothesisId": "m7-h3",
+      "name": "Ethics review",
+      "description": "Structured ethics review with an independent panel",
+      "ownerId": "p6",
+      "startDate": "2026-07-05",
+      "endDate": null,
+      "cost": 8200,
+      "participants": 7,
+      "method": "Governance review",
+      "successCriteria": "Pre-registered: structured ethics review with an independent panel produces a measurable change in the linked hypothesis confidence.",
+      "result": null,
+      "confidence": 0,
+      "recommendation": null,
+      "learningScore": 0
+    },
+    {
+      "id": "m8-x1",
+      "missionId": "m8",
+      "hypothesisId": "m8-h1",
+      "name": "Assurance mapping",
+      "description": "Mapped assurance requirements across 11 services",
+      "ownerId": "p1",
+      "startDate": "2025-12-04",
+      "endDate": "2025-12-30",
+      "cost": 10600,
+      "participants": 11,
+      "method": "Desk research",
+      "successCriteria": "Pre-registered: mapped assurance requirements across 11 services produces a measurable change in the linked hypothesis confidence.",
+      "result": "Partially supported",
+      "confidence": 84,
+      "recommendation": "Change",
+      "learningScore": 4
+    },
+    {
+      "id": "m8-x2",
+      "missionId": "m8",
+      "hypothesisId": "m8-h2",
+      "name": "Resident preference research",
+      "description": "Preference research with 30 residents",
+      "ownerId": "p7",
+      "startDate": "2026-01-06",
+      "endDate": "2026-02-01",
+      "cost": 9100,
+      "participants": 30,
+      "method": "Interview study",
+      "successCriteria": "Pre-registered: preference research with 30 residents produces a measurable change in the linked hypothesis confidence.",
+      "result": "Supported",
+      "confidence": 73,
+      "recommendation": "Continue",
+      "learningScore": 3
+    },
+    {
+      "id": "m8-x3",
+      "missionId": "m8",
+      "hypothesisId": "m8-h3",
+      "name": "Supplier market engagement",
+      "description": "Structured engagement with five framework suppliers",
+      "ownerId": "p3",
+      "startDate": "2026-02-08",
+      "endDate": "2026-03-06",
+      "cost": 12400,
+      "participants": 5,
+      "method": "Market engagement",
+      "successCriteria": "Pre-registered: structured engagement with five framework suppliers produces a measurable change in the linked hypothesis confidence.",
+      "result": "Inconclusive",
+      "confidence": 62,
+      "recommendation": "Pause",
+      "learningScore": 2
+    }
+  ],
+  "decisions": [
+    {
+      "id": "m1-d1",
+      "missionId": "m1",
+      "question": "Should we reuse held medical evidence for permanent-condition renewals?",
+      "context": "Raised during the Blue Badge renewals mission while working with Northgate Metropolitan Council.",
+      "domain": "Strategy",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m1-e1",
+        "m1-e2"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Should we reuse held medical evidence for permanent-condition renewals?",
+      "raisedDate": "2025-10-18",
+      "decisionDate": "2025-10-27",
+      "reviewDate": "2026-01-25",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m1-d2",
+      "missionId": "m1",
+      "question": "Do we automate eligibility decisions or keep a human decision-maker?",
+      "context": "Raised during the Blue Badge renewals mission while working with Northgate Metropolitan Council.",
+      "domain": "AI",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m1-e3",
+        "m1-e4"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we automate eligibility decisions or keep a human decision-maker?",
+      "raisedDate": "2025-11-25",
+      "decisionDate": "2025-12-08",
+      "reviewDate": "2026-03-08",
+      "outcome": null
+    },
+    {
+      "id": "m1-d3",
+      "missionId": "m1",
+      "question": "Which reminder timing do we adopt as the service default?",
+      "context": "Raised during the Blue Badge renewals mission while working with Northgate Metropolitan Council.",
+      "domain": "Delivery",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m1-e5",
+        "m1-e6"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Which reminder timing do we adopt as the service default?",
+      "raisedDate": "2026-01-02",
+      "decisionDate": "2026-01-19",
+      "reviewDate": "2026-04-19",
+      "outcome": null
+    },
+    {
+      "id": "m1-d4",
+      "missionId": "m1",
+      "question": "Do we fund the assisted renewal route from mission or business-as-usual budget?",
+      "context": "Raised during the Blue Badge renewals mission while working with Northgate Metropolitan Council.",
+      "domain": "Investment",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m1-e7",
+        "m1-e8"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we fund the assisted renewal route from mission or business-as-usual budget?",
+      "raisedDate": "2026-02-09",
+      "decisionDate": "2026-03-02",
+      "reviewDate": "2026-05-31",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m2-d1",
+      "missionId": "m2",
+      "question": "Do we make photo upload the default in the repairs reporting journey?",
+      "context": "Raised during the Housing repairs first-time fix mission while working with Riverbank Housing Partnership.",
+      "domain": "Delivery",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m2-e1",
+        "m2-e2"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we make photo upload the default in the repairs reporting journey?",
+      "raisedDate": "2025-07-12",
+      "decisionDate": "2025-07-21",
+      "reviewDate": "2025-10-19",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m2-d2",
+      "missionId": "m2",
+      "question": "Should triage move permanently to operatives?",
+      "context": "Raised during the Housing repairs first-time fix mission while working with Riverbank Housing Partnership.",
+      "domain": "People",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m2-e3",
+        "m2-e4"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Should triage move permanently to operatives?",
+      "raisedDate": "2025-08-19",
+      "decisionDate": "2025-09-01",
+      "reviewDate": "2025-11-30",
+      "outcome": null
+    },
+    {
+      "id": "m2-d3",
+      "missionId": "m2",
+      "question": "Do we replace or extend the scheduling system?",
+      "context": "Raised during the Housing repairs first-time fix mission while working with Riverbank Housing Partnership.",
+      "domain": "Architecture",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m2-e5",
+        "m2-e6"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we replace or extend the scheduling system?",
+      "raisedDate": "2025-09-26",
+      "decisionDate": "2025-10-13",
+      "reviewDate": "2026-01-11",
+      "outcome": null
+    },
+    {
+      "id": "m2-d4",
+      "missionId": "m2",
+      "question": "Do we scale to all four housing areas now or after the scheduling change?",
+      "context": "Raised during the Housing repairs first-time fix mission while working with Riverbank Housing Partnership.",
+      "domain": "Investment",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m2-e7",
+        "m2-e8"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we scale to all four housing areas now or after the scheduling change?",
+      "raisedDate": "2025-11-03",
+      "decisionDate": "2025-11-24",
+      "reviewDate": "2026-02-22",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m3-d1",
+      "missionId": "m3",
+      "question": "What is our defensible interpretation of the assessment duty for early conversations?",
+      "context": "Raised during the Adult social care assessment triage mission while working with Northgate Metropolitan Council.",
+      "domain": "Governance",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m3-e1",
+        "m3-e2"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: What is our defensible interpretation of the assessment duty for early conversations?",
+      "raisedDate": "2026-02-21",
+      "decisionDate": "2026-03-02",
+      "reviewDate": "2026-05-31",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m3-d2",
+      "missionId": "m3",
+      "question": "Do we use a triage prompt at all, given practitioner concerns?",
+      "context": "Raised during the Adult social care assessment triage mission while working with Northgate Metropolitan Council.",
+      "domain": "AI",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m3-e3",
+        "m3-e4"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we use a triage prompt at all, given practitioner concerns?",
+      "raisedDate": "2026-03-31",
+      "decisionDate": "2026-04-13",
+      "reviewDate": "2026-07-12",
+      "outcome": null
+    },
+    {
+      "id": "m3-d3",
+      "missionId": "m3",
+      "question": "Which cohort do we test the 48-hour conversation with first?",
+      "context": "Raised during the Adult social care assessment triage mission while working with Northgate Metropolitan Council.",
+      "domain": "Delivery",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m3-e5",
+        "m3-e6"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Which cohort do we test the 48-hour conversation with first?",
+      "raisedDate": "2026-05-08",
+      "decisionDate": "2026-05-25",
+      "reviewDate": "2026-08-23",
+      "outcome": null
+    },
+    {
+      "id": "m4-d1",
+      "missionId": "m4",
+      "question": "Do we proceed with automatic enrolment on an opt-out basis?",
+      "context": "Raised during the Free school meals auto-enrolment mission while working with Northgate Education Services.",
+      "domain": "Strategy",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m4-e1",
+        "m4-e2"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we proceed with automatic enrolment on an opt-out basis?",
+      "raisedDate": "2025-04-26",
+      "decisionDate": "2025-05-05",
+      "reviewDate": "2025-08-03",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m4-d2",
+      "missionId": "m4",
+      "question": "What lawful basis do we use for the data share?",
+      "context": "Raised during the Free school meals auto-enrolment mission while working with Northgate Education Services.",
+      "domain": "Data",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m4-e3",
+        "m4-e4"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: What lawful basis do we use for the data share?",
+      "raisedDate": "2025-06-03",
+      "decisionDate": "2025-06-16",
+      "reviewDate": "2025-09-14",
+      "outcome": null
+    },
+    {
+      "id": "m4-d3",
+      "missionId": "m4",
+      "question": "How frequently do we refresh eligibility?",
+      "context": "Raised during the Free school meals auto-enrolment mission while working with Northgate Education Services.",
+      "domain": "Delivery",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m4-e5",
+        "m4-e6"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: How frequently do we refresh eligibility?",
+      "raisedDate": "2025-07-11",
+      "decisionDate": "2025-07-28",
+      "reviewDate": "2025-10-26",
+      "outcome": null
+    },
+    {
+      "id": "m4-d4",
+      "missionId": "m4",
+      "question": "Do we hand the service to business as usual now?",
+      "context": "Raised during the Free school meals auto-enrolment mission while working with Northgate Education Services.",
+      "domain": "Governance",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m4-e7",
+        "m4-e8"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we hand the service to business as usual now?",
+      "raisedDate": "2025-08-18",
+      "decisionDate": "2025-09-08",
+      "reviewDate": "2025-12-07",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m5-d1",
+      "missionId": "m5",
+      "question": "Do we continue building the combined claim?",
+      "context": "Raised during the Council tax support single claim mission while working with Northgate Revenues and Benefits.",
+      "domain": "Investment",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m5-e1",
+        "m5-e2"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we continue building the combined claim?",
+      "raisedDate": "2025-11-15",
+      "decisionDate": "2025-11-24",
+      "reviewDate": "2026-02-22",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m5-d2",
+      "missionId": "m5",
+      "question": "What do we do with the evidence-availability finding?",
+      "context": "Raised during the Council tax support single claim mission while working with Northgate Revenues and Benefits.",
+      "domain": "Strategy",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m5-e3",
+        "m5-e4"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: What do we do with the evidence-availability finding?",
+      "raisedDate": "2025-12-23",
+      "decisionDate": "2026-01-05",
+      "reviewDate": "2026-04-05",
+      "outcome": null
+    },
+    {
+      "id": "m5-d3",
+      "missionId": "m5",
+      "question": "How do we record a stopped mission as a positive outcome?",
+      "context": "Raised during the Council tax support single claim mission while working with Northgate Revenues and Benefits.",
+      "domain": "Governance",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m5-e5",
+        "m5-e6"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: How do we record a stopped mission as a positive outcome?",
+      "raisedDate": "2026-01-30",
+      "decisionDate": "2026-02-16",
+      "reviewDate": "2026-05-17",
+      "outcome": null
+    },
+    {
+      "id": "m6-d1",
+      "missionId": "m6",
+      "question": "Do we pivot the mission from reporting experience to round data?",
+      "context": "Raised during the Missed waste collections mission while working with Northgate Environmental Services.",
+      "domain": "Strategy",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m6-e1",
+        "m6-e2"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we pivot the mission from reporting experience to round data?",
+      "raisedDate": "2025-08-30",
+      "decisionDate": "2025-09-08",
+      "reviewDate": "2025-12-07",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m6-d2",
+      "missionId": "m6",
+      "question": "Do we invest in in-cab devices for all crews?",
+      "context": "Raised during the Missed waste collections mission while working with Northgate Environmental Services.",
+      "domain": "Investment",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m6-e3",
+        "m6-e4"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we invest in in-cab devices for all crews?",
+      "raisedDate": "2025-10-07",
+      "decisionDate": "2025-10-20",
+      "reviewDate": "2026-01-18",
+      "outcome": null
+    },
+    {
+      "id": "m6-d3",
+      "missionId": "m6",
+      "question": "Who owns round data accuracy operationally?",
+      "context": "Raised during the Missed waste collections mission while working with Northgate Environmental Services.",
+      "domain": "People",
+      "ownerId": "p12",
+      "evidenceIds": [
+        "m6-e5",
+        "m6-e6"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Who owns round data accuracy operationally?",
+      "raisedDate": "2025-11-14",
+      "decisionDate": "2025-12-01",
+      "reviewDate": "2026-03-01",
+      "outcome": null
+    },
+    {
+      "id": "m7-d1",
+      "missionId": "m7",
+      "question": "Do we proceed to experiment before the ethics review concludes?",
+      "context": "Raised during the Homelessness prevention early signals mission while working with Riverbank Housing Partnership.",
+      "domain": "Governance",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m7-e1",
+        "m7-e2"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we proceed to experiment before the ethics review concludes?",
+      "raisedDate": "2026-05-16",
+      "decisionDate": "2026-05-25",
+      "reviewDate": "2026-08-23",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m7-d2",
+      "missionId": "m7",
+      "question": "Which signals are ethically acceptable to combine?",
+      "context": "Raised during the Homelessness prevention early signals mission while working with Riverbank Housing Partnership.",
+      "domain": "Data",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m7-e3",
+        "m7-e4"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Which signals are ethically acceptable to combine?",
+      "raisedDate": "2026-06-23",
+      "decisionDate": "2026-07-06",
+      "reviewDate": "2026-10-04",
+      "outcome": null
+    },
+    {
+      "id": "m8-d1",
+      "missionId": "m8",
+      "question": "Do we pause the mission pending the commercial route?",
+      "context": "Raised during the Resident account identity mission while working with Northgate Digital Services.",
+      "domain": "Investment",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m8-e1",
+        "m8-e2"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we pause the mission pending the commercial route?",
+      "raisedDate": "2025-12-20",
+      "decisionDate": "2025-12-29",
+      "reviewDate": "2026-03-29",
+      "outcome": "Reviewed: the decision held; evidence since has been consistent."
+    },
+    {
+      "id": "m8-d2",
+      "missionId": "m8",
+      "question": "Do we build, buy or federate identity verification?",
+      "context": "Raised during the Resident account identity mission while working with Northgate Digital Services.",
+      "domain": "Architecture",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m8-e3",
+        "m8-e4"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: Do we build, buy or federate identity verification?",
+      "raisedDate": "2026-01-27",
+      "decisionDate": "2026-02-09",
+      "reviewDate": "2026-05-10",
+      "outcome": null
+    },
+    {
+      "id": "m8-d3",
+      "missionId": "m8",
+      "question": "How do we unblock the three dependent missions in the meantime?",
+      "context": "Raised during the Resident account identity mission while working with Northgate Digital Services.",
+      "domain": "Delivery",
+      "ownerId": "p1",
+      "evidenceIds": [
+        "m8-e5",
+        "m8-e1"
+      ],
+      "options": [
+        {
+          "option": "Proceed as proposed",
+          "note": "Fastest route, accepts current evidence gaps."
+        },
+        {
+          "option": "Run a further experiment first",
+          "note": "Slower, reduces uncertainty before commitment."
+        },
+        {
+          "option": "Do nothing for now",
+          "note": "Preserves optionality, leaves the constraint in place."
+        }
+      ],
+      "tradeOffs": [
+        "Accepts a slower start in exchange for stronger evidence.",
+        "Concentrates effort on one cohort, deferring others."
+      ],
+      "decision": "Recorded decision for: How do we unblock the three dependent missions in the meantime?",
+      "raisedDate": "2026-03-06",
+      "decisionDate": "2026-03-23",
+      "reviewDate": "2026-06-21",
+      "outcome": null
+    },
+    {
+      "id": "pf-d1",
+      "missionId": "m5",
+      "question": "Do we stop the council tax support single claim mission?",
+      "context": "Evidence showed the proposition was wrong; stopping protected \u00a3480k of planned build.",
+      "domain": "Investment",
+      "ownerId": "p11",
+      "evidenceIds": [
+        "m5-e1",
+        "m8-e4"
+      ],
+      "options": [
+        {
+          "option": "Adopt now",
+          "note": "Acts on current evidence."
+        },
+        {
+          "option": "Pilot in one mission first",
+          "note": "Slower but lower risk."
+        },
+        {
+          "option": "Defer",
+          "note": "Keeps options open, constraint persists."
+        }
+      ],
+      "tradeOffs": [
+        "Portfolio consistency over mission autonomy."
+      ],
+      "decision": "Recorded decision for: Do we stop the council tax support single claim mission?",
+      "raisedDate": "2025-12-01",
+      "decisionDate": "2025-12-07",
+      "reviewDate": "2026-04-06",
+      "outcome": "Reviewed and confirmed."
+    },
+    {
+      "id": "pf-d2",
+      "missionId": null,
+      "question": "Do we treat identity verification as a portfolio-level constraint?",
+      "context": "Three missions independently blocked by the same constraint.",
+      "domain": "Strategy",
+      "ownerId": "p11",
+      "evidenceIds": [
+        "m5-e1",
+        "m8-e4"
+      ],
+      "options": [
+        {
+          "option": "Adopt now",
+          "note": "Acts on current evidence."
+        },
+        {
+          "option": "Pilot in one mission first",
+          "note": "Slower but lower risk."
+        },
+        {
+          "option": "Defer",
+          "note": "Keeps options open, constraint persists."
+        }
+      ],
+      "tradeOffs": [
+        "Portfolio consistency over mission autonomy."
+      ],
+      "decision": "Recorded decision for: Do we treat identity verification as a portfolio-level constraint?",
+      "raisedDate": "2025-12-30",
+      "decisionDate": "2026-01-08",
+      "reviewDate": "2026-05-08",
+      "outcome": null
+    },
+    {
+      "id": "pf-d3",
+      "missionId": null,
+      "question": "What is our standard for promoting a pattern from Emerging to Proven?",
+      "context": "Patterns were being promoted on single-mission evidence.",
+      "domain": "Governance",
+      "ownerId": "p11",
+      "evidenceIds": [
+        "m2-e1"
+      ],
+      "options": [
+        {
+          "option": "Adopt now",
+          "note": "Acts on current evidence."
+        },
+        {
+          "option": "Pilot in one mission first",
+          "note": "Slower but lower risk."
+        },
+        {
+          "option": "Defer",
+          "note": "Keeps options open, constraint persists."
+        }
+      ],
+      "tradeOffs": [
+        "Portfolio consistency over mission autonomy."
+      ],
+      "decision": "Recorded decision for: What is our standard for promoting a pattern from Emerging to Proven?",
+      "raisedDate": "2026-01-28",
+      "decisionDate": "2026-02-09",
+      "reviewDate": "2026-06-09",
+      "outcome": "Reviewed and confirmed."
+    },
+    {
+      "id": "pf-d4",
+      "missionId": null,
+      "question": "Do we fund a shared evidence-upload capability across missions?",
+      "context": "Two missions found third-party evidence to be the binding constraint.",
+      "domain": "Investment",
+      "ownerId": "p11",
+      "evidenceIds": [
+        "m2-e1"
+      ],
+      "options": [
+        {
+          "option": "Adopt now",
+          "note": "Acts on current evidence."
+        },
+        {
+          "option": "Pilot in one mission first",
+          "note": "Slower but lower risk."
+        },
+        {
+          "option": "Defer",
+          "note": "Keeps options open, constraint persists."
+        }
+      ],
+      "tradeOffs": [
+        "Portfolio consistency over mission autonomy."
+      ],
+      "decision": "Recorded decision for: Do we fund a shared evidence-upload capability across missions?",
+      "raisedDate": "2026-02-26",
+      "decisionDate": "2026-03-13",
+      "reviewDate": "2026-07-11",
+      "outcome": null
+    },
+    {
+      "id": "pf-d5",
+      "missionId": null,
+      "question": "Do we set a cost ceiling for discovery in every mission?",
+      "context": "Discovery cost varied by a factor of five with no corresponding learning difference.",
+      "domain": "Delivery",
+      "ownerId": "p11",
+      "evidenceIds": [
+        "m2-e1"
+      ],
+      "options": [
+        {
+          "option": "Adopt now",
+          "note": "Acts on current evidence."
+        },
+        {
+          "option": "Pilot in one mission first",
+          "note": "Slower but lower risk."
+        },
+        {
+          "option": "Defer",
+          "note": "Keeps options open, constraint persists."
+        }
+      ],
+      "tradeOffs": [
+        "Portfolio consistency over mission autonomy."
+      ],
+      "decision": "Recorded decision for: Do we set a cost ceiling for discovery in every mission?",
+      "raisedDate": "2026-03-27",
+      "decisionDate": "2026-04-14",
+      "reviewDate": "2026-08-12",
+      "outcome": "Reviewed and confirmed."
+    },
+    {
+      "id": "pf-d6",
+      "missionId": null,
+      "question": "Which AI provider abstraction do we adopt for the intelligence layer?",
+      "context": "Avoiding lock-in to a single model provider.",
+      "domain": "AI",
+      "ownerId": "p11",
+      "evidenceIds": [
+        "m2-e1"
+      ],
+      "options": [
+        {
+          "option": "Adopt now",
+          "note": "Acts on current evidence."
+        },
+        {
+          "option": "Pilot in one mission first",
+          "note": "Slower but lower risk."
+        },
+        {
+          "option": "Defer",
+          "note": "Keeps options open, constraint persists."
+        }
+      ],
+      "tradeOffs": [
+        "Portfolio consistency over mission autonomy."
+      ],
+      "decision": "Recorded decision for: Which AI provider abstraction do we adopt for the intelligence layer?",
+      "raisedDate": "2026-04-25",
+      "decisionDate": "2026-05-16",
+      "reviewDate": "2026-09-13",
+      "outcome": null
+    },
+    {
+      "id": "pf-d7",
+      "missionId": null,
+      "question": "Do we publish mission evidence openly by default?",
+      "context": "Openness improves reuse but raises partner sensitivity.",
+      "domain": "Governance",
+      "ownerId": "p11",
+      "evidenceIds": [
+        "m2-e1"
+      ],
+      "options": [
+        {
+          "option": "Adopt now",
+          "note": "Acts on current evidence."
+        },
+        {
+          "option": "Pilot in one mission first",
+          "note": "Slower but lower risk."
+        },
+        {
+          "option": "Defer",
+          "note": "Keeps options open, constraint persists."
+        }
+      ],
+      "tradeOffs": [
+        "Portfolio consistency over mission autonomy."
+      ],
+      "decision": "Recorded decision for: Do we publish mission evidence openly by default?",
+      "raisedDate": "2026-05-24",
+      "decisionDate": "2026-06-17",
+      "reviewDate": "2026-10-15",
+      "outcome": "Reviewed and confirmed."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "m1-e1",
+      "missionId": "m1",
+      "type": "Case audit",
+      "source": "Northgate Metropolitan Council",
+      "date": "2025-10-08",
+      "description": "Audit of 200 historic renewals found 3 outcomes would have changed under evidence reuse",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p1",
+      "supports": [
+        "m1-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/blue-badge-renewals"
+    },
+    {
+      "id": "m1-e2",
+      "missionId": "m1",
+      "type": "Field trial",
+      "source": "Northgate Metropolitan Council",
+      "date": "2025-11-01",
+      "description": "Reminder at 8 weeks lifted on-time renewal from 59% to 74%; at 4 weeks to 66%",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p2",
+      "supports": [
+        "m1-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/blue-badge-renewals"
+    },
+    {
+      "id": "m1-e3",
+      "missionId": "m1",
+      "type": "Interview",
+      "source": "Northgate Metropolitan Council",
+      "date": "2025-11-25",
+      "description": "14 of 18 residents said an automated refusal without explanation would feel unsafe",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p3",
+      "supports": [
+        "m1-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/blue-badge-renewals"
+    },
+    {
+      "id": "m1-e4",
+      "missionId": "m1",
+      "type": "Case analysis",
+      "source": "Northgate Metropolitan Council",
+      "date": "2025-12-19",
+      "description": "Appeals correspondence shows 58% of appeals ask what evidence was used",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p4",
+      "supports": [
+        "m1-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/blue-badge-renewals"
+    },
+    {
+      "id": "m1-e5",
+      "missionId": "m1",
+      "type": "Staff estimate",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-01-12",
+      "description": "Assessment team estimate 6 minutes saved per reused renewal",
+      "strength": "Weak",
+      "confidence": 35,
+      "ownerId": "p5",
+      "supports": [
+        "m1-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/blue-badge-renewals"
+    },
+    {
+      "id": "m1-e6",
+      "missionId": "m1",
+      "type": "Operational data",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-02-05",
+      "description": "Operational data shows 41% of renewals arrive after expiry",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p8",
+      "supports": [
+        "m1-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/blue-badge-renewals"
+    },
+    {
+      "id": "m1-e7",
+      "missionId": "m1",
+      "type": "Legal review",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-03-01",
+      "description": "Legal opinion confirms evidence reuse is lawful for permanent conditions",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p1",
+      "supports": [
+        "m1-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/blue-badge-renewals"
+    },
+    {
+      "id": "m1-e8",
+      "missionId": "m1",
+      "type": "Operational data",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-03-25",
+      "description": "Contact-centre volumes fell 11% in the month after new decision letters",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p2",
+      "supports": [
+        "m1-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/blue-badge-renewals"
+    },
+    {
+      "id": "m2-e1",
+      "missionId": "m2",
+      "type": "Operational data",
+      "source": "Riverbank Housing Partnership",
+      "date": "2025-07-02",
+      "description": "First-time fix rose from 54% to 71% in the photo trial cohort",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p12",
+      "supports": [
+        "m2-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/housing-repairs-first-time-fix"
+    },
+    {
+      "id": "m2-e2",
+      "missionId": "m2",
+      "type": "Comparative trial",
+      "source": "Riverbank Housing Partnership",
+      "date": "2025-07-26",
+      "description": "Operative triage matched correct trade in 91% of jobs vs 68% for scripted triage",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p3",
+      "supports": [
+        "m2-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/housing-repairs-first-time-fix"
+    },
+    {
+      "id": "m2-e3",
+      "missionId": "m2",
+      "type": "Operational data",
+      "source": "Riverbank Housing Partnership",
+      "date": "2025-08-19",
+      "description": "Older-stock area reached 63% first-time fix, below the 71% seen in the first area",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p5",
+      "supports": [
+        "m2-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/housing-repairs-first-time-fix"
+    },
+    {
+      "id": "m2-e4",
+      "missionId": "m2",
+      "type": "Interview",
+      "source": "Riverbank Housing Partnership",
+      "date": "2025-09-12",
+      "description": "11 of 14 tenants over 75 needed help to submit a photograph",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p6",
+      "supports": [
+        "m2-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/housing-repairs-first-time-fix"
+    },
+    {
+      "id": "m2-e5",
+      "missionId": "m2",
+      "type": "Operational data",
+      "source": "Riverbank Housing Partnership",
+      "date": "2025-10-06",
+      "description": "Complaint volumes about repeat visits fell 24% across the trial period",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p9",
+      "supports": [
+        "m2-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/housing-repairs-first-time-fix"
+    },
+    {
+      "id": "m2-e6",
+      "missionId": "m2",
+      "type": "Simulation",
+      "source": "Riverbank Housing Partnership",
+      "date": "2025-10-30",
+      "description": "Scheduling simulation shows a 9-point ceiling without routing changes",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p12",
+      "supports": [
+        "m2-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/housing-repairs-first-time-fix"
+    },
+    {
+      "id": "m2-e7",
+      "missionId": "m2",
+      "type": "Staff workshop",
+      "source": "Riverbank Housing Partnership",
+      "date": "2025-11-23",
+      "description": "Operatives report van stock is the main remaining cause of repeat visits",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p3",
+      "supports": [
+        "m2-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/housing-repairs-first-time-fix"
+    },
+    {
+      "id": "m2-e8",
+      "missionId": "m2",
+      "type": "Choice experiment",
+      "source": "Riverbank Housing Partnership",
+      "date": "2025-12-17",
+      "description": "Slot-choice results split evenly; no reliable preference detected",
+      "strength": "Weak",
+      "confidence": 35,
+      "ownerId": "p5",
+      "supports": [
+        "m2-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/housing-repairs-first-time-fix"
+    },
+    {
+      "id": "m3-e1",
+      "missionId": "m3",
+      "type": "Operational data",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-02-11",
+      "description": "Median wait is 27 days; the longest decile waits 61 days",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p1",
+      "supports": [
+        "m3-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/social-care-assessment-triage"
+    },
+    {
+      "id": "m3-e2",
+      "missionId": "m3",
+      "type": "Case analysis",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-03-07",
+      "description": "31% of completed assessments resulted in universal services only",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p2",
+      "supports": [
+        "m3-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/social-care-assessment-triage"
+    },
+    {
+      "id": "m3-e3",
+      "missionId": "m3",
+      "type": "Prototype test",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-03-31",
+      "description": "Practitioners accepted the prompt in 74% of cases and overrode it in 26%",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p4",
+      "supports": [
+        "m3-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/social-care-assessment-triage"
+    },
+    {
+      "id": "m3-e4",
+      "missionId": "m3",
+      "type": "Comparative review",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-04-24",
+      "description": "Two authorities interpret the same duty differently for early conversations",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p5",
+      "supports": [
+        "m3-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/social-care-assessment-triage"
+    },
+    {
+      "id": "m3-e5",
+      "missionId": "m3",
+      "type": "Interview",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-05-18",
+      "description": "Carers described repeating their story an average of four times",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p9",
+      "supports": [
+        "m3-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/social-care-assessment-triage"
+    },
+    {
+      "id": "m3-e6",
+      "missionId": "m3",
+      "type": "Operational data",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-06-11",
+      "description": "Re-contact within 90 days runs at 38% for signposted requests",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p1",
+      "supports": [
+        "m3-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/social-care-assessment-triage"
+    },
+    {
+      "id": "m3-e7",
+      "missionId": "m3",
+      "type": "Legal review",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-07-05",
+      "description": "Legal review could not resolve the interpretation question without counsel opinion",
+      "strength": "Weak",
+      "confidence": 35,
+      "ownerId": "p2",
+      "supports": [
+        "m3-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/social-care-assessment-triage"
+    },
+    {
+      "id": "m3-e8",
+      "missionId": "m3",
+      "type": "Data analysis",
+      "source": "Northgate Metropolitan Council",
+      "date": "2026-07-29",
+      "description": "Waiting more than 28 days correlates with higher eventual package cost",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p4",
+      "supports": [
+        "m3-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/social-care-assessment-triage"
+    },
+    {
+      "id": "m4-e1",
+      "missionId": "m4",
+      "type": "Data audit",
+      "source": "Northgate Education Services",
+      "date": "2025-04-16",
+      "description": "Matching identified 2,043 eligible children not enrolled, with a 1.4% false-positive rate",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p12",
+      "supports": [
+        "m4-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/free-school-meals-auto-enrolment"
+    },
+    {
+      "id": "m4-e2",
+      "missionId": "m4",
+      "type": "Operational data",
+      "source": "Northgate Education Services",
+      "date": "2025-05-10",
+      "description": "Opt-out rate was 0.6% across 900 families",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p6",
+      "supports": [
+        "m4-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/free-school-meals-auto-enrolment"
+    },
+    {
+      "id": "m4-e3",
+      "missionId": "m4",
+      "type": "Time study",
+      "source": "Northgate Education Services",
+      "date": "2025-06-03",
+      "description": "School office admin time fell 3.1 hours per school per term",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p3",
+      "supports": [
+        "m4-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/free-school-meals-auto-enrolment"
+    },
+    {
+      "id": "m4-e4",
+      "missionId": "m4",
+      "type": "Interview",
+      "source": "Northgate Education Services",
+      "date": "2025-06-27",
+      "description": "18 of 20 families described applying as the barrier, not receiving",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p8",
+      "supports": [
+        "m4-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/free-school-meals-auto-enrolment"
+    },
+    {
+      "id": "m4-e5",
+      "missionId": "m4",
+      "type": "Operational data",
+      "source": "Northgate Education Services",
+      "date": "2025-07-21",
+      "description": "Meal uptake rose 31% in the pilot term",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p5",
+      "supports": [
+        "m4-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/free-school-meals-auto-enrolment"
+    },
+    {
+      "id": "m4-e6",
+      "missionId": "m4",
+      "type": "Governance record",
+      "source": "Northgate Education Services",
+      "date": "2025-08-14",
+      "description": "DPIA completed and signed off with no residual high risks",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p12",
+      "supports": [
+        "m4-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/free-school-meals-auto-enrolment"
+    },
+    {
+      "id": "m4-e7",
+      "missionId": "m4",
+      "type": "Operational data",
+      "source": "Northgate Education Services",
+      "date": "2025-09-07",
+      "description": "Monthly refresh caught 94% of eligibility changes within 31 days",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p6",
+      "supports": [
+        "m4-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/free-school-meals-auto-enrolment"
+    },
+    {
+      "id": "m4-e8",
+      "missionId": "m4",
+      "type": "Finance record",
+      "source": "Northgate Education Services",
+      "date": "2025-10-01",
+      "description": "Realised additional pupil premium income confirmed by finance",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p3",
+      "supports": [
+        "m4-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/free-school-meals-auto-enrolment"
+    },
+    {
+      "id": "m5-e1",
+      "missionId": "m5",
+      "type": "Data analysis",
+      "source": "Northgate Revenues and Benefits",
+      "date": "2025-11-05",
+      "description": "600-claim analysis attributes 71% of failures to missing third-party evidence",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p1",
+      "supports": [
+        "m5-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/council-tax-support-claim"
+    },
+    {
+      "id": "m5-e2",
+      "missionId": "m5",
+      "type": "Prototype trial",
+      "source": "Northgate Revenues and Benefits",
+      "date": "2025-11-29",
+      "description": "Combined prototype produced no reduction in failure rate (28.6% vs 29.1%)",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p2",
+      "supports": [
+        "m5-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/council-tax-support-claim"
+    },
+    {
+      "id": "m5-e3",
+      "missionId": "m5",
+      "type": "Rule analysis",
+      "source": "Northgate Revenues and Benefits",
+      "date": "2025-12-23",
+      "description": "Rule mapping found 14 irreconcilable statutory differences",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p6",
+      "supports": [
+        "m5-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/council-tax-support-claim"
+    },
+    {
+      "id": "m5-e4",
+      "missionId": "m5",
+      "type": "Interview",
+      "source": "Northgate Revenues and Benefits",
+      "date": "2026-01-16",
+      "description": "Residents described the problem as proving things, not filling forms",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p5",
+      "supports": [
+        "m5-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/council-tax-support-claim"
+    },
+    {
+      "id": "m5-e5",
+      "missionId": "m5",
+      "type": "Finance estimate",
+      "source": "Northgate Revenues and Benefits",
+      "date": "2026-02-09",
+      "description": "Planned build cost of the combined claim estimated at \u00a3480k",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p1",
+      "supports": [
+        "m5-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/council-tax-support-claim"
+    },
+    {
+      "id": "m5-e6",
+      "missionId": "m5",
+      "type": "Workshop",
+      "source": "Northgate Revenues and Benefits",
+      "date": "2026-03-05",
+      "description": "Assessors identified 6 rules that cannot legally be applied to a shared submission",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p2",
+      "supports": [
+        "m5-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/council-tax-support-claim"
+    },
+    {
+      "id": "m5-e7",
+      "missionId": "m5",
+      "type": "Usability test",
+      "source": "Northgate Revenues and Benefits",
+      "date": "2026-03-29",
+      "description": "Evidence upload success improved from 61% to 84% with clearer guidance",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p6",
+      "supports": [
+        "m5-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/council-tax-support-claim"
+    },
+    {
+      "id": "m6-e1",
+      "missionId": "m6",
+      "type": "Operational audit",
+      "source": "Northgate Environmental Services",
+      "date": "2025-08-20",
+      "description": "Round audit found 7.4% of properties incorrectly sequenced or missing",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p12",
+      "supports": [
+        "m6-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/missed-waste-collections"
+    },
+    {
+      "id": "m6-e2",
+      "missionId": "m6",
+      "type": "Field trial",
+      "source": "Northgate Environmental Services",
+      "date": "2025-09-13",
+      "description": "Simplified reporting cut report time from 4m20s to 1m45s with no change in misses",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p3",
+      "supports": [
+        "m6-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/missed-waste-collections"
+    },
+    {
+      "id": "m6-e3",
+      "missionId": "m6",
+      "type": "Data analysis",
+      "source": "Northgate Environmental Services",
+      "date": "2025-10-07",
+      "description": "Recoded contacts show 62% are chasing resolution, not reporting a new miss",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p5",
+      "supports": [
+        "m6-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/missed-waste-collections"
+    },
+    {
+      "id": "m6-e4",
+      "missionId": "m6",
+      "type": "Staff workshop",
+      "source": "Northgate Environmental Services",
+      "date": "2025-10-31",
+      "description": "Crews say round corrections currently require a depot conversation",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p6",
+      "supports": [
+        "m6-h4"
+      ],
+      "challenges": [],
+      "link": "/missions/missed-waste-collections"
+    },
+    {
+      "id": "m6-e5",
+      "missionId": "m6",
+      "type": "Field trial",
+      "source": "Northgate Environmental Services",
+      "date": "2025-11-24",
+      "description": "Notification trial early data shows a 19% reduction in follow-up contact",
+      "strength": "Weak",
+      "confidence": 35,
+      "ownerId": "p9",
+      "supports": [
+        "m6-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/missed-waste-collections"
+    },
+    {
+      "id": "m6-e6",
+      "missionId": "m6",
+      "type": "Operational data",
+      "source": "Northgate Environmental Services",
+      "date": "2025-12-18",
+      "description": "Two rounds account for 34% of all misses",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p12",
+      "supports": [
+        "m6-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/missed-waste-collections"
+    },
+    {
+      "id": "m6-e7",
+      "missionId": "m6",
+      "type": "Operational data",
+      "source": "Northgate Environmental Services",
+      "date": "2026-01-11",
+      "description": "Contact centre handling time for miss chasing averages 3m12s",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p3",
+      "supports": [
+        "m6-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/missed-waste-collections"
+    },
+    {
+      "id": "m7-e1",
+      "missionId": "m7",
+      "type": "Data analysis",
+      "source": "Riverbank Housing Partnership",
+      "date": "2026-05-06",
+      "description": "Anonymised analysis shows rent arrears plus school-attendance change precede 44% of cases by 70+ days",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p1",
+      "supports": [
+        "m7-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/homelessness-prevention-signals"
+    },
+    {
+      "id": "m7-e2",
+      "missionId": "m7",
+      "type": "Deliberative research",
+      "source": "Riverbank Housing Partnership",
+      "date": "2026-05-30",
+      "description": "Residents in early sessions distinguish sharply between an offer and a flag",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p4",
+      "supports": [
+        "m7-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/homelessness-prevention-signals"
+    },
+    {
+      "id": "m7-e3",
+      "missionId": "m7",
+      "type": "Governance review",
+      "source": "Riverbank Housing Partnership",
+      "date": "2026-06-23",
+      "description": "Partner agencies hold signals under six different lawful bases",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p6",
+      "supports": [
+        "m7-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/homelessness-prevention-signals"
+    },
+    {
+      "id": "m7-e4",
+      "missionId": "m7",
+      "type": "Staff estimate",
+      "source": "Riverbank Housing Partnership",
+      "date": "2026-07-17",
+      "description": "Prevention officers report crisis-stage intervention costs roughly four times more",
+      "strength": "Weak",
+      "confidence": 35,
+      "ownerId": "p9",
+      "supports": [
+        "m7-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/homelessness-prevention-signals"
+    },
+    {
+      "id": "m7-e5",
+      "missionId": "m7",
+      "type": "Ethics review",
+      "source": "Riverbank Housing Partnership",
+      "date": "2026-08-10",
+      "description": "Independent panel raised proportionality concerns about school data",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p11",
+      "supports": [
+        "m7-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/homelessness-prevention-signals"
+    },
+    {
+      "id": "m7-e6",
+      "missionId": "m7",
+      "type": "Operational data",
+      "source": "Riverbank Housing Partnership",
+      "date": "2026-09-03",
+      "description": "Only 23% of preventions currently start before a duty is triggered",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p1",
+      "supports": [
+        "m7-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/homelessness-prevention-signals"
+    },
+    {
+      "id": "m8-e1",
+      "missionId": "m8",
+      "type": "Assurance mapping",
+      "source": "Northgate Digital Services",
+      "date": "2025-12-10",
+      "description": "Six of 11 services can share a single assurance level; five cannot without policy change",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p1",
+      "supports": [
+        "m8-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/resident-account-identity"
+    },
+    {
+      "id": "m8-e2",
+      "missionId": "m8",
+      "type": "Interview",
+      "source": "Northgate Digital Services",
+      "date": "2026-01-03",
+      "description": "24 of 30 residents preferred one stronger check to repeated weaker ones",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p7",
+      "supports": [
+        "m8-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/resident-account-identity"
+    },
+    {
+      "id": "m8-e3",
+      "missionId": "m8",
+      "type": "Market engagement",
+      "source": "Northgate Digital Services",
+      "date": "2026-01-27",
+      "description": "Supplier responses varied by a factor of 3.8 on cost for the same requirement",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p3",
+      "supports": [
+        "m8-h3"
+      ],
+      "challenges": [],
+      "link": "/missions/resident-account-identity"
+    },
+    {
+      "id": "m8-e4",
+      "missionId": "m8",
+      "type": "Portfolio analysis",
+      "source": "Northgate Digital Services",
+      "date": "2026-02-20",
+      "description": "Three other missions list identity verification as a delivery constraint",
+      "strength": "Strong",
+      "confidence": 88,
+      "ownerId": "p5",
+      "supports": [
+        "m8-h1"
+      ],
+      "challenges": [],
+      "link": "/missions/resident-account-identity"
+    },
+    {
+      "id": "m8-e5",
+      "missionId": "m8",
+      "type": "Operational data",
+      "source": "Northgate Digital Services",
+      "date": "2026-03-16",
+      "description": "Residents complete an average of 4.1 identity checks per year",
+      "strength": "Moderate",
+      "confidence": 62,
+      "ownerId": "p11",
+      "supports": [
+        "m8-h2"
+      ],
+      "challenges": [],
+      "link": "/missions/resident-account-identity"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "pat1",
+      "slug": "evidence-reuse",
+      "name": "Reuse evidence the organisation already holds",
+      "description": "Services ask people to re-prove things the organisation already knows.",
+      "context": "Renewals and repeat entitlement checks",
+      "problem": "Services ask people to re-prove things the organisation already knows.",
+      "approach": "Audit held data, establish a lawful basis, reuse evidence and show it in the decision.",
+      "missionsObserved": [
+        "m1",
+        "m4",
+        "m8"
+      ],
+      "evidenceIds": [
+        "m1-e1",
+        "m4-e1",
+        "m8-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 92,
+      "lessons": [
+        "Legal opinion early removes the biggest blocker.",
+        "Showing the evidence used reduces appeal demand."
+      ],
+      "related": [
+        "pat2"
+      ],
+      "status": "Proven"
+    },
+    {
+      "id": "pat2",
+      "slug": "overridable-prompt",
+      "name": "Make automated prompts overridable",
+      "description": "Practitioners reject decision support they cannot override.",
+      "context": "Any decision support offered to practitioners",
+      "problem": "Practitioners reject decision support they cannot override.",
+      "approach": "Offer a prompt with a one-click override and record the override reason as evidence.",
+      "missionsObserved": [
+        "m3",
+        "m1"
+      ],
+      "evidenceIds": [
+        "m3-e1",
+        "m1-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 64,
+      "lessons": [
+        "Trust rises with reversibility, not with accuracy alone."
+      ],
+      "related": [
+        "pat3"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat3",
+      "slug": "second-context-replication",
+      "name": "Replicate in a second context before scaling",
+      "description": "Single-context results are scaled and then fail.",
+      "context": "Any promising mission result",
+      "problem": "Single-context results are scaled and then fail.",
+      "approach": "Repeat the experiment in a deliberately different context before committing to scale.",
+      "missionsObserved": [
+        "m2",
+        "m4",
+        "m6",
+        "m1"
+      ],
+      "evidenceIds": [
+        "m2-e1",
+        "m4-e1",
+        "m6-e1",
+        "m1-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 88,
+      "lessons": [
+        "Replication reveals the real mechanism.",
+        "A cheap replication is cheaper than a failed roll-out."
+      ],
+      "related": [
+        "pat4"
+      ],
+      "status": "Proven"
+    },
+    {
+      "id": "pat4",
+      "slug": "recode-the-demand",
+      "name": "Recode the demand before designing",
+      "description": "Assumed contact reasons are wrong, so the wrong problem gets solved.",
+      "context": "Contact-heavy services",
+      "problem": "Assumed contact reasons are wrong, so the wrong problem gets solved.",
+      "approach": "Recode a sample of real contacts before committing to a direction.",
+      "missionsObserved": [
+        "m6",
+        "m2"
+      ],
+      "evidenceIds": [
+        "m6-e1",
+        "m2-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 71,
+      "lessons": [
+        "Recoding 500 contacts overturned a long-held assumption."
+      ],
+      "related": [
+        "pat5"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat5",
+      "slug": "cheap-analysis-first",
+      "name": "Buy the cheap analysis before the expensive build",
+      "description": "Expensive builds proceed on unexamined causal assumptions.",
+      "context": "Any large planned build",
+      "problem": "Expensive builds proceed on unexamined causal assumptions.",
+      "approach": "Spend a few thousand testing the causal claim before committing to the build.",
+      "missionsObserved": [
+        "m5",
+        "m6"
+      ],
+      "evidenceIds": [
+        "m5-e1",
+        "m6-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 78,
+      "lessons": [
+        "A \u00a35.9k analysis prevented a \u00a3480k build."
+      ],
+      "related": [
+        "pat6"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat6",
+      "slug": "offer-not-flag",
+      "name": "Frame proactive contact as an offer, not a flag",
+      "description": "Proactive targeting feels like surveillance and is rejected.",
+      "context": "Predictive or proactive services",
+      "problem": "Proactive targeting feels like surveillance and is rejected.",
+      "approach": "Design contact as an offer the resident can decline without consequence.",
+      "missionsObserved": [
+        "m7"
+      ],
+      "evidenceIds": [
+        "m7-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 41,
+      "lessons": [
+        "Residents distinguish sharply between an offer and a flag."
+      ],
+      "related": [
+        "pat7"
+      ],
+      "status": "Candidate"
+    },
+    {
+      "id": "pat7",
+      "slug": "stigma-in-the-asking",
+      "name": "Remove the asking, not the receiving",
+      "description": "Low take-up is blamed on stigma about receiving support.",
+      "context": "Entitlements with low take-up",
+      "problem": "Low take-up is blamed on stigma about receiving support.",
+      "approach": "Automate enrolment with an opt-out rather than promoting applications.",
+      "missionsObserved": [
+        "m4"
+      ],
+      "evidenceIds": [
+        "m4-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 57,
+      "lessons": [
+        "Stigma attaches to applying, not to receiving."
+      ],
+      "related": [
+        "pat8"
+      ],
+      "status": "Candidate"
+    },
+    {
+      "id": "pat8",
+      "slug": "constraint-register",
+      "name": "Register cross-mission constraints explicitly",
+      "description": "Missions route around the same constraint separately and invisibly.",
+      "context": "Portfolios with shared platforms",
+      "problem": "Missions route around the same constraint separately and invisibly.",
+      "approach": "Record constraints at portfolio level and count how many missions they block.",
+      "missionsObserved": [
+        "m8",
+        "m3",
+        "m2"
+      ],
+      "evidenceIds": [
+        "m8-e1",
+        "m3-e1",
+        "m2-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 69,
+      "lessons": [
+        "Counting blocked missions changed the investment conversation."
+      ],
+      "related": [
+        "pat9"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat9",
+      "slug": "legal-opinion-early",
+      "name": "Get the legal interpretation before the prototype",
+      "description": "Prototypes stall on unresolved legal interpretation.",
+      "context": "Statutory or regulated services",
+      "problem": "Prototypes stall on unresolved legal interpretation.",
+      "approach": "Commission the interpretation as the first experiment.",
+      "missionsObserved": [
+        "m3",
+        "m4",
+        "m1"
+      ],
+      "evidenceIds": [
+        "m3-e1",
+        "m4-e1",
+        "m1-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 84,
+      "lessons": [
+        "Policy interpretation is often the rate-limiting step."
+      ],
+      "related": [
+        "pat10"
+      ],
+      "status": "Proven"
+    },
+    {
+      "id": "pat10",
+      "slug": "show-the-evidence",
+      "name": "Show the evidence used in the decision",
+      "description": "People appeal because they do not understand the basis of a decision.",
+      "context": "Any decision communicated to a customer",
+      "problem": "People appeal because they do not understand the basis of a decision.",
+      "approach": "Include the evidence used, in plain language, in the decision itself.",
+      "missionsObserved": [
+        "m1",
+        "m4"
+      ],
+      "evidenceIds": [
+        "m1-e1",
+        "m4-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 73,
+      "lessons": [
+        "Appeal-driving demand is often explanation demand."
+      ],
+      "related": [
+        "pat11"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat11",
+      "slug": "frontline-triage",
+      "name": "Put triage with the people who hold the diagnostic skill",
+      "description": "Scripted triage by generalists misdiagnoses demand.",
+      "context": "Dispatch and assessment services",
+      "problem": "Scripted triage by generalists misdiagnoses demand.",
+      "approach": "Move triage to the practitioners who do the work, supported by better inputs.",
+      "missionsObserved": [
+        "m2",
+        "m3"
+      ],
+      "evidenceIds": [
+        "m2-e1",
+        "m3-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 70,
+      "lessons": [
+        "Operative triage outperformed scripted triage by 23 points."
+      ],
+      "related": [
+        "pat12"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat12",
+      "slug": "pre-registered-criteria",
+      "name": "Pre-register experiment success criteria",
+      "description": "Success criteria written afterwards always appear to be met.",
+      "context": "Every experiment",
+      "problem": "Success criteria written afterwards always appear to be met.",
+      "approach": "Write and record the criteria before the experiment starts.",
+      "missionsObserved": [
+        "m1",
+        "m2",
+        "m4",
+        "m5",
+        "m6"
+      ],
+      "evidenceIds": [
+        "m1-e1",
+        "m2-e1",
+        "m4-e1",
+        "m5-e1",
+        "m6-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 90,
+      "lessons": [
+        "Pre-registration made two disproved results possible to accept."
+      ],
+      "related": [
+        "pat13"
+      ],
+      "status": "Proven"
+    },
+    {
+      "id": "pat13",
+      "slug": "stop-well",
+      "name": "Stop well and harvest the learning",
+      "description": "Stopped work is treated as failure and its learning is lost.",
+      "context": "Missions with disproved propositions",
+      "problem": "Stopped work is treated as failure and its learning is lost.",
+      "approach": "Run a structured stop review, publish the evidence and create the patterns.",
+      "missionsObserved": [
+        "m5"
+      ],
+      "evidenceIds": [
+        "m5-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 66,
+      "lessons": [
+        "The stop review produced two patterns used by other missions."
+      ],
+      "related": [
+        "pat14"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat14",
+      "slug": "assisted-route-by-default",
+      "name": "Design the assisted route alongside the digital one",
+      "description": "Assisted routes are designed last and funded never.",
+      "context": "Services with digitally excluded users",
+      "problem": "Assisted routes are designed last and funded never.",
+      "approach": "Design and cost the assisted route in the same experiment as the digital one.",
+      "missionsObserved": [
+        "m1",
+        "m2"
+      ],
+      "evidenceIds": [
+        "m1-e1",
+        "m2-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 62,
+      "lessons": [
+        "Photograph capture excluded most tenants over 75."
+      ],
+      "related": [
+        "pat15"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat15",
+      "slug": "data-quality-is-the-service",
+      "name": "Treat operational data quality as service design",
+      "description": "Failures are blamed on execution when the underlying data is wrong.",
+      "context": "Round, schedule and roster-based services",
+      "problem": "Failures are blamed on execution when the underlying data is wrong.",
+      "approach": "Audit the operational data against reality before redesigning the interface.",
+      "missionsObserved": [
+        "m6",
+        "m2"
+      ],
+      "evidenceIds": [
+        "m6-e1",
+        "m2-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 74,
+      "lessons": [
+        "7.4% of properties were incorrectly sequenced."
+      ],
+      "related": [
+        "pat16"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat16",
+      "slug": "monthly-good-enough",
+      "name": "Prefer periodic refresh over real-time integration",
+      "description": "Real-time integration is assumed necessary and delays delivery.",
+      "context": "Eligibility and entitlement data",
+      "problem": "Real-time integration is assumed necessary and delays delivery.",
+      "approach": "Test whether a periodic refresh meets the need before building real-time.",
+      "missionsObserved": [
+        "m4"
+      ],
+      "evidenceIds": [
+        "m4-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 55,
+      "lessons": [
+        "Monthly refresh caught 94% of changes within 31 days."
+      ],
+      "related": [
+        "pat17"
+      ],
+      "status": "Candidate"
+    },
+    {
+      "id": "pat17",
+      "slug": "cohort-first",
+      "name": "Choose the first cohort by risk, not by size",
+      "description": "Trials start with the largest cohort and carry the most risk.",
+      "context": "Sensitive service changes",
+      "problem": "Trials start with the largest cohort and carry the most risk.",
+      "approach": "Select the first cohort by lowest harm potential and clearest measurement.",
+      "missionsObserved": [
+        "m3",
+        "m7"
+      ],
+      "evidenceIds": [
+        "m3-e1",
+        "m7-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 48,
+      "lessons": [
+        "Cohort choice determined how quickly the ethics review concluded."
+      ],
+      "related": [
+        "pat18"
+      ],
+      "status": "Candidate"
+    },
+    {
+      "id": "pat18",
+      "slug": "evidence-state-labelling",
+      "name": "Label every value figure with its evidence state",
+      "description": "Modelled value is read as realised value.",
+      "context": "All value reporting",
+      "problem": "Modelled value is read as realised value.",
+      "approach": "Never present an amount without its evidence state, in every view.",
+      "missionsObserved": [
+        "m1",
+        "m2",
+        "m4",
+        "m6",
+        "m7",
+        "m8"
+      ],
+      "evidenceIds": [
+        "m1-e1",
+        "m2-e1",
+        "m4-e1",
+        "m6-e1",
+        "m7-e1",
+        "m8-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 94,
+      "lessons": [
+        "Labelling changed how leadership challenged business cases."
+      ],
+      "related": [
+        "pat19"
+      ],
+      "status": "Proven"
+    },
+    {
+      "id": "pat19",
+      "slug": "shadow-the-work",
+      "name": "Shadow the work before improving it",
+      "description": "Improvement is designed from process maps rather than practice.",
+      "context": "Frontline-heavy services",
+      "problem": "Improvement is designed from process maps rather than practice.",
+      "approach": "Spend time alongside practitioners before proposing changes.",
+      "missionsObserved": [
+        "m3",
+        "m6",
+        "m2"
+      ],
+      "evidenceIds": [
+        "m3-e1",
+        "m6-e1",
+        "m2-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 68,
+      "lessons": [
+        "Shadowing surfaced unmet carer need that data did not show."
+      ],
+      "related": [
+        "pat20"
+      ],
+      "status": "Emerging"
+    },
+    {
+      "id": "pat20",
+      "slug": "interim-narrow-check",
+      "name": "Unblock with a narrower interim capability",
+      "description": "Missions stall entirely waiting for a strategic platform.",
+      "context": "Missions blocked by a shared platform",
+      "problem": "Missions stall entirely waiting for a strategic platform.",
+      "approach": "Ship a narrower, reversible interim capability while the strategic route is decided.",
+      "missionsObserved": [
+        "m8"
+      ],
+      "evidenceIds": [
+        "m8-e1"
+      ],
+      "outcomes": "Observed outcomes are recorded against each contributing mission.",
+      "confidence": 44,
+      "lessons": [
+        "A narrow interim check could unblock three missions."
+      ],
+      "related": [
+        "pat1"
+      ],
+      "status": "Candidate"
+    }
+  ],
+  "costs": [
+    {
+      "id": "m1-c1",
+      "missionId": "m1",
+      "type": "People",
+      "amount": 214000,
+      "period": "Mission to date",
+      "note": "Squad of 6, 9 months"
+    },
+    {
+      "id": "m1-c2",
+      "missionId": "m1",
+      "type": "Technology",
+      "amount": 38000,
+      "period": "Mission to date",
+      "note": "Case management integration"
+    },
+    {
+      "id": "m1-c3",
+      "missionId": "m1",
+      "type": "Experiment",
+      "amount": 48400,
+      "period": "Mission to date",
+      "note": "Five experiments"
+    },
+    {
+      "id": "m1-c4",
+      "missionId": "m1",
+      "type": "Supplier",
+      "amount": 26000,
+      "period": "Mission to date",
+      "note": "Assessment audit support"
+    },
+    {
+      "id": "m1-c5",
+      "missionId": "m1",
+      "type": "Partner effort",
+      "amount": 19000,
+      "period": "Mission to date",
+      "note": "Council assessment team time"
+    },
+    {
+      "id": "m2-c1",
+      "missionId": "m2",
+      "type": "People",
+      "amount": 286000,
+      "period": "Mission to date",
+      "note": "Squad of 5, 14 months"
+    },
+    {
+      "id": "m2-c2",
+      "missionId": "m2",
+      "type": "Technology",
+      "amount": 61000,
+      "period": "Mission to date",
+      "note": "Photo capture and storage"
+    },
+    {
+      "id": "m2-c3",
+      "missionId": "m2",
+      "type": "Experiment",
+      "amount": 96200,
+      "period": "Mission to date",
+      "note": "Six experiments"
+    },
+    {
+      "id": "m2-c4",
+      "missionId": "m2",
+      "type": "Supplier",
+      "amount": 74000,
+      "period": "Mission to date",
+      "note": "Scheduling supplier analysis"
+    },
+    {
+      "id": "m2-c5",
+      "missionId": "m2",
+      "type": "Partner effort",
+      "amount": 41000,
+      "period": "Mission to date",
+      "note": "Operative and scheduler time"
+    },
+    {
+      "id": "m3-c1",
+      "missionId": "m3",
+      "type": "People",
+      "amount": 148000,
+      "period": "Mission to date",
+      "note": "Squad of 5, 7 months"
+    },
+    {
+      "id": "m3-c2",
+      "missionId": "m3",
+      "type": "Experiment",
+      "amount": 69300,
+      "period": "Mission to date",
+      "note": "Five experiments"
+    },
+    {
+      "id": "m3-c3",
+      "missionId": "m3",
+      "type": "Supplier",
+      "amount": 21000,
+      "period": "Mission to date",
+      "note": "Legal review"
+    },
+    {
+      "id": "m3-c4",
+      "missionId": "m3",
+      "type": "Partner effort",
+      "amount": 28000,
+      "period": "Mission to date",
+      "note": "Practitioner time"
+    },
+    {
+      "id": "m4-c1",
+      "missionId": "m4",
+      "type": "People",
+      "amount": 162000,
+      "period": "Mission to date",
+      "note": "Squad of 5, 8 months"
+    },
+    {
+      "id": "m4-c2",
+      "missionId": "m4",
+      "type": "Technology",
+      "amount": 29000,
+      "period": "Mission to date",
+      "note": "Matching service"
+    },
+    {
+      "id": "m4-c3",
+      "missionId": "m4",
+      "type": "Experiment",
+      "amount": 37200,
+      "period": "Mission to date",
+      "note": "Five experiments"
+    },
+    {
+      "id": "m4-c4",
+      "missionId": "m4",
+      "type": "Partner effort",
+      "amount": 14000,
+      "period": "Mission to date",
+      "note": "School office time"
+    },
+    {
+      "id": "m5-c1",
+      "missionId": "m5",
+      "type": "People",
+      "amount": 96000,
+      "period": "Mission to date",
+      "note": "Squad of 4, 4 months"
+    },
+    {
+      "id": "m5-c2",
+      "missionId": "m5",
+      "type": "Experiment",
+      "amount": 55800,
+      "period": "Mission to date",
+      "note": "Four experiments"
+    },
+    {
+      "id": "m5-c3",
+      "missionId": "m5",
+      "type": "Partner effort",
+      "amount": 12000,
+      "period": "Mission to date",
+      "note": "Assessor workshops"
+    },
+    {
+      "id": "m6-c1",
+      "missionId": "m6",
+      "type": "People",
+      "amount": 198000,
+      "period": "Mission to date",
+      "note": "Squad of 5, 12 months"
+    },
+    {
+      "id": "m6-c2",
+      "missionId": "m6",
+      "type": "Technology",
+      "amount": 44000,
+      "period": "Mission to date",
+      "note": "In-cab prototype"
+    },
+    {
+      "id": "m6-c3",
+      "missionId": "m6",
+      "type": "Experiment",
+      "amount": 59500,
+      "period": "Mission to date",
+      "note": "Five experiments"
+    },
+    {
+      "id": "m6-c4",
+      "missionId": "m6",
+      "type": "Partner effort",
+      "amount": 23000,
+      "period": "Mission to date",
+      "note": "Crew time"
+    },
+    {
+      "id": "m7-c1",
+      "missionId": "m7",
+      "type": "People",
+      "amount": 74000,
+      "period": "Mission to date",
+      "note": "Squad of 5, 4 months"
+    },
+    {
+      "id": "m7-c2",
+      "missionId": "m7",
+      "type": "Experiment",
+      "amount": 42500,
+      "period": "Mission to date",
+      "note": "Three experiments"
+    },
+    {
+      "id": "m7-c3",
+      "missionId": "m7",
+      "type": "Other",
+      "amount": 9000,
+      "period": "Mission to date",
+      "note": "Independent ethics panel"
+    },
+    {
+      "id": "m8-c1",
+      "missionId": "m8",
+      "type": "People",
+      "amount": 118000,
+      "period": "Mission to date",
+      "note": "Squad of 5, 6 months"
+    },
+    {
+      "id": "m8-c2",
+      "missionId": "m8",
+      "type": "Experiment",
+      "amount": 32100,
+      "period": "Mission to date",
+      "note": "Three experiments"
+    },
+    {
+      "id": "m8-c3",
+      "missionId": "m8",
+      "type": "Supplier",
+      "amount": 18000,
+      "period": "Mission to date",
+      "note": "Market engagement support"
+    }
+  ],
+  "values": [
+    {
+      "id": "m1-v1",
+      "missionId": "m1",
+      "type": "Avoided cost",
+      "financial": true,
+      "amount": 412000,
+      "unit": "GBP per year",
+      "state": "Evidenced",
+      "description": "Avoided appeal handling and reassessment effort from evidence reuse",
+      "evidenceIds": [
+        "m1-e1"
+      ],
+      "reviewDate": "2026-04-16"
+    },
+    {
+      "id": "m1-v2",
+      "missionId": "m1",
+      "type": "Productivity",
+      "financial": true,
+      "amount": 168000,
+      "unit": "GBP per year",
+      "state": "Observed",
+      "description": "Assessment team time released by reuse of held evidence",
+      "evidenceIds": [
+        "m1-e2"
+      ],
+      "reviewDate": "2026-04-16"
+    },
+    {
+      "id": "m1-v3",
+      "missionId": "m1",
+      "type": "User benefit",
+      "financial": false,
+      "amount": 26,
+      "unit": "minutes saved per renewal",
+      "state": "Evidenced",
+      "description": "Median renewal effort reduced from 34 to 8 minutes",
+      "evidenceIds": [
+        "m1-e3"
+      ],
+      "reviewDate": "2026-04-16"
+    },
+    {
+      "id": "m1-v4",
+      "missionId": "m1",
+      "type": "Service improvement",
+      "financial": false,
+      "amount": 15,
+      "unit": "percentage points",
+      "state": "Observed",
+      "description": "On-time renewal up from 59% to 74%",
+      "evidenceIds": [
+        "m1-e4"
+      ],
+      "reviewDate": "2026-04-16"
+    },
+    {
+      "id": "m2-v1",
+      "missionId": "m2",
+      "type": "Cashable savings",
+      "financial": true,
+      "amount": 540000,
+      "unit": "GBP per year",
+      "state": "Observed",
+      "description": "Repeat visit reduction across two areas",
+      "evidenceIds": [
+        "m2-e1"
+      ],
+      "reviewDate": "2026-01-08"
+    },
+    {
+      "id": "m2-v2",
+      "missionId": "m2",
+      "type": "Avoided cost",
+      "financial": true,
+      "amount": 1250000,
+      "unit": "GBP per year",
+      "state": "Modelled",
+      "description": "Projected saving if scaled to all four areas",
+      "evidenceIds": [
+        "m2-e2"
+      ],
+      "reviewDate": "2026-01-08"
+    },
+    {
+      "id": "m2-v3",
+      "missionId": "m2",
+      "type": "User benefit",
+      "financial": false,
+      "amount": 24,
+      "unit": "% fewer complaints",
+      "state": "Evidenced",
+      "description": "Complaints about repeat visits fell 24%",
+      "evidenceIds": [
+        "m2-e3"
+      ],
+      "reviewDate": "2026-01-08"
+    },
+    {
+      "id": "m2-v4",
+      "missionId": "m2",
+      "type": "Productivity",
+      "financial": true,
+      "amount": 190000,
+      "unit": "GBP per year",
+      "state": "Observed",
+      "description": "Operative time released by better parts matching",
+      "evidenceIds": [
+        "m2-e4"
+      ],
+      "reviewDate": "2026-01-08"
+    },
+    {
+      "id": "m3-v1",
+      "missionId": "m3",
+      "type": "Avoided cost",
+      "financial": true,
+      "amount": 880000,
+      "unit": "GBP per year",
+      "state": "Modelled",
+      "description": "Projected avoided package cost from earlier conversations",
+      "evidenceIds": [
+        "m3-e1"
+      ],
+      "reviewDate": "2026-08-20"
+    },
+    {
+      "id": "m3-v2",
+      "missionId": "m3",
+      "type": "User benefit",
+      "financial": false,
+      "amount": 19,
+      "unit": "days earlier",
+      "state": "Assumed",
+      "description": "Assumed reduction in wait to first conversation",
+      "evidenceIds": [
+        "m3-e2"
+      ],
+      "reviewDate": "2026-08-20"
+    },
+    {
+      "id": "m4-v1",
+      "missionId": "m4",
+      "type": "Cashable savings",
+      "financial": true,
+      "amount": 1120000,
+      "unit": "GBP per year",
+      "state": "Realised",
+      "description": "Additional pupil premium income confirmed by finance",
+      "evidenceIds": [
+        "m4-e1"
+      ],
+      "reviewDate": "2025-10-23"
+    },
+    {
+      "id": "m4-v2",
+      "missionId": "m4",
+      "type": "Productivity",
+      "financial": true,
+      "amount": 86000,
+      "unit": "GBP per year",
+      "state": "Realised",
+      "description": "School office admin time released",
+      "evidenceIds": [
+        "m4-e2"
+      ],
+      "reviewDate": "2025-10-23"
+    },
+    {
+      "id": "m4-v3",
+      "missionId": "m4",
+      "type": "User benefit",
+      "financial": false,
+      "amount": 2043,
+      "unit": "children enrolled",
+      "state": "Realised",
+      "description": "Eligible children enrolled without an application",
+      "evidenceIds": [
+        "m4-e3"
+      ],
+      "reviewDate": "2025-10-23"
+    },
+    {
+      "id": "m4-v4",
+      "missionId": "m4",
+      "type": "Risk reduction",
+      "financial": false,
+      "amount": 1,
+      "unit": "statutory risk closed",
+      "state": "Evidenced",
+      "description": "Under-enrolment risk closed with monthly refresh",
+      "evidenceIds": [
+        "m4-e4"
+      ],
+      "reviewDate": "2025-10-23"
+    },
+    {
+      "id": "m5-v1",
+      "missionId": "m5",
+      "type": "Avoided cost",
+      "financial": true,
+      "amount": 480000,
+      "unit": "GBP one-off",
+      "state": "Evidenced",
+      "description": "Build avoided by stopping on evidence",
+      "evidenceIds": [
+        "m5-e1"
+      ],
+      "reviewDate": "2026-05-14"
+    },
+    {
+      "id": "m5-v2",
+      "missionId": "m5",
+      "type": "Service improvement",
+      "financial": false,
+      "amount": 23,
+      "unit": "percentage points",
+      "state": "Observed",
+      "description": "Evidence upload success improved from 61% to 84%",
+      "evidenceIds": [
+        "m5-e2"
+      ],
+      "reviewDate": "2026-05-14"
+    },
+    {
+      "id": "m6-v1",
+      "missionId": "m6",
+      "type": "Cashable savings",
+      "financial": true,
+      "amount": 310000,
+      "unit": "GBP per year",
+      "state": "Modelled",
+      "description": "Projected saving from round data correction",
+      "evidenceIds": [
+        "m6-e1"
+      ],
+      "reviewDate": "2026-02-26"
+    },
+    {
+      "id": "m6-v2",
+      "missionId": "m6",
+      "type": "Productivity",
+      "financial": true,
+      "amount": 120000,
+      "unit": "GBP per year",
+      "state": "Observed",
+      "description": "Contact handling time released by faster reporting",
+      "evidenceIds": [
+        "m6-e2"
+      ],
+      "reviewDate": "2026-02-26"
+    },
+    {
+      "id": "m6-v3",
+      "missionId": "m6",
+      "type": "User benefit",
+      "financial": false,
+      "amount": 155,
+      "unit": "seconds saved per report",
+      "state": "Evidenced",
+      "description": "Report time cut from 4m20s to 1m45s",
+      "evidenceIds": [
+        "m6-e3"
+      ],
+      "reviewDate": "2026-02-26"
+    },
+    {
+      "id": "m7-v1",
+      "missionId": "m7",
+      "type": "Avoided cost",
+      "financial": true,
+      "amount": 1600000,
+      "unit": "GBP per year",
+      "state": "Assumed",
+      "description": "Assumed avoided temporary accommodation cost",
+      "evidenceIds": [
+        "m7-e1"
+      ],
+      "reviewDate": "2026-11-12"
+    },
+    {
+      "id": "m7-v2",
+      "missionId": "m7",
+      "type": "Risk reduction",
+      "financial": false,
+      "amount": 1,
+      "unit": "ethical risk assessed",
+      "state": "Modelled",
+      "description": "Ethics review reduces the risk of harmful targeting",
+      "evidenceIds": [
+        "m7-e2"
+      ],
+      "reviewDate": "2026-11-12"
+    },
+    {
+      "id": "m8-v1",
+      "missionId": "m8",
+      "type": "Productivity",
+      "financial": true,
+      "amount": 240000,
+      "unit": "GBP per year",
+      "state": "Modelled",
+      "description": "Projected saving from removing repeat identity checks",
+      "evidenceIds": [
+        "m8-e1"
+      ],
+      "reviewDate": "2026-06-18"
+    },
+    {
+      "id": "m8-v2",
+      "missionId": "m8",
+      "type": "User benefit",
+      "financial": false,
+      "amount": 3,
+      "unit": "fewer checks per year",
+      "state": "Modelled",
+      "description": "Modelled reduction in repeat identity checks",
+      "evidenceIds": [
+        "m8-e2"
+      ],
+      "reviewDate": "2026-06-18"
+    }
+  ],
+  "insights": [
+    {
+      "id": "i1",
+      "observation": "Missions involving policy interpretation are taking a median 46 days to reach their first live experiment, against 15 days for missions without it.",
+      "whyItMatters": "If interpretation is the rate-limiting step, commissioning it as the first activity could shorten several missions.",
+      "evidenceIds": [
+        "m3-e4",
+        "m3-e7",
+        "m4-e6"
+      ],
+      "missionIds": [
+        "m3",
+        "m4",
+        "m7"
+      ],
+      "confidence": 72,
+      "suggestedQuestion": "Is legal interpretation causing the delay, or are these missions slower for other reasons?",
+      "suggestedAction": "Test commissioning the interpretation as experiment one in the next statutory-service mission.",
+      "generatedAt": "2026-07-14",
+      "provider": "analysis/rules-v1",
+      "status": "Accepted",
+      "reviewer": "Leah Okonkwo",
+      "reviewerFeedback": "Consistent with what the mission teams report. Worth testing deliberately.",
+      "osChangeSuggestion": "Strengthen cf-discovery guidance on commissioning interpretation early."
+    },
+    {
+      "id": "i2",
+      "observation": "Three unrelated missions have independently identified identity verification as a delivery constraint.",
+      "whyItMatters": "A constraint blocking three missions may be worth solving at portfolio level rather than mission level.",
+      "evidenceIds": [
+        "m8-e4",
+        "m1-e6",
+        "m2-e5"
+      ],
+      "missionIds": [
+        "m8",
+        "m1",
+        "m2"
+      ],
+      "confidence": 84,
+      "suggestedQuestion": "What is the combined delay cost across the three blocked missions?",
+      "suggestedAction": "Consider a narrow interim verification capability while the commercial route is decided.",
+      "generatedAt": "2026-06-29",
+      "provider": "analysis/rules-v1",
+      "status": "Actioned",
+      "reviewer": "Leah Okonkwo",
+      "reviewerFeedback": "Taken to the portfolio decision log; interim option under review.",
+      "osChangeSuggestion": null
+    },
+    {
+      "id": "i3",
+      "observation": "Adult social care assessment triage has consumed 38% of its investment without increasing confidence in its primary hypothesis.",
+      "whyItMatters": "Investment without confidence movement is the clearest early signal that a mission is blocked rather than progressing.",
+      "evidenceIds": [
+        "m3-e7",
+        "m3-e4"
+      ],
+      "missionIds": [
+        "m3"
+      ],
+      "confidence": 66,
+      "suggestedQuestion": "Is the mission blocked by the unresolved policy question rather than by delivery capacity?",
+      "suggestedAction": "Review whether to pause the mission until the interpretation question is resolved.",
+      "generatedAt": "2026-08-04",
+      "provider": "analysis/rules-v1",
+      "status": "Reviewing",
+      "reviewer": "Callum Frazer",
+      "reviewerFeedback": null,
+      "osChangeSuggestion": null
+    },
+    {
+      "id": "i4",
+      "observation": "Four missions independently replicated a result in a second context before scaling, and none of those scaled changes have since been reversed.",
+      "whyItMatters": "This looks like a reusable practice rather than a coincidence, though the sample is small and not randomly selected.",
+      "evidenceIds": [
+        "m2-e3",
+        "m4-e7",
+        "m6-e2",
+        "m1-e2"
+      ],
+      "missionIds": [
+        "m2",
+        "m4",
+        "m6",
+        "m1"
+      ],
+      "confidence": 77,
+      "suggestedQuestion": "Are there missions that scaled without replication, and what happened to them?",
+      "suggestedAction": "Consider promoting the second-context replication pattern from Emerging to Proven.",
+      "generatedAt": "2026-05-19",
+      "provider": "analysis/rules-v1",
+      "status": "Accepted",
+      "reviewer": "Leah Okonkwo",
+      "reviewerFeedback": "Agreed. Promoted after checking the counter-examples.",
+      "osChangeSuggestion": "Promote pattern second-context-replication to Proven in the pattern library."
+    },
+    {
+      "id": "i5",
+      "observation": "Potential value across two missions totals \u00a32.48m but is currently supported only by modelled evidence.",
+      "whyItMatters": "Modelled value is being carried in portfolio conversations at a similar weight to observed value.",
+      "evidenceIds": [
+        "m3-e8",
+        "m7-e1"
+      ],
+      "missionIds": [
+        "m3",
+        "m7"
+      ],
+      "confidence": 81,
+      "suggestedQuestion": "What single piece of evidence would move each figure from Modelled to Observed?",
+      "suggestedAction": "Set an evidence target for each modelled value record at the next mission review.",
+      "generatedAt": "2026-08-11",
+      "provider": "analysis/rules-v1",
+      "status": "Generated",
+      "reviewer": null,
+      "reviewerFeedback": null,
+      "osChangeSuggestion": null
+    },
+    {
+      "id": "i6",
+      "observation": "Analysis and audit experiments have produced a higher learning score per \u00a31,000 invested than prototype experiments across the portfolio.",
+      "whyItMatters": "If cheap analysis reliably produces more learning early, the sequencing of experiments could change.",
+      "evidenceIds": [
+        "m5-e1",
+        "m6-e3",
+        "m1-e1"
+      ],
+      "missionIds": [
+        "m5",
+        "m6",
+        "m1"
+      ],
+      "confidence": 58,
+      "suggestedQuestion": "Is this a sequencing effect rather than a method effect?",
+      "suggestedAction": "Trial analysis-first sequencing in two new missions and compare.",
+      "generatedAt": "2026-07-02",
+      "provider": "analysis/rules-v1",
+      "status": "Generated",
+      "reviewer": null,
+      "reviewerFeedback": null,
+      "osChangeSuggestion": "Consider adding sequencing guidance to cf-test-learn."
+    },
+    {
+      "id": "i7",
+      "observation": "Two missions have produced evidence that conflicts with current Discovery guidance on discovery duration.",
+      "whyItMatters": "Guidance that conflicts with operational evidence loses credibility quickly.",
+      "evidenceIds": [
+        "m6-e2",
+        "m5-e3"
+      ],
+      "missionIds": [
+        "m6",
+        "m5"
+      ],
+      "confidence": 54,
+      "suggestedQuestion": "Is the guidance wrong, or were these two missions unusual?",
+      "suggestedAction": "Open a pull request proposing a revision to the Discovery page for review.",
+      "generatedAt": "2026-06-10",
+      "provider": "analysis/rules-v1",
+      "status": "Rejected",
+      "reviewer": "Ruth Kelleher",
+      "reviewerFeedback": "Both missions had unusual data-quality problems. Not generalisable yet.",
+      "osChangeSuggestion": null
+    },
+    {
+      "id": "i8",
+      "observation": "The Mission canvas template is used in every mission, while the Benefits hypothesis template has been used twice in twelve months.",
+      "whyItMatters": "Rarely used templates either address a rare need or are not fit for purpose.",
+      "evidenceIds": [
+        "m4-e8"
+      ],
+      "missionIds": [
+        "m4",
+        "m2"
+      ],
+      "confidence": 63,
+      "suggestedQuestion": "Do teams avoid the benefits template because value work happens elsewhere?",
+      "suggestedAction": "Interview three mission owners before simplifying or retiring the template.",
+      "generatedAt": "2026-08-18",
+      "provider": "analysis/rules-v1",
+      "status": "Generated",
+      "reviewer": null,
+      "reviewerFeedback": null,
+      "osChangeSuggestion": "Consider simplifying cf-template-benefits-hypothesis."
+    }
+  ]
+} as Dataset;
+
+export default dataset;
