@@ -10,33 +10,179 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DecisionsRouteImport } from './routes/decisions'
+import { Route as EvidenceRouteImport } from './routes/evidence'
+import { Route as ExperimentsRouteImport } from './routes/experiments'
+import { Route as HowWeWorkRouteImport } from './routes/how-we-work'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as PatternsRouteImport } from './routes/patterns'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as HowWeWorkSplatRouteImport } from './routes/how-we-work.$'
+import { Route as MissionsIndexRouteImport } from './routes/missions.index'
+import { Route as MissionsSlugRouteImport } from './routes/missions.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DecisionsRoute = DecisionsRouteImport.update({
+  id: '/decisions',
+  path: '/decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvidenceRoute = EvidenceRouteImport.update({
+  id: '/evidence',
+  path: '/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperimentsRoute = ExperimentsRouteImport.update({
+  id: '/experiments',
+  path: '/experiments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowWeWorkRoute = HowWeWorkRouteImport.update({
+  id: '/how-we-work',
+  path: '/how-we-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatternsRoute = PatternsRouteImport.update({
+  id: '/patterns',
+  path: '/patterns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowWeWorkSplatRoute = HowWeWorkSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => HowWeWorkRoute,
+} as any)
+const MissionsIndexRoute = MissionsIndexRouteImport.update({
+  id: '/missions/',
+  path: '/missions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionsSlugRoute = MissionsSlugRouteImport.update({
+  id: '/missions/$slug',
+  path: '/missions/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/decisions': typeof DecisionsRoute
+  '/evidence': typeof EvidenceRoute
+  '/experiments': typeof ExperimentsRoute
+  '/how-we-work': typeof HowWeWorkRouteWithChildren
+  '/insights': typeof InsightsRoute
+  '/patterns': typeof PatternsRoute
+  '/portfolio': typeof PortfolioRoute
+  '/search': typeof SearchRoute
+  '/how-we-work/$': typeof HowWeWorkSplatRoute
+  '/missions/$slug': typeof MissionsSlugRoute
+  '/missions/': typeof MissionsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/decisions': typeof DecisionsRoute
+  '/evidence': typeof EvidenceRoute
+  '/experiments': typeof ExperimentsRoute
+  '/how-we-work': typeof HowWeWorkRouteWithChildren
+  '/insights': typeof InsightsRoute
+  '/patterns': typeof PatternsRoute
+  '/portfolio': typeof PortfolioRoute
+  '/search': typeof SearchRoute
+  '/how-we-work/$': typeof HowWeWorkSplatRoute
+  '/missions/$slug': typeof MissionsSlugRoute
+  '/missions': typeof MissionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/decisions': typeof DecisionsRoute
+  '/evidence': typeof EvidenceRoute
+  '/experiments': typeof ExperimentsRoute
+  '/how-we-work': typeof HowWeWorkRouteWithChildren
+  '/insights': typeof InsightsRoute
+  '/patterns': typeof PatternsRoute
+  '/portfolio': typeof PortfolioRoute
+  '/search': typeof SearchRoute
+  '/how-we-work/$': typeof HowWeWorkSplatRoute
+  '/missions/$slug': typeof MissionsSlugRoute
+  '/missions/': typeof MissionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/decisions'
+    | '/evidence'
+    | '/experiments'
+    | '/how-we-work'
+    | '/insights'
+    | '/patterns'
+    | '/portfolio'
+    | '/search'
+    | '/how-we-work/$'
+    | '/missions/$slug'
+    | '/missions/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/decisions'
+    | '/evidence'
+    | '/experiments'
+    | '/how-we-work'
+    | '/insights'
+    | '/patterns'
+    | '/portfolio'
+    | '/search'
+    | '/how-we-work/$'
+    | '/missions/$slug'
+    | '/missions'
+  id:
+    | '__root__'
+    | '/'
+    | '/decisions'
+    | '/evidence'
+    | '/experiments'
+    | '/how-we-work'
+    | '/insights'
+    | '/patterns'
+    | '/portfolio'
+    | '/search'
+    | '/how-we-work/$'
+    | '/missions/$slug'
+    | '/missions/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DecisionsRoute: typeof DecisionsRoute
+  EvidenceRoute: typeof EvidenceRoute
+  ExperimentsRoute: typeof ExperimentsRoute
+  HowWeWorkRoute: typeof HowWeWorkRouteWithChildren
+  InsightsRoute: typeof InsightsRoute
+  PatternsRoute: typeof PatternsRoute
+  PortfolioRoute: typeof PortfolioRoute
+  SearchRoute: typeof SearchRoute
+  MissionsSlugRoute: typeof MissionsSlugRoute
+  MissionsIndexRoute: typeof MissionsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +194,110 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/decisions': {
+      id: '/decisions'
+      path: '/decisions'
+      fullPath: '/decisions'
+      preLoaderRoute: typeof DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evidence': {
+      id: '/evidence'
+      path: '/evidence'
+      fullPath: '/evidence'
+      preLoaderRoute: typeof EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiments': {
+      id: '/experiments'
+      path: '/experiments'
+      fullPath: '/experiments'
+      preLoaderRoute: typeof ExperimentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-we-work': {
+      id: '/how-we-work'
+      path: '/how-we-work'
+      fullPath: '/how-we-work'
+      preLoaderRoute: typeof HowWeWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patterns': {
+      id: '/patterns'
+      path: '/patterns'
+      fullPath: '/patterns'
+      preLoaderRoute: typeof PatternsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-we-work/$': {
+      id: '/how-we-work/$'
+      path: '/$'
+      fullPath: '/how-we-work/$'
+      preLoaderRoute: typeof HowWeWorkSplatRouteImport
+      parentRoute: typeof HowWeWorkRoute
+    }
+    '/missions/': {
+      id: '/missions/'
+      path: '/missions'
+      fullPath: '/missions/'
+      preLoaderRoute: typeof MissionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/missions/$slug': {
+      id: '/missions/$slug'
+      path: '/missions/$slug'
+      fullPath: '/missions/$slug'
+      preLoaderRoute: typeof MissionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface HowWeWorkRouteChildren {
+  HowWeWorkSplatRoute: typeof HowWeWorkSplatRoute
+}
+
+const HowWeWorkRouteChildren: HowWeWorkRouteChildren = {
+  HowWeWorkSplatRoute: HowWeWorkSplatRoute,
+}
+
+const HowWeWorkRouteWithChildren = HowWeWorkRoute._addFileChildren(
+  HowWeWorkRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DecisionsRoute: DecisionsRoute,
+  EvidenceRoute: EvidenceRoute,
+  ExperimentsRoute: ExperimentsRoute,
+  HowWeWorkRoute: HowWeWorkRouteWithChildren,
+  InsightsRoute: InsightsRoute,
+  PatternsRoute: PatternsRoute,
+  PortfolioRoute: PortfolioRoute,
+  SearchRoute: SearchRoute,
+  MissionsSlugRoute: MissionsSlugRoute,
+  MissionsIndexRoute: MissionsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
