@@ -18,6 +18,7 @@ import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as PatternsRouteImport } from './routes/patterns'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as HowWeWorkIndexRouteImport } from './routes/how-we-work.index'
 import { Route as HowWeWorkSplatRouteImport } from './routes/how-we-work.$'
 import { Route as MissionsIndexRouteImport } from './routes/missions.index'
 import { Route as MissionsSlugRouteImport } from './routes/missions.$slug'
@@ -67,6 +68,11 @@ const SearchRoute = SearchRouteImport.update({
   path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HowWeWorkIndexRoute = HowWeWorkIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HowWeWorkRoute,
+} as any)
 const HowWeWorkSplatRoute = HowWeWorkSplatRouteImport.update({
   id: '/$',
   path: '/$',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/how-we-work/$': typeof HowWeWorkSplatRoute
   '/missions/$slug': typeof MissionsSlugRoute
+  '/how-we-work/': typeof HowWeWorkIndexRoute
   '/missions/': typeof MissionsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -102,13 +109,13 @@ export interface FileRoutesByTo {
   '/decisions': typeof DecisionsRoute
   '/evidence': typeof EvidenceRoute
   '/experiments': typeof ExperimentsRoute
-  '/how-we-work': typeof HowWeWorkRouteWithChildren
   '/insights': typeof InsightsRoute
   '/patterns': typeof PatternsRoute
   '/portfolio': typeof PortfolioRoute
   '/search': typeof SearchRoute
   '/how-we-work/$': typeof HowWeWorkSplatRoute
   '/missions/$slug': typeof MissionsSlugRoute
+  '/how-we-work': typeof HowWeWorkIndexRoute
   '/missions': typeof MissionsIndexRoute
 }
 export interface FileRoutesById {
@@ -124,6 +131,7 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/how-we-work/$': typeof HowWeWorkSplatRoute
   '/missions/$slug': typeof MissionsSlugRoute
+  '/how-we-work/': typeof HowWeWorkIndexRoute
   '/missions/': typeof MissionsIndexRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +148,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/how-we-work/$'
     | '/missions/$slug'
+    | '/how-we-work/'
     | '/missions/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -147,13 +156,13 @@ export interface FileRouteTypes {
     | '/decisions'
     | '/evidence'
     | '/experiments'
-    | '/how-we-work'
     | '/insights'
     | '/patterns'
     | '/portfolio'
     | '/search'
     | '/how-we-work/$'
     | '/missions/$slug'
+    | '/how-we-work'
     | '/missions'
   id:
     | '__root__'
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/how-we-work/$'
     | '/missions/$slug'
+    | '/how-we-work/'
     | '/missions/'
   fileRoutesById: FileRoutesById
 }
@@ -250,6 +260,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/how-we-work/': {
+      id: '/how-we-work/'
+      path: '/'
+      fullPath: '/how-we-work/'
+      preLoaderRoute: typeof HowWeWorkIndexRouteImport
+      parentRoute: typeof HowWeWorkRoute
+    }
     '/how-we-work/$': {
       id: '/how-we-work/$'
       path: '/$'
@@ -276,10 +293,12 @@ declare module '@tanstack/react-router' {
 
 interface HowWeWorkRouteChildren {
   HowWeWorkSplatRoute: typeof HowWeWorkSplatRoute
+  HowWeWorkIndexRoute: typeof HowWeWorkIndexRoute
 }
 
 const HowWeWorkRouteChildren: HowWeWorkRouteChildren = {
   HowWeWorkSplatRoute: HowWeWorkSplatRoute,
+  HowWeWorkIndexRoute: HowWeWorkIndexRoute,
 }
 
 const HowWeWorkRouteWithChildren = HowWeWorkRoute._addFileChildren(

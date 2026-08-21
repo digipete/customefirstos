@@ -56,9 +56,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </main>
       <footer className="border-t bg-surface">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-muted-foreground">
-          <p>
-            CustomerFirst OS — how we think, how we decide, how we deliver and how we learn.
-          </p>
+          <p>CustomerFirst OS — how we think, how we decide, how we deliver and how we learn.</p>
           <p className="font-mono text-xs">
             OS version {OS_VERSION} · knowledge in Markdown on GitHub
           </p>

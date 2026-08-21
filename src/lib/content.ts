@@ -1,4 +1,4 @@
-import yaml from "js-yaml";
+import * as yaml from "js-yaml";
 
 // Markdown in /content is the canonical source of truth. It is loaded at build
 // time so the repository remains usable (and readable) without this app.
