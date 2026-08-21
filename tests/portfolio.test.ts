@@ -27,9 +27,7 @@ describe("transformation economics", () => {
 
   it("sums every financial record exactly once across buckets", () => {
     const totals = valueTotals();
-    const all = dataset.values
-      .filter((v) => v.financial)
-      .reduce((t, v) => t + v.amount, 0);
+    const all = dataset.values.filter((v) => v.financial).reduce((t, v) => t + v.amount, 0);
     expect(totals.potential + totals.evidenced + totals.realised).toBe(all);
   });
 

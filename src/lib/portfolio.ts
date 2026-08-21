@@ -66,8 +66,7 @@ export function portfolioSummary() {
     ),
     medianDecisionLatency: median(
       decisions.map(
-        (d) =>
-          (Date.parse(d.decisionDate) - Date.parse(d.raisedDate)) / (1000 * 60 * 60 * 24),
+        (d) => (Date.parse(d.decisionDate) - Date.parse(d.raisedDate)) / (1000 * 60 * 60 * 24),
       ),
     ),
     emergingPatterns: patterns.filter((p) => p.status === "Emerging").length,

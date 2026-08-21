@@ -5,34 +5,17 @@
 // replaced by a database read without changing the experience layer.
 
 export type LifecycleStage =
-  | "Discover"
-  | "Define"
-  | "Experiment"
-  | "Deliver"
-  | "Measure"
-  | "Adapt"
-  | "Scale";
+  "Discover" | "Define" | "Experiment" | "Deliver" | "Measure" | "Adapt" | "Scale";
 
 export type MissionStatus = "Active" | "Paused" | "Stopped" | "Complete";
 
 export type HypothesisStatus =
-  | "Untested"
-  | "Testing"
-  | "Supported"
-  | "Partially supported"
-  | "Disproved"
-  | "Inconclusive";
+  "Untested" | "Testing" | "Supported" | "Partially supported" | "Disproved" | "Inconclusive";
 
 export type ExperimentResult = "Supported" | "Partially supported" | "Disproved" | "Inconclusive";
 
 export type Recommendation =
-  | "Continue"
-  | "Change"
-  | "Run another experiment"
-  | "Invest"
-  | "Scale"
-  | "Pause"
-  | "Stop";
+  "Continue" | "Change" | "Run another experiment" | "Invest" | "Scale" | "Pause" | "Stop";
 
 export type EvidenceStrength = "Weak" | "Moderate" | "Strong";
 
@@ -47,12 +30,7 @@ export type ValueType =
   | "Service improvement";
 
 export type CostType =
-  | "People"
-  | "Technology"
-  | "Supplier"
-  | "Experiment"
-  | "Partner effort"
-  | "Other";
+  "People" | "Technology" | "Supplier" | "Experiment" | "Partner effort" | "Other";
 
 export type DecisionDomain =
   | "Strategy"

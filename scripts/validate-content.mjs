@@ -62,7 +62,8 @@ export function validateContent() {
       if (!fm[key]) errors.push(`${rel}: missing required frontmatter field "${key}"`);
     }
     const [folder, ...rest] = rel.replace(/\.md$/, "").split("/");
-    if (!SECTIONS.includes(folder)) errors.push(`${rel}: "${folder}" is not a known section folder`);
+    if (!SECTIONS.includes(folder))
+      errors.push(`${rel}: "${folder}" is not a known section folder`);
     if (fm.section && fm.section !== folder)
       errors.push(`${rel}: frontmatter section "${fm.section}" does not match folder "${folder}"`);
     for (const part of rest) {
@@ -78,13 +79,15 @@ export function validateContent() {
   const seen = new Map();
   for (const { rel, fm } of docs) {
     if (!fm.id) continue;
-    if (seen.has(fm.id)) errors.push(`${rel}: duplicate id "${fm.id}" (also in ${seen.get(fm.id)})`);
+    if (seen.has(fm.id))
+      errors.push(`${rel}: duplicate id "${fm.id}" (also in ${seen.get(fm.id)})`);
     else seen.set(fm.id, rel);
   }
 
   for (const { rel, fm } of docs) {
     for (const ref of fm.related ?? []) {
-      if (!seen.has(ref)) errors.push(`${rel}: related id "${ref}" does not resolve to any document`);
+      if (!seen.has(ref))
+        errors.push(`${rel}: related id "${ref}" does not resolve to any document`);
     }
   }
 

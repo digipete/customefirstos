@@ -14,7 +14,8 @@ export const Route = createFileRoute("/how-we-work/")({
       { property: "og:title", content: "How we work — CustomerFirst OS" },
       {
         property: "og:description",
-        content: "The CustomerFirst operating manual, written in Markdown and reviewed through Git.",
+        content:
+          "The CustomerFirst operating manual, written in Markdown and reviewed through Git.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
