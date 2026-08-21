@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Shell, PageHeader } from "@/components/Shell";
+import { Shell } from "@/components/Shell";
 import { portfolioSummary, gbp } from "@/lib/portfolio";
 
 export const Route = createFileRoute("/")({
