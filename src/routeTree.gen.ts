@@ -10,33 +10,52 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HowWeWorkRouteImport } from './routes/how-we-work'
+import { Route as HowWeWorkSplatRouteImport } from './routes/how-we-work.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HowWeWorkRoute = HowWeWorkRouteImport.update({
+  id: '/how-we-work',
+  path: '/how-we-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowWeWorkSplatRoute = HowWeWorkSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => HowWeWorkRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/how-we-work': typeof HowWeWorkRouteWithChildren
+  '/how-we-work/$': typeof HowWeWorkSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/how-we-work': typeof HowWeWorkRouteWithChildren
+  '/how-we-work/$': typeof HowWeWorkSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/how-we-work': typeof HowWeWorkRouteWithChildren
+  '/how-we-work/$': typeof HowWeWorkSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/how-we-work' | '/how-we-work/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/how-we-work' | '/how-we-work/$'
+  id: '__root__' | '/' | '/how-we-work' | '/how-we-work/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HowWeWorkRoute: typeof HowWeWorkRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +67,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/how-we-work': {
+      id: '/how-we-work'
+      path: '/how-we-work'
+      fullPath: '/how-we-work'
+      preLoaderRoute: typeof HowWeWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-we-work/$': {
+      id: '/how-we-work/$'
+      path: '/$'
+      fullPath: '/how-we-work/$'
+      preLoaderRoute: typeof HowWeWorkSplatRouteImport
+      parentRoute: typeof HowWeWorkRoute
+    }
   }
 }
 
+interface HowWeWorkRouteChildren {
+  HowWeWorkSplatRoute: typeof HowWeWorkSplatRoute
+}
+
+const HowWeWorkRouteChildren: HowWeWorkRouteChildren = {
+  HowWeWorkSplatRoute: HowWeWorkSplatRoute,
+}
+
+const HowWeWorkRouteWithChildren = HowWeWorkRoute._addFileChildren(
+  HowWeWorkRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HowWeWorkRoute: HowWeWorkRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
