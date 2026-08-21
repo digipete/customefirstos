@@ -10,7 +10,7 @@ function splitMermaid(md: string) {
   let m: RegExpExecArray | null;
   while ((m = re.exec(md))) {
     if (m.index > last) parts.push({ type: "md", content: md.slice(last, m.index) });
-    parts.push({ type: "mermaid", content: m[1] });
+    parts.push({ type: "mermaid", content: m[1] ?? "" });
     last = m.index + m[0].length;
   }
   if (last < md.length) parts.push({ type: "md", content: md.slice(last) });

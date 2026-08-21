@@ -67,7 +67,7 @@ function Portfolio() {
                   </div>
                   <h3 className="mt-2 font-semibold"><Link to="/missions/$slug" params={{ slug: m.slug }} className="underline">{m.name}</Link></h3>
                   <p className="text-sm text-muted-foreground">
-                    {gbp(investment(m.id))} invested · potential {gbp(v.potential)} · evidenced {gbp(v.evidenced)} · realised {gbp(v.realised)} · weakest health dimension: {weakest[0]} ({weakest[1].score}/5)
+                    {gbp(investment(m.id))} invested · potential {gbp(v.potential)} · evidenced {gbp(v.evidenced)} · realised {gbp(v.realised)} · weakest health dimension: {weakest?.[0]} ({weakest?.[1].score}/5)
                   </p>
                 </li>
               );

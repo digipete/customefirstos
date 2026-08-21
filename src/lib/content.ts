@@ -37,7 +37,7 @@ export const GITHUB_REPO = "https://github.com/digipete/CFOS";
 function parse(raw: string): { data: Record<string, unknown>; body: string } {
   const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/.exec(raw);
   if (!match) return { data: {}, body: raw };
-  const data = (yaml.load(match[1]) ?? {}) as Record<string, unknown>;
+  const data = (yaml.load(match[1] ?? "") ?? {}) as Record<string, unknown>;
   return { data, body: raw.slice(match[0].length) };
 }
 

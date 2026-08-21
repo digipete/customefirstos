@@ -15,7 +15,8 @@ export const Route = createFileRoute("/missions/")({
   component: Missions,
 });
 
-const tone = (s: string) => (s === "Stopped" ? "danger" : s === "Paused" ? "caution" : s === "Complete" ? "positive" : "accent") as const;
+const tone = (s: string): "danger" | "caution" | "positive" | "accent" =>
+  s === "Stopped" ? "danger" : s === "Paused" ? "caution" : s === "Complete" ? "positive" : "accent";
 
 function Missions() {
   return (

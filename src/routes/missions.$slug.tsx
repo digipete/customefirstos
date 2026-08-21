@@ -27,7 +27,8 @@ export const Route = createFileRoute("/missions/$slug")({
 });
 
 const person = (id: string) => dataset.people.find((p) => p.id === id)?.name ?? id;
-const strengthTone = (s: string) => (s === "Strong" ? "positive" : s === "Moderate" ? "accent" : "caution") as const;
+const strengthTone = (s: string): "positive" | "accent" | "caution" =>
+  s === "Strong" ? "positive" : s === "Moderate" ? "accent" : "caution";
 
 function MissionPage() {
   const { mission: m } = Route.useLoaderData();
