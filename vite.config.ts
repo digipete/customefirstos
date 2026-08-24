@@ -13,7 +13,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // GitHub Pages is a static host, so the CI build switches TanStack Start to the
 // "github-pages" nitro preset (static prerender + .nojekyll + /404.html) and
 // prefixes all asset URLs with /customefirstos/ to match the project site path.
-const isGithubPages = process.env.CFOS_STATIC === "true";
+const isGithubPages = process.env["CFOS_STATIC"] === "true";
 
 export default defineConfig({
   tanstackStart: {
