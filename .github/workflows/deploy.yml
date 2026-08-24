@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+# Runs only on pushes to main (not PRs) and can be triggered manually from the
+# Actions tab. It performs a STATIC build of the TanStack Start app — the
+# github-pages nitro preset (see vite.config.ts) — and publishes the .output/public
+# directory to GitHub Pages via the official deploy-pages action.
+#
+# Before this works, enable Pages on the repo:
+#   Settings > Pages > Source: "GitHub Actions"  (not "Deploy from a branch").
+#
+# The app is served from the /customefirstos/ project path, so every asset URL is
+# prefixed accordingly by vite.config.ts (CFOS_STATIC=true).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Grants the deploy job permission to publish a Pages deployment and lets one
+# in-flight deployment cancel a previous one.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # CFOS_STATIC=true makes vite.config.ts emit a static (prerendered) build with
+      # base /customefirstos/ and the github-pages nitro preset.
+      - name: Build static site
+        run: CFOS_STATIC=true bun run build
+
+      # The github-pages preset writes prerendered output to .output/public and adds
+      # .nojekyll so Jekyll doesn't mangle the assets.
+      - name: Upload Pages artifact
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
