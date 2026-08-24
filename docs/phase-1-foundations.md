@@ -72,23 +72,42 @@ Routes are file-based under `src/routes/`:
 The document URL is derived directly from the file path in `content/`, so a Markdown file
 and its web address never drift apart.
 
-## 4. Deployment — the `/CFOS/` base path decision
+## 4. Deployment — the `/customefirstos/` base path decision
 
-The original spec assumed a static GitHub Pages site served from `/CFOS/`. This build is
-server-rendered (TanStack Start on an edge runtime), which Pages cannot host. Rather than
-silently ignoring that, the recommendation is:
+The spec assumed a static GitHub Pages site served from `/CFOS/`. Two facts shaped the
+decision:
 
-- **GitHub** keeps the durable asset: `content/`, validation, CI, review through pull
-  requests. This is the part that must outlive any tooling choice.
-- **Lovable publishing** serves the interface from the site root, so no `/CFOS/` base path
-  is needed and no `404.html` SPA redirect hack is required — deep links and refreshes
-  work server-side.
-- If Pages hosting is ever a hard requirement, it means giving up server rendering, per
-  document metadata for sharing, and future authenticated views. That is a deliberate
-  trade to make explicitly, not by default.
+- This build is server-rendered (TanStack Start), which a static host like GitHub Pages
+  cannot serve as-is.
+- The live URL `https://digipete.github.io/customefirstos/` is a **project site**, so every
+  asset must live under `/customefirstos/`.
 
-CI (`.github/workflows/ci.yml`) therefore guards content and code quality; it does not
-publish. Publishing stays a one-click action from Lovable.
+The resolution is a **dual-build setup**:
+
+- **Lovable publishing** (from the app's root) is the default interface. Server rendering
+  is kept, deep links and refreshes work server-side, and every document gets its own
+  `og:*` metadata for social sharing.
+- **GitHub Pages** is additionally published from CI using a dedicated **static build**
+  (`.github/workflows/deploy.yml`). In GitHub Actions the build runs outside the Lovable
+  sandbox, so `vite.config.ts` can switch to the Nitro `github-pages` preset
+  (`CFOS_STATIC=true`): it prerenders every reachable route, writes `.nojekyll`, emits a
+  `404.html` SPA fallback, and prefixes all asset URLs with `/customefirstos/`.
+
+### Trade-offs of the static Pages build (accepted deliberately)
+
+- **No server rendering on Pages**: HTML is prerendered at build time. New or renamed
+  content only appears after the next `main` push.
+- **Social metadata degrades**: without a server, `og:*` tags come from static HTML. Each
+  prerendered page still carries its own metadata, but unfurl-crawlers that re-render
+  dynamic routes (e.g. a freshly added doc) may miss them until the next deploy.
+- **Deep links on unknown paths**: Pages has no server to intercept 404s, so an unmatched
+  URL returns a 404 status before the SPA `404.html` fallback boots the client router.
+  Known routes (every prerendered page) work as full URLs.
+- **Lovable preview stays unaffected**: the sandbox forces the cloudflare output regardless
+  of this file, so preview/publishing from Lovable keeps its root-based server build.
+
+The durable asset (content, validation, CI) stays on GitHub; Pages is one mirror of the
+interface. To enable Pages on the repo: **Settings > Pages > Source: GitHub Actions**.
 
 ## 5. Phase 1 exit checklist
 
@@ -97,5 +116,6 @@ publish. Publishing stays a one-click action from Lovable.
 - [x] Tests assert potential value is never counted as realised value
 - [x] CI runs validation, tests, lint and build on every push and pull request
 - [x] Every route renders server-side, including deep document links
+- [x] GitHub Pages static mirror workflow (`.github/workflows/deploy.yml`)
 - [ ] Repo structure, Markdown contract and deployment decision signed off by Pete
 - [ ] Only then: Lovable Cloud schema, roles, auth and write flows (Phase 2)
