@@ -6,10 +6,25 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// The Lovable preview/build sandbox always targets the cloudflare-module server
+// output regardless of this file (it forces it), so these overrides only take
+// effect when the build runs OUTSIDE the sandbox — i.e. in GitHub Actions.
+//
+// GitHub Pages is a static host, so the CI build switches TanStack Start to the
+// "github-pages" nitro preset (static prerender + .nojekyll + /404.html) and
+// prefixes all asset URLs with /customefirstos/ to match the project site path.
+const isGithubPages = process.env.CFOS_STATIC === "true";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  ...(isGithubPages
+    ? {
+        vite: { base: "/customefirstos/" },
+        nitro: { preset: "github-pages" },
+      }
+    : {}),
 });
