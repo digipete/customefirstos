@@ -1,6 +1,6 @@
 # CustomeFirstOS
 
-CUSTOMERFIRST OS
+CUSTOMERFIRST OPERATING SYSTEM
 
 Build a production-quality web application called CustomerFirst OS (CFOS).
 
