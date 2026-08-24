@@ -30,26 +30,48 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
+      # bun.lock is generated inside the Lovable sandbox and pins every tarball to a
+      # private sandbox registry that GitHub runners cannot authenticate against, and
+      # bunfig.toml adds sandbox-only install rules. Removing both makes CI resolve the
+      # package.json version ranges from public npm instead.
+      - name: Prepare public-registry install
+        run: rm -f bun.lock bunfig.toml
+
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
+        env:
+          npm_config_registry: https://registry.npmjs.org
+
+      # A malformed Markdown document must never reach the published site.
+      - name: Validate knowledge layer
+        run: bun run content:validate
 
       # CFOS_STATIC=true makes vite.config.ts emit a static (prerendered) build with
       # base /customefirstos/ and the github-pages nitro preset.
       - name: Build static site
         run: CFOS_STATIC=true bun run build
 
+      # Fail loudly here rather than publishing an empty artifact.
+      - name: Verify static output
+        run: |
+          if [ ! -f .output/public/index.html ]; then
+            echo "Static build produced no .output/public/index.html — the github-pages preset did not prerender."
+            ls -R .output || true
+            exit 1
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
       # The github-pages preset writes prerendered output to .output/public and adds
       # .nojekyll so Jekyll doesn't mangle the assets.
       - name: Upload Pages artifact
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .output/public
