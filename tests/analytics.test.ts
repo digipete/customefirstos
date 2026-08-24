@@ -1,10 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
-  healthRankings,
-  flowCadence,
-  decisionVelocity,
-  insightFunnel,
-} from "@/lib/analytics";
+import { healthRankings, flowCadence, decisionVelocity, insightFunnel } from "@/lib/analytics";
 import { dataset } from "@/data/seed";
 
 describe("healthRankings", () => {
@@ -92,9 +87,7 @@ describe("insightFunnel", () => {
 
   it("acceptance rate matches accepted over total", () => {
     const f = insightFunnel();
-    expect(f.acceptanceRate).toBe(
-      Math.round((f.accepted / f.total) * 100),
-    );
+    expect(f.acceptanceRate).toBe(Math.round((f.accepted / f.total) * 100));
   });
 
   it("provider breakdown sums to total", () => {

@@ -1,11 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Shell, PageHeader, Tag } from "@/components/Shell";
-import {
-  healthRankings,
-  flowCadence,
-  decisionVelocity,
-  insightFunnel,
-} from "@/lib/analytics";
+import { healthRankings, flowCadence, decisionVelocity, insightFunnel } from "@/lib/analytics";
 
 export const Route = createFileRoute("/analytics")({
   head: () => ({
@@ -43,12 +38,15 @@ function Analytics() {
         <section>
           <h2 className="text-2xl font-semibold">Mission health — weakest dimensions first</h2>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Mean 1–5 score per dimension across all missions, plus how many missions score it
-            weakly (2 or below). Sorted most fragile first.
+            Mean 1–5 score per dimension across all missions, plus how many missions score it weakly
+            (2 or below). Sorted most fragile first.
           </p>
           <ul className="mt-4 divide-y rounded-lg border bg-card">
             {health.map((h) => (
-              <li key={h.dimension} className="flex flex-wrap items-center justify-between gap-3 p-4">
+              <li
+                key={h.dimension}
+                className="flex flex-wrap items-center justify-between gap-3 p-4"
+              >
                 <div>
                   <p className="font-medium">{h.dimension}</p>
                   <p className="text-sm text-muted-foreground">
@@ -69,8 +67,8 @@ function Analytics() {
         <section>
           <h2 className="text-2xl font-semibold">Flow economics — delivery cadence</h2>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Median days to each milestone. Missions that never reached a milestone are counted,
-            not hidden.
+            Median days to each milestone. Missions that never reached a milestone are counted, not
+            hidden.
           </p>
           <dl className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {flow.map((f) => (
@@ -80,7 +78,9 @@ function Analytics() {
                 </dt>
                 <dd className="mt-1 text-2xl font-bold">
                   {f.medianDays ?? "—"}
-                  {f.medianDays != null && <span className="text-sm font-normal text-muted-foreground"> days</span>}
+                  {f.medianDays != null && (
+                    <span className="text-sm font-normal text-muted-foreground"> days</span>
+                  )}
                 </dd>
                 <p className="mt-1 text-xs text-muted-foreground">
                   {f.missionsReached} reached · {f.missionsNotReached} never reached
@@ -93,8 +93,8 @@ function Analytics() {
         <section>
           <h2 className="text-2xl font-semibold">Decision velocity by domain</h2>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Mean and median latency from question raised to decision taken, grouped by domain.
-            Slow or backlogged domains surface first.
+            Mean and median latency from question raised to decision taken, grouped by domain. Slow
+            or backlogged domains surface first.
           </p>
           <ul className="mt-4 divide-y rounded-lg border bg-card">
             {decisions.map((d) => (
@@ -151,7 +151,10 @@ function Analytics() {
           </dl>
           <ul className="mt-4 space-y-2">
             {insights.byProvider.map((p) => (
-              <li key={p.provider} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border bg-card px-4 py-3">
+              <li
+                key={p.provider}
+                className="flex flex-wrap items-center justify-between gap-3 rounded-lg border bg-card px-4 py-3"
+              >
                 <span className="font-mono text-sm">{p.provider}</span>
                 <span className="text-sm text-muted-foreground">
                   {p.accepted} of {p.count} accepted ({p.acceptanceRate}%)

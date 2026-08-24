@@ -3,13 +3,7 @@
 // never blended into a single score.
 
 import { dataset } from "@/data/seed";
-import type {
-  Dataset,
-  HealthDimension,
-  Insight,
-  Mission,
-  Decision,
-} from "@/data/types";
+import type { Dataset, HealthDimension, Insight, Mission, Decision } from "@/data/types";
 
 const HEALTH_DIMENSIONS: HealthDimension[] = [
   "Outcome clarity",
@@ -71,32 +65,31 @@ function latencyDays(d: Decision) {
 /** Mean + median decision latency grouped by domain, with pending-decision counts. */
 export function decisionVelocity(decs: Decision[] = dataset.decisions) {
   const domains = [...new Set(decs.map((d) => d.domain))].sort();
-  return domains.map((domain) => {
-    const inDomain = decs.filter((d) => d.domain === domain);
-    const latencies = inDomain.map(latencyDays);
-    const mean =
-      latencies.reduce((a, b) => a + b, 0) / Math.max(latencies.length, 1);
-    const awaiting = inDomain
-      .filter((d) => !d.outcome)
-      .sort((a, b) => Date.parse(a.decisionDate) - Date.parse(b.decisionDate))
-      .map((d) => ({ question: d.question, decisionDate: d.decisionDate }));
-    return {
-      domain,
-      count: inDomain.length,
-      meanDays: Math.round(mean * 10) / 10,
-      medianDays: median(latencies),
-      awaitingReview: awaiting.length,
-      pending: awaiting.slice(0, 3),
-    };
-  }).sort((a, b) => b.awaitingReview - a.awaitingReview || b.meanDays - a.meanDays);
+  return domains
+    .map((domain) => {
+      const inDomain = decs.filter((d) => d.domain === domain);
+      const latencies = inDomain.map(latencyDays);
+      const mean = latencies.reduce((a, b) => a + b, 0) / Math.max(latencies.length, 1);
+      const awaiting = inDomain
+        .filter((d) => !d.outcome)
+        .sort((a, b) => Date.parse(a.decisionDate) - Date.parse(b.decisionDate))
+        .map((d) => ({ question: d.question, decisionDate: d.decisionDate }));
+      return {
+        domain,
+        count: inDomain.length,
+        meanDays: Math.round(mean * 10) / 10,
+        medianDays: median(latencies),
+        awaitingReview: awaiting.length,
+        pending: awaiting.slice(0, 3),
+      };
+    })
+    .sort((a, b) => b.awaitingReview - a.awaitingReview || b.meanDays - a.meanDays);
 }
 
 /** Insight status funnel plus acceptance rate by provider. */
 export function insightFunnel(ins: Insight[] = dataset.insights) {
   const count = (s: Insight["status"]) => ins.filter((i) => i.status === s).length;
-  const accepted = ins.filter(
-    (i) => i.status === "Accepted" || i.status === "Actioned",
-  );
+  const accepted = ins.filter((i) => i.status === "Accepted" || i.status === "Actioned");
   const providers = [...new Set(ins.map((i) => i.provider))].sort();
   return {
     total: ins.length,
@@ -108,15 +101,11 @@ export function insightFunnel(ins: Insight[] = dataset.insights) {
       Rejected: count("Rejected"),
     },
     accepted: accepted.length,
-    acceptanceRate: ins.length
-      ? Math.round((accepted.length / ins.length) * 100)
-      : 0,
+    acceptanceRate: ins.length ? Math.round((accepted.length / ins.length) * 100) : 0,
     acceptedWithOsChange: accepted.filter((i) => i.osChangeSuggestion).length,
     byProvider: providers.map((provider) => {
       const p = ins.filter((i) => i.provider === provider);
-      const pAccepted = p.filter(
-        (i) => i.status === "Accepted" || i.status === "Actioned",
-      );
+      const pAccepted = p.filter((i) => i.status === "Accepted" || i.status === "Actioned");
       return {
         provider,
         count: p.length,
