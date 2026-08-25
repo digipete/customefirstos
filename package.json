@@ -13,6 +13,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "content:validate": "node scripts/validate-content.mjs",
+    "build:pages": "CFOS_STATIC=true vite build && CFOS_STATIC=true node scripts/prerender-static.mjs",
     "verify": "bun run content:validate && bun run test && bun run lint && bun run build"
   },
   "overrides": {
