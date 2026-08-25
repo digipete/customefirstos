@@ -10,9 +10,13 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // output regardless of this file (it forces it), so these overrides only take
 // effect when the build runs OUTSIDE the sandbox — i.e. in GitHub Actions.
 //
-// GitHub Pages is a static host, so the CI build switches TanStack Start to the
-// "github-pages" nitro preset (static prerender + .nojekyll + /404.html) and
-// prefixes all asset URLs with /customefirstos/ to match the project site path.
+// GitHub Pages is a static host, so the CI build prefixes all asset URLs with
+// /customefirstos/ (the project site path) and targets the "node-server" preset.
+// Nitro's own "static"/"github-pages" presets are broken with the Vite/Nitro
+// versions this template pins (their prerenderer never reaches the SSR handler,
+// then the nitro environment build aborts on an HTML SSR input), so the static
+// HTML is produced instead by scripts/prerender-static.mjs, which runs the built
+// server and crawls every page into .output/public.
 const isGithubPages = process.env["CFOS_STATIC"] === "true";
 
 export default defineConfig({
@@ -24,7 +28,7 @@ export default defineConfig({
   ...(isGithubPages
     ? {
         vite: { base: "/customefirstos/" },
-        nitro: { preset: "github-pages" },
+        nitro: { preset: "node-server" },
       }
     : {}),
 });
