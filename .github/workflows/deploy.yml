@@ -52,10 +52,11 @@ jobs:
       - name: Validate knowledge layer
         run: bun run content:validate
 
-      # CFOS_STATIC=true makes vite.config.ts emit a static (prerendered) build with
-      # base /customefirstos/ and the github-pages nitro preset.
+      # CFOS_STATIC=true builds with base /customefirstos/ and a node-server output,
+      # then scripts/prerender-static.mjs runs that server and crawls every page into
+      # .output/public (plus .nojekyll and a 404.html SPA fallback).
       - name: Build static site
-        run: CFOS_STATIC=true bun run build
+        run: bun run build:pages
 
       # Fail loudly here rather than publishing an empty artifact.
       - name: Verify static output
