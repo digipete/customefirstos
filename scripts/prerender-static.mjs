@@ -47,7 +47,9 @@ function extractLinks(html) {
 /** /customefirstos/missions/foo -> .output/public/missions/foo/index.html */
 function outputPathFor(route) {
   const rel = route.slice(BASE.length).replace(/^\/+/, "");
-  return rel === "" ? path.join(PUBLIC_DIR, "index.html") : path.join(PUBLIC_DIR, rel, "index.html");
+  return rel === ""
+    ? path.join(PUBLIC_DIR, "index.html")
+    : path.join(PUBLIC_DIR, rel, "index.html");
 }
 
 async function main() {
