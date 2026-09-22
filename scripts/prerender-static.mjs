@@ -9,14 +9,15 @@
 //
 // Usage: node scripts/prerender-static.mjs   (after a node-server build)
 import { spawn } from "node:child_process";
-import { mkdir, writeFile, readFile, access } from "node:fs/promises";
+import { mkdir, writeFile, readFile, access, cp, rm } from "node:fs/promises";
 import path from "node:path";
 
 const BASE = process.env["CFOS_BASE"] ?? "/customefirstos/";
 const PORT = Number(process.env["CFOS_PRERENDER_PORT"] ?? 3123);
 const ORIGIN = `http://127.0.0.1:${PORT}`;
+const BUILD_DIR = path.resolve("dist");
 const PUBLIC_DIR = path.resolve(".output/public");
-const SERVER_ENTRY = path.resolve(".output/server/index.mjs");
+const SERVER_ENTRY = path.join(BUILD_DIR, "server/index.mjs");
 
 async function waitForServer(timeoutMs = 60_000) {
   const deadline = Date.now() + timeoutMs;
@@ -54,6 +55,9 @@ function outputPathFor(route) {
 
 async function main() {
   await access(SERVER_ENTRY);
+  await rm(PUBLIC_DIR, { recursive: true, force: true });
+  await mkdir(PUBLIC_DIR, { recursive: true });
+  await cp(path.join(BUILD_DIR, "client"), PUBLIC_DIR, { recursive: true });
 
   const server = spawn(process.execPath, [SERVER_ENTRY], {
     env: { ...process.env, PORT: String(PORT), HOST: "127.0.0.1" },
