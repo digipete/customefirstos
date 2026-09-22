@@ -4,6 +4,25 @@ import { Markdown } from "@/components/Markdown";
 import { getDoc, getDocById } from "@/lib/content";
 import { dataset } from "@/data/seed";
 
+function RelatedDocLink({ doc }: { doc: NonNullable<ReturnType<typeof getDocById>> }) {
+  if (doc.section === "technology-architecture") {
+    return (
+      <Link
+        to="/technology-architecture/$"
+        params={{ _splat: doc.slug.replace("technology-architecture/", "") }}
+        className="underline"
+      >
+        {doc.title}
+      </Link>
+    );
+  }
+  return (
+    <Link to="/how-we-work/$" params={{ _splat: doc.slug }} className="underline">
+      {doc.title}
+    </Link>
+  );
+}
+
 export const Route = createFileRoute("/how-we-work/$")({
   loader: ({ params }) => {
     const doc = getDoc(params._splat ?? "");
@@ -104,9 +123,7 @@ function DocPage() {
               <ul className="mt-3 space-y-2">
                 {related.map((r) => (
                   <li key={r!.id}>
-                    <Link to="/how-we-work/$" params={{ _splat: r!.slug }} className="underline">
-                      {r!.title}
-                    </Link>
+                    <RelatedDocLink doc={r!} />
                   </li>
                 ))}
               </ul>
