@@ -5,6 +5,7 @@ export const OS_VERSION = "0.4.2";
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/how-we-work", label: "How we work" },
+  { to: "/technology-architecture", label: "Technology & Architecture" },
   { to: "/missions", label: "Missions" },
   { to: "/decisions", label: "Decisions" },
   { to: "/experiments", label: "Experiments" },

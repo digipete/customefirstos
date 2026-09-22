@@ -19,6 +19,8 @@ tags:
   - template
 related:
   - cf-lifecycle
+  - cf-architecture-patterns-tools
+  - cf-decision-framework
 ---
 
 # Architecture Decision template
@@ -27,13 +29,12 @@ Copy this template into your mission folder, or use it directly in GitHub. It is
 
 ## Fields
 
-- **Title and status**
 - **Context**
-- **Decision drivers**
-- **Options considered**
+- **Options**
 - **Decision**
-- **Consequences (positive and negative)**
-- **Reversibility and review date**
+- **Evidence**
+- **Consequences**
+- **Review trigger**
 
 ## Notes
 

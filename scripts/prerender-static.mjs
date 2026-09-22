@@ -9,14 +9,59 @@
 //
 // Usage: node scripts/prerender-static.mjs   (after a node-server build)
 import { spawn } from "node:child_process";
-import { mkdir, writeFile, readFile, access } from "node:fs/promises";
+import { createServer } from "node:http";
+import { mkdir, writeFile, readFile, access, cp, rm } from "node:fs/promises";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const BASE = process.env["CFOS_BASE"] ?? "/customefirstos/";
 const PORT = Number(process.env["CFOS_PRERENDER_PORT"] ?? 3123);
 const ORIGIN = `http://127.0.0.1:${PORT}`;
 const PUBLIC_DIR = path.resolve(".output/public");
-const SERVER_ENTRY = path.resolve(".output/server/index.mjs");
+
+async function firstExisting(paths) {
+  for (const candidate of paths) {
+    try {
+      await access(candidate);
+      return candidate;
+    } catch {
+      /* try the next supported Nitro output location */
+    }
+  }
+  throw new Error(`No server entry found in: ${paths.join(", ")}`);
+}
+
+async function startServer(serverEntry) {
+  const source = await readFile(serverEntry, "utf8");
+  if (source.includes("cloudflare_module_default")) {
+    const { default: worker } = await import(pathToFileURL(serverEntry).href);
+    const server = createServer(async (request, response) => {
+      try {
+        const url = new URL(request.url ?? "/", ORIGIN);
+        const webResponse = await worker.fetch(new Request(url), {}, { waitUntil() {} });
+        response.writeHead(webResponse.status, Object.fromEntries(webResponse.headers));
+        response.end(Buffer.from(await webResponse.arrayBuffer()));
+      } catch (error) {
+        console.error(error);
+        response.writeHead(500).end("Prerender server error");
+      }
+    });
+    await new Promise((resolve) => server.listen(PORT, "127.0.0.1", resolve));
+    return { stop: () => server.close() };
+  }
+
+  const child = spawn(process.execPath, [serverEntry], {
+    env: { ...process.env, PORT: String(PORT), HOST: "127.0.0.1" },
+    stdio: ["ignore", "inherit", "inherit"],
+  });
+  child.on("exit", (code) => {
+    if (code && code !== 0) {
+      console.error(`Prerender server exited early with code ${code}`);
+      process.exitCode = 1;
+    }
+  });
+  return { stop: () => child.kill("SIGTERM") };
+}
 
 async function waitForServer(timeoutMs = 60_000) {
   const deadline = Date.now() + timeoutMs;
@@ -53,18 +98,15 @@ function outputPathFor(route) {
 }
 
 async function main() {
-  await access(SERVER_ENTRY);
-
-  const server = spawn(process.execPath, [SERVER_ENTRY], {
-    env: { ...process.env, PORT: String(PORT), HOST: "127.0.0.1" },
-    stdio: ["ignore", "inherit", "inherit"],
-  });
-  server.on("exit", (code) => {
-    if (code && code !== 0) {
-      console.error(`Prerender server exited early with code ${code}`);
-      process.exit(1);
-    }
-  });
+  const serverEntry = await firstExisting([
+    path.resolve(".output/server/index.mjs"),
+    path.resolve("dist/server/index.mjs"),
+  ]);
+  const clientDir = path.resolve(path.dirname(path.dirname(serverEntry)), "client");
+  await rm(PUBLIC_DIR, { recursive: true, force: true });
+  await mkdir(PUBLIC_DIR, { recursive: true });
+  await cp(clientDir, PUBLIC_DIR, { recursive: true });
+  const server = await startServer(serverEntry);
 
   try {
     await waitForServer();
@@ -103,7 +145,7 @@ async function main() {
 
     console.log(`Prerendered ${rendered} routes into .output/public`);
   } finally {
-    server.kill("SIGTERM");
+    server.stop();
   }
 }
 

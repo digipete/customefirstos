@@ -20,21 +20,22 @@ tags:
 related:
   - cf-discovery
   - cf-test-learn
+  - cf-continuous-architecture
 ---
 
 # Delivery Lifecycle
 
 Each stage exists to answer a different question.
 
-| Stage | Question it answers |
-| --- | --- |
-| Discover | What is actually happening for customers? |
-| Define | What outcome are we pursuing, and what must be true? |
-| Experiment | Which assumptions survive contact with reality? |
-| Deliver | Can we make the change work in service? |
-| Measure | Did the outcome move? |
-| Adapt | What do we change given the evidence? |
-| Scale | Where else does this hold? |
+| Stage      | Question it answers                                  |
+| ---------- | ---------------------------------------------------- |
+| Discover   | What is actually happening for customers?            |
+| Define     | What outcome are we pursuing, and what must be true? |
+| Experiment | Which assumptions survive contact with reality?      |
+| Deliver    | Can we make the change work in service?              |
+| Measure    | Did the outcome move?                                |
+| Adapt      | What do we change given the evidence?                |
+| Scale      | Where else does this hold?                           |
 
 ```mermaid
 flowchart TD
@@ -45,3 +46,7 @@ N[Customer need] --> M[Mission] --> H[Hypothesis] --> X[Experiment] --> E[Eviden
 
 - treating stages as sign-off gates
 - moving to Deliver with untested primary hypotheses
+
+## Architecture throughout delivery
+
+Architecture is continuous across the lifecycle. It helps teams frame decisions, expose uncertainty, shape experiments and adapt choices as evidence changes.

@@ -21,6 +21,7 @@ tags:
 related:
   - cf-principles
   - cf-lifecycle
+  - cf-architecture-at-customerfirst
 ---
 
 # Architecture
@@ -46,3 +47,7 @@ Architecture works inside the squad from the start of a mission, contributes hyp
 
 - Architecture as a review gate at the end
 - standards that exist only in one person's head
+
+## Use the architecture guidance
+
+The Technology & Architecture section provides the shared principles, domains, evidence and assurance model used by every mission.

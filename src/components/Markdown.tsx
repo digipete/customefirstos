@@ -1,16 +1,32 @@
 import { marked } from "marked";
 import { useEffect, useId, useRef, useState } from "react";
+import { ArchitectureDiagram, type ArchitectureDiagramKind } from "./ArchitectureDiagram";
+import { GuidanceBlock, type GuidanceTone } from "./GuidanceBlock";
 
 // Renders canonical Markdown. Mermaid blocks stay text in Git and are rendered
 // client-side only, so the Markdown remains the editable source.
-function splitMermaid(md: string) {
-  const parts: { type: "md" | "mermaid"; content: string }[] = [];
-  const re = /```mermaid\n([\s\S]*?)```/g;
+type MarkdownPart =
+  | { type: "md" | "mermaid"; content: string }
+  | { type: "architecture-diagram"; content: ArchitectureDiagramKind }
+  | { type: "guidance"; content: string; tone: GuidanceTone };
+
+function splitEnhancedBlocks(md: string) {
+  const parts: MarkdownPart[] = [];
+  const re = /```(mermaid|architecture-diagram|guidance)(?:\s+([^\n]+))?\n([\s\S]*?)```/g;
   let last = 0;
   let m: RegExpExecArray | null;
   while ((m = re.exec(md))) {
     if (m.index > last) parts.push({ type: "md", content: md.slice(last, m.index) });
-    parts.push({ type: "mermaid", content: m[1] ?? "" });
+    const type = m[1];
+    const option = (m[2] ?? "").trim();
+    const content = m[3] ?? "";
+    if (type === "mermaid") parts.push({ type: "mermaid", content });
+    if (type === "architecture-diagram") {
+      parts.push({ type: "architecture-diagram", content: option as ArchitectureDiagramKind });
+    }
+    if (type === "guidance") {
+      parts.push({ type: "guidance", tone: option as GuidanceTone, content });
+    }
     last = m.index + m[0].length;
   }
   if (last < md.length) parts.push({ type: "md", content: md.slice(last) });
@@ -56,13 +72,26 @@ function Mermaid({ chart }: { chart: string }) {
 }
 
 export function Markdown({ children }: { children: string }) {
-  const parts = splitMermaid(children);
+  const parts = splitEnhancedBlocks(children);
   return (
     <div className="prose-cf max-w-[68ch]">
-      {parts.map((part, i) =>
-        part.type === "mermaid" ? (
-          <Mermaid key={i} chart={part.content} />
-        ) : (
+      {parts.map((part, i) => {
+        if (part.type === "mermaid") return <Mermaid key={i} chart={part.content} />;
+        if (part.type === "architecture-diagram") {
+          return <ArchitectureDiagram key={i} kind={part.content} />;
+        }
+        if (part.type === "guidance") {
+          return (
+            <GuidanceBlock key={i} tone={part.tone}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: marked.parse(part.content, { async: false, gfm: true }) as string,
+                }}
+              />
+            </GuidanceBlock>
+          );
+        }
+        return (
           <div
             key={i}
             // Content is authored in-repo Markdown, not user input.
@@ -70,8 +99,8 @@ export function Markdown({ children }: { children: string }) {
               __html: marked.parse(part.content, { async: false, gfm: true }) as string,
             }}
           />
-        ),
-      )}
+        );
+      })}
     </div>
   );
 }

@@ -19,6 +19,8 @@ tags:
   - lifecycle
 related:
   - cf-lifecycle
+  - cf-architecture-test-learn
+  - cf-architecture-evidence
 ---
 
 # Test and Learn
@@ -46,3 +48,7 @@ We design the smallest useful experiment capable of changing our understanding, 
 - pilots without hypotheses
 - experiments designed to prove an existing opinion
 - tests with no decision attached
+
+## Architecture prompt
+
+What architectural uncertainty could invalidate this hypothesis? If it matters to the decision, make it part of the Test & Learn Experiment.
