@@ -93,7 +93,7 @@ export function docsBySection() {
     section,
     label: SECTION_LABELS[section],
     docs: docs.filter((doc) => doc.section === section),
-  })).filter((group) => group.docs.length > 0);
+  })).filter((group) => group.docs.length > 0 && group.section !== "technology-architecture");
 }
 
 export function getDoc(slug: string): Doc | undefined {

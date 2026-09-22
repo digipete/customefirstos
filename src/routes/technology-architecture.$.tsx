@@ -126,7 +126,7 @@ function ArchitectureDoc() {
             <section>
               <h2 className="font-semibold">In this section</h2>
               <ul className="mt-3 space-y-2">
-                {docs.filter((item) => !item.slug.includes("/principles/")).map((item) => (
+                {docs.map((item) => (
                   <li key={item.id}>
                     <Link
                       to="/technology-architecture/$"

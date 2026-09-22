@@ -19,10 +19,13 @@ import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as PatternsRouteImport } from './routes/patterns'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as TechnologyArchitectureRouteImport } from './routes/technology-architecture'
 import { Route as HowWeWorkIndexRouteImport } from './routes/how-we-work.index'
 import { Route as HowWeWorkSplatRouteImport } from './routes/how-we-work.$'
 import { Route as MissionsIndexRouteImport } from './routes/missions.index'
 import { Route as MissionsSlugRouteImport } from './routes/missions.$slug'
+import { Route as TechnologyArchitectureIndexRouteImport } from './routes/technology-architecture.index'
+import { Route as TechnologyArchitectureSplatRouteImport } from './routes/technology-architecture.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -74,6 +77,11 @@ const SearchRoute = SearchRouteImport.update({
   path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TechnologyArchitectureRoute = TechnologyArchitectureRouteImport.update({
+  id: '/technology-architecture',
+  path: '/technology-architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HowWeWorkIndexRoute = HowWeWorkIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -94,6 +102,18 @@ const MissionsSlugRoute = MissionsSlugRouteImport.update({
   path: '/missions/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TechnologyArchitectureIndexRoute =
+  TechnologyArchitectureIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => TechnologyArchitectureRoute,
+  } as any)
+const TechnologyArchitectureSplatRoute =
+  TechnologyArchitectureSplatRouteImport.update({
+    id: '/$',
+    path: '/$',
+    getParentRoute: () => TechnologyArchitectureRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -106,10 +126,13 @@ export interface FileRoutesByFullPath {
   '/patterns': typeof PatternsRoute
   '/portfolio': typeof PortfolioRoute
   '/search': typeof SearchRoute
+  '/technology-architecture': typeof TechnologyArchitectureRouteWithChildren
   '/how-we-work/$': typeof HowWeWorkSplatRoute
   '/missions/$slug': typeof MissionsSlugRoute
+  '/technology-architecture/$': typeof TechnologyArchitectureSplatRoute
   '/how-we-work/': typeof HowWeWorkIndexRoute
   '/missions/': typeof MissionsIndexRoute
+  '/technology-architecture/': typeof TechnologyArchitectureIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -123,8 +146,10 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/how-we-work/$': typeof HowWeWorkSplatRoute
   '/missions/$slug': typeof MissionsSlugRoute
+  '/technology-architecture/$': typeof TechnologyArchitectureSplatRoute
   '/how-we-work': typeof HowWeWorkIndexRoute
   '/missions': typeof MissionsIndexRoute
+  '/technology-architecture': typeof TechnologyArchitectureIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -138,10 +163,13 @@ export interface FileRoutesById {
   '/patterns': typeof PatternsRoute
   '/portfolio': typeof PortfolioRoute
   '/search': typeof SearchRoute
+  '/technology-architecture': typeof TechnologyArchitectureRouteWithChildren
   '/how-we-work/$': typeof HowWeWorkSplatRoute
   '/missions/$slug': typeof MissionsSlugRoute
+  '/technology-architecture/$': typeof TechnologyArchitectureSplatRoute
   '/how-we-work/': typeof HowWeWorkIndexRoute
   '/missions/': typeof MissionsIndexRoute
+  '/technology-architecture/': typeof TechnologyArchitectureIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -156,10 +184,13 @@ export interface FileRouteTypes {
     | '/patterns'
     | '/portfolio'
     | '/search'
+    | '/technology-architecture'
     | '/how-we-work/$'
     | '/missions/$slug'
+    | '/technology-architecture/$'
     | '/how-we-work/'
     | '/missions/'
+    | '/technology-architecture/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -173,8 +204,10 @@ export interface FileRouteTypes {
     | '/search'
     | '/how-we-work/$'
     | '/missions/$slug'
+    | '/technology-architecture/$'
     | '/how-we-work'
     | '/missions'
+    | '/technology-architecture'
   id:
     | '__root__'
     | '/'
@@ -187,10 +220,13 @@ export interface FileRouteTypes {
     | '/patterns'
     | '/portfolio'
     | '/search'
+    | '/technology-architecture'
     | '/how-we-work/$'
     | '/missions/$slug'
+    | '/technology-architecture/$'
     | '/how-we-work/'
     | '/missions/'
+    | '/technology-architecture/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -204,6 +240,7 @@ export interface RootRouteChildren {
   PatternsRoute: typeof PatternsRoute
   PortfolioRoute: typeof PortfolioRoute
   SearchRoute: typeof SearchRoute
+  TechnologyArchitectureRoute: typeof TechnologyArchitectureRouteWithChildren
   MissionsSlugRoute: typeof MissionsSlugRoute
   MissionsIndexRoute: typeof MissionsIndexRoute
 }
@@ -280,6 +317,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/technology-architecture': {
+      id: '/technology-architecture'
+      path: '/technology-architecture'
+      fullPath: '/technology-architecture'
+      preLoaderRoute: typeof TechnologyArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/how-we-work/': {
       id: '/how-we-work/'
       path: '/'
@@ -308,6 +352,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MissionsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/technology-architecture/': {
+      id: '/technology-architecture/'
+      path: '/'
+      fullPath: '/technology-architecture/'
+      preLoaderRoute: typeof TechnologyArchitectureIndexRouteImport
+      parentRoute: typeof TechnologyArchitectureRoute
+    }
+    '/technology-architecture/$': {
+      id: '/technology-architecture/$'
+      path: '/$'
+      fullPath: '/technology-architecture/$'
+      preLoaderRoute: typeof TechnologyArchitectureSplatRouteImport
+      parentRoute: typeof TechnologyArchitectureRoute
+    }
   }
 }
 
@@ -325,6 +383,22 @@ const HowWeWorkRouteWithChildren = HowWeWorkRoute._addFileChildren(
   HowWeWorkRouteChildren,
 )
 
+interface TechnologyArchitectureRouteChildren {
+  TechnologyArchitectureSplatRoute: typeof TechnologyArchitectureSplatRoute
+  TechnologyArchitectureIndexRoute: typeof TechnologyArchitectureIndexRoute
+}
+
+const TechnologyArchitectureRouteChildren: TechnologyArchitectureRouteChildren =
+  {
+    TechnologyArchitectureSplatRoute: TechnologyArchitectureSplatRoute,
+    TechnologyArchitectureIndexRoute: TechnologyArchitectureIndexRoute,
+  }
+
+const TechnologyArchitectureRouteWithChildren =
+  TechnologyArchitectureRoute._addFileChildren(
+    TechnologyArchitectureRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalyticsRoute: AnalyticsRoute,
@@ -336,6 +410,7 @@ const rootRouteChildren: RootRouteChildren = {
   PatternsRoute: PatternsRoute,
   PortfolioRoute: PortfolioRoute,
   SearchRoute: SearchRoute,
+  TechnologyArchitectureRoute: TechnologyArchitectureRouteWithChildren,
   MissionsSlugRoute: MissionsSlugRoute,
   MissionsIndexRoute: MissionsIndexRoute,
 }
