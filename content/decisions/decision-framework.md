@@ -21,6 +21,8 @@ tags:
 related:
   - cf-evidence-standard
   - cf-minimum-viable-governance
+  - cf-architecture-assurance
+  - cf-principle-smallest-safe-decision
 ---
 
 # Decision Framework
@@ -49,3 +51,7 @@ Every significant decision is recorded with the question, the evidence considere
 - decisions recorded after the fact to justify a direction
 - options lists containing one real option and two straw men
 - decision latency measured in months because no owner was named
+
+## Assurance prompt
+
+What evidence supports increasing our exposure? Do not make a bigger decision than the evidence allows.

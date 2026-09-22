@@ -19,6 +19,8 @@ tags:
   - template
 related:
   - cf-lifecycle
+  - cf-template-experiment-architecture-checklist
+  - cf-architecture-test-learn
 ---
 
 # Experiment template
@@ -36,6 +38,7 @@ Copy this template into your mission folder, or use it directly in GitHub. It is
 - **Start and end date**
 - **Evidence to be captured**
 - **Decision this experiment will inform**
+- **Exposure, guardrails and stop conditions**
 
 ## Notes
 
