@@ -54,8 +54,8 @@ Is the evidence strong enough to support the decision we are about to make?
 
 ## Possible outcomes
 
-| Scale | Test again | Modify | Stop |
-| --- | --- | --- | --- |
+| Scale                                    | Test again                               | Modify                                     | Stop                                                       |
+| ---------------------------------------- | ---------------------------------------- | ------------------------------------------ | ---------------------------------------------------------- |
 | Increase use where evidence supports it. | Resolve important remaining uncertainty. | Change the intervention or its guardrails. | End the work because evidence does not support continuing. |
 
 Stopping work based on evidence is a valid and valuable outcome.

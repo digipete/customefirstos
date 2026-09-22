@@ -78,12 +78,7 @@ export function ArchitectureDiagram({ kind }: { kind: ArchitectureDiagramKind })
           ))}
         </ol>
         <div className="architecture-outcomes" aria-label="Possible outcomes">
-          {[
-            "Scale",
-            "Test again",
-            "Modify",
-            "Stop",
-          ].map((outcome) => (
+          {["Scale", "Test again", "Modify", "Stop"].map((outcome) => (
             <span key={outcome}>{outcome}</span>
           ))}
         </div>
@@ -173,7 +168,10 @@ export function ArchitectureDiagram({ kind }: { kind: ArchitectureDiagramKind })
     ["Decide", "Act on the evidence"],
   ];
   return (
-    <figure className="architecture-figure architecture-continuous" aria-labelledby="continuous-caption">
+    <figure
+      className="architecture-figure architecture-continuous"
+      aria-labelledby="continuous-caption"
+    >
       <p className="architecture-continuous-label">Continuous architecture</p>
       <ol className="architecture-flow architecture-flow-horizontal">
         {steps.map(([title, detail], index) => (

@@ -40,10 +40,7 @@ function buildIndex(): Hit[] {
             : "Guidance",
       title: d.title,
       text: `${d.description} ${d.body}`,
-      to:
-        d.section === "technology-architecture"
-          ? "/technology-architecture/$"
-          : "/how-we-work/$",
+      to: d.section === "technology-architecture" ? "/technology-architecture/$" : "/how-we-work/$",
       params: {
         _splat:
           d.section === "technology-architecture"

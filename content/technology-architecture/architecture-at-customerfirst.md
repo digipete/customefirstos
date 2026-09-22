@@ -34,6 +34,7 @@ Architecture helps CustomerFirst teams understand uncertainty, make proportionat
 **Not a gate. Not a phase. Not a document.**
 
 ```architecture-diagram four-part-model
+
 ```
 
 Principles tell us how to think.
@@ -49,6 +50,7 @@ These ideas continuously inform one another. They are not a waterfall.
 ## Architecture in delivery
 
 ```architecture-diagram evidence-led-delivery
+
 ```
 
 ```guidance assurance

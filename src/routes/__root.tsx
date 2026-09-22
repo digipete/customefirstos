@@ -81,7 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "How CustomerFirst thinks, decides, delivers and learns." },
       { name: "author", content: "CustomerFirst" },
       { property: "og:title", content: "CustomerFirst OS" },
-      { property: "og:description", content: "How CustomerFirst thinks, decides, delivers and learns." },
+      {
+        property: "og:description",
+        content: "How CustomerFirst thinks, decides, delivers and learns.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

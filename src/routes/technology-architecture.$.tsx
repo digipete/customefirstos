@@ -11,7 +11,12 @@ export const Route = createFileRoute("/technology-architecture/$")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Architecture guidance unavailable — CustomerFirst OS" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "Architecture guidance unavailable — CustomerFirst OS" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const { doc } = loaderData;
     return {
@@ -57,7 +62,11 @@ function DocLink({ id, title }: { id: string; title: string }) {
     );
   }
   return (
-    <Link to="/how-we-work/$" params={{ _splat: doc.slug }} className="underline underline-offset-4">
+    <Link
+      to="/how-we-work/$"
+      params={{ _splat: doc.slug }}
+      className="underline underline-offset-4"
+    >
       {title}
     </Link>
   );
@@ -75,9 +84,13 @@ function ArchitectureDoc() {
     <Shell>
       <div className="mx-auto max-w-7xl px-6 py-10">
         <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
-          <Link to="/" className="underline underline-offset-4">CustomerFirst OS</Link>
+          <Link to="/" className="underline underline-offset-4">
+            CustomerFirst OS
+          </Link>
           <span aria-hidden="true"> / </span>
-          <Link to="/technology-architecture" className="underline underline-offset-4">Technology & Architecture</Link>
+          <Link to="/technology-architecture" className="underline underline-offset-4">
+            Technology & Architecture
+          </Link>
           <span aria-hidden="true"> / </span>
           <span>{doc.title}</span>
         </nav>
@@ -88,9 +101,14 @@ function ArchitectureDoc() {
               <Tag>architecture guidance</Tag>
               {doc.status && <Tag>{doc.status}</Tag>}
             </div>
-            <div className="mt-6"><Markdown>{doc.body}</Markdown></div>
+            <div className="mt-6">
+              <Markdown>{doc.body}</Markdown>
+            </div>
 
-            <nav aria-label="Previous and next architecture guidance" className="mt-14 grid gap-4 border-t pt-6 sm:grid-cols-2">
+            <nav
+              aria-label="Previous and next architecture guidance"
+              className="mt-14 grid gap-4 border-t pt-6 sm:grid-cols-2"
+            >
               <div>
                 {previous && (
                   <>
@@ -132,7 +150,9 @@ function ArchitectureDoc() {
                       to="/technology-architecture/$"
                       params={{ _splat: item.slug.replace("technology-architecture/", "") }}
                       aria-current={item.id === doc.id ? "page" : undefined}
-                      className={item.id === doc.id ? "font-semibold" : "underline underline-offset-4"}
+                      className={
+                        item.id === doc.id ? "font-semibold" : "underline underline-offset-4"
+                      }
                     >
                       {item.title}
                     </Link>
@@ -145,7 +165,9 @@ function ArchitectureDoc() {
                 <h2 className="font-semibold">Related guidance</h2>
                 <ul className="mt-3 space-y-2">
                   {related.map((item) => (
-                    <li key={item.id}><DocLink id={item.id} title={item.title} /></li>
+                    <li key={item.id}>
+                      <DocLink id={item.id} title={item.title} />
+                    </li>
                   ))}
                 </ul>
               </section>
@@ -153,7 +175,11 @@ function ArchitectureDoc() {
             <section>
               <h2 className="font-semibold">About this page</h2>
               <p className="mt-3 text-muted-foreground">Last reviewed {doc.reviewed}</p>
-              <a href={doc.githubPath} rel="noreferrer" className="mt-4 inline-block bg-primary px-3 py-2 text-primary-foreground">
+              <a
+                href={doc.githubPath}
+                rel="noreferrer"
+                className="mt-4 inline-block bg-primary px-3 py-2 text-primary-foreground"
+              >
                 Edit this page on GitHub
               </a>
             </section>

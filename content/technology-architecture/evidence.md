@@ -37,14 +37,14 @@ Architecture should not sit alongside an experiment merely producing documentati
 
 ## From assumption to evidence
 
-| Assumption | Test | Evidence |
-| --- | --- | --- |
-| “This will integrate” | Connect it | Integration evidence |
-| “It will perform” | Load or performance test it | Measurements |
-| “People will use it” | Put it in front of real users | Observed behaviour |
-| “We need this data” | Trace the service and data journey | Actual information requirements |
-| “This constraint cannot change” | Challenge or test the constraint | Proven constraint or disproven assumption |
-| “This will be cheaper” | Model and test costs | Economic evidence |
+| Assumption                      | Test                               | Evidence                                  |
+| ------------------------------- | ---------------------------------- | ----------------------------------------- |
+| “This will integrate”           | Connect it                         | Integration evidence                      |
+| “It will perform”               | Load or performance test it        | Measurements                              |
+| “People will use it”            | Put it in front of real users      | Observed behaviour                        |
+| “We need this data”             | Trace the service and data journey | Actual information requirements           |
+| “This constraint cannot change” | Challenge or test the constraint   | Proven constraint or disproven assumption |
+| “This will be cheaper”          | Model and test costs               | Economic evidence                         |
 
 ## Ways to learn
 

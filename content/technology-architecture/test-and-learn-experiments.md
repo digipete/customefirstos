@@ -29,6 +29,7 @@ related:
 At CustomerFirst, the Test & Learn Experiment is the bounded intervention through which uncertainty becomes evidence.
 
 ```architecture-diagram experiment-boundary
+
 ```
 
 A Test & Learn Experiment can legitimately include:

@@ -29,6 +29,7 @@ related:
 Assurance increases with exposure, consequence, irreversibility and scale — not simply because a project has reached another governance stage.
 
 ```architecture-diagram proportional-assurance
+
 ```
 
 ## Exposure

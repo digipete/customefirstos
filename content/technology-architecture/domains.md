@@ -29,6 +29,7 @@ related:
 ## Lenses, not silos
 
 ```architecture-diagram domains
+
 ```
 
 Six lenses on one system — not six architecture practices and not six governance teams.

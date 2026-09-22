@@ -28,6 +28,7 @@ related:
 # Continuous Architecture
 
 ```architecture-diagram continuous-architecture
+
 ```
 
 Architecture does not finish when an experiment is approved.

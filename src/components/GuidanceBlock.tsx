@@ -1,4 +1,5 @@
-export type GuidanceTone = "principle" | "evidence" | "assurance" | "stop-condition" | "team-question";
+export type GuidanceTone =
+  "principle" | "evidence" | "assurance" | "stop-condition" | "team-question";
 
 const LABELS: Record<GuidanceTone, string> = {
   principle: "Principle",
@@ -8,7 +9,13 @@ const LABELS: Record<GuidanceTone, string> = {
   "team-question": "Team question",
 };
 
-export function GuidanceBlock({ tone, children }: { tone: GuidanceTone; children: React.ReactNode }) {
+export function GuidanceBlock({
+  tone,
+  children,
+}: {
+  tone: GuidanceTone;
+  children: React.ReactNode;
+}) {
   return (
     <aside className={`guidance-block guidance-block-${tone}`}>
       <p className="guidance-block-label">{LABELS[tone]}</p>
