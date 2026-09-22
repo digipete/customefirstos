@@ -23,6 +23,7 @@ export interface Frontmatter {
   applies_to?: string[];
   tags?: string[];
   related?: string[];
+  order?: number;
 }
 
 export interface Doc extends Frontmatter {
@@ -72,6 +73,7 @@ export const SECTION_ORDER = [
   "evidence",
   "patterns",
   "templates",
+  "technology-architecture",
 ] as const;
 
 export const SECTION_LABELS: Record<string, string> = {
@@ -83,6 +85,7 @@ export const SECTION_LABELS: Record<string, string> = {
   evidence: "Evidence and economics",
   patterns: "Patterns",
   templates: "Templates",
+  "technology-architecture": "Technology & Architecture",
 };
 
 export function docsBySection() {
@@ -99,4 +102,8 @@ export function getDoc(slug: string): Doc | undefined {
 
 export function getDocById(id: string): Doc | undefined {
   return docs.find((doc) => doc.id === id);
+}
+
+export function architectureDocs(): Doc[] {
+  return docs.filter((doc) => doc.section === "technology-architecture");
 }

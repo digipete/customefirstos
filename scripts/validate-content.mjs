@@ -18,6 +18,7 @@ const SECTIONS = [
   "evidence",
   "patterns",
   "templates",
+  "technology-architecture",
 ];
 
 const REQUIRED = ["id", "title", "description", "type", "section"];

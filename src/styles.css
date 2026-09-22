@@ -157,13 +157,201 @@
   h3,
   h4 {
     font-family: var(--font-sans);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   :focus-visible {
     outline: 3px solid var(--color-lime);
     outline-offset: 2px;
     border-radius: 2px;
+  }
+}
+
+@layer components {
+  .guidance-block {
+    margin-block: 1.75rem;
+    border-left: 5px solid var(--color-teal);
+    background: var(--color-surface);
+    padding: 1rem 1.25rem;
+  }
+
+  .guidance-block-label {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .guidance-block > div > *:first-child,
+  .guidance-block > div > div > *:first-child {
+    margin-top: 0;
+  }
+
+  .guidance-block > div > *:last-child,
+  .guidance-block > div > div > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .guidance-block-principle { border-color: var(--color-lime); }
+  .guidance-block-evidence { border-color: var(--color-teal); }
+  .guidance-block-assurance { border-color: var(--color-primary); }
+  .guidance-block-stop-condition { border-color: var(--color-destructive); }
+  .guidance-block-team-question { border-color: var(--color-caution); }
+
+  .architecture-figure {
+    width: min(100%, 62rem);
+    max-width: calc(100vw - 3rem);
+    margin-block: 2rem;
+    border-block: 1px solid var(--color-border);
+    padding-block: 1.5rem;
+  }
+
+  .architecture-figure figcaption {
+    margin-top: 1rem;
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+  }
+
+  .architecture-four-part {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .architecture-model-item,
+  .architecture-model-centre,
+  .architecture-domain {
+    border: 1px solid var(--color-border);
+    background: var(--color-card);
+    padding: 1rem;
+  }
+
+  .architecture-model-item {
+    display: flex;
+    min-height: 7rem;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .architecture-model-item strong,
+  .architecture-domain strong {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .architecture-model-item span,
+  .architecture-domain span { color: var(--color-muted-foreground); }
+
+  .architecture-model-centre,
+  .architecture-domains-centre {
+    grid-column: 1 / -1;
+    border: 3px solid var(--color-primary);
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .architecture-diagram-link {
+    color: inherit;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .architecture-flow { list-style: none; padding: 0; }
+  .architecture-flow li { display: grid; justify-items: center; margin: 0; }
+  .architecture-flow li > span:first-child {
+    width: min(100%, 25rem);
+    border: 1px solid var(--color-border);
+    background: var(--color-card);
+    padding: 0.65rem 1rem;
+    text-align: center;
+    font-weight: 600;
+  }
+  .architecture-arrow { padding: 0.25rem; color: var(--color-muted-foreground); }
+
+  .architecture-outcomes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .architecture-outcomes span {
+    border: 2px solid var(--color-primary);
+    padding: 0.65rem;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .architecture-domains {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  .architecture-domains-centre { padding: 1rem; }
+  .architecture-domain { display: grid; gap: 0.5rem; min-height: 8rem; }
+
+  .architecture-boundary {
+    border: 4px solid var(--color-primary);
+    padding: 1.25rem;
+  }
+  .architecture-boundary > p {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .architecture-boundary ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .architecture-boundary li { border-left: 4px solid var(--color-lime); background: var(--color-surface); padding: 0.75rem; }
+
+  .architecture-assurance-factors {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  .architecture-assurance-factors span { border: 1px solid var(--color-border); padding: 0.75rem; text-align: center; }
+  .architecture-assurance-line { height: 0.75rem; margin-block: 0.75rem; background: linear-gradient(to right, var(--color-surface), var(--color-primary)); }
+  .architecture-assurance > strong { display: block; text-align: right; }
+
+  .architecture-continuous { border: 3px solid var(--color-primary); padding: 1rem; }
+  .architecture-continuous-label { margin: 0 0 1rem; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+  .architecture-flow small { display: block; color: var(--color-muted-foreground); font-weight: 400; }
+  .architecture-continuous .architecture-outcomes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  @media (min-width: 768px) {
+    .architecture-four-part { grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: stretch; }
+    .architecture-model-centre { grid-column: 3; grid-row: 1; display: grid; place-items: center; }
+    .architecture-model-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .architecture-model-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .architecture-model-item:nth-child(4) { grid-column: 4; grid-row: 1; }
+    .architecture-model-item:nth-child(5) { grid-column: 5; grid-row: 1; }
+    .architecture-domains { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .architecture-domains-centre { grid-column: 2; grid-row: 2; display: grid; place-items: center; }
+  }
+
+  @media (max-width: 639px) {
+    .architecture-four-part,
+    .architecture-domains,
+    .architecture-boundary ul,
+    .architecture-assurance-factors,
+    .architecture-outcomes,
+    .architecture-continuous .architecture-outcomes { grid-template-columns: 1fr; }
+    .architecture-model-centre,
+    .architecture-domains-centre { grid-column: 1; }
+    .architecture-figure { max-width: calc(100vw - 2rem); }
   }
 }
 

@@ -32,7 +32,12 @@ function buildIndex(): Hit[] {
   const hits: Hit[] = [];
   for (const d of docs)
     hits.push({
-      group: d.section === "templates" ? "Templates" : "Guidance",
+      group:
+        d.section === "templates"
+          ? "Templates"
+          : d.section === "technology-architecture"
+            ? "Technology & Architecture"
+            : "Guidance",
       title: d.title,
       text: `${d.description} ${d.body}`,
       to: "/how-we-work/$",
